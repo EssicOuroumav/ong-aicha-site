@@ -1,0 +1,39 @@
+import { notFound } from "next/navigation";
+import { db } from "@/lib/db";
+import { requireArea } from "@/lib/guard";
+import { deleteActivity, saveActivity } from "@/actions/admin";
+import { Card, Title, TrilingualField } from "@/components/admin/ui";
+import { ImageField } from "@/components/admin/ImageField";
+
+export const dynamic = "force-dynamic";
+
+export default async function EditActivity({ params }: PageProps<"/admin/activities/[id]">) {
+  await requireArea("content");
+  const { id } = await params;
+  const a = id === "new" ? null : await db.activity.findUnique({ where: { id } });
+  if (id !== "new" && !a) notFound();
+  return (
+    <>
+      <Title>{a ? "Modifier l'action" : "Nouvelle action"}</Title>
+      <form action={saveActivity} className="space-y-6">
+        {a && <input type="hidden" name="id" value={a.id} />}
+        <Card className="space-y-5">
+          <TrilingualField name="title" label="Titre" value={a?.title} />
+          <TrilingualField name="summary" label="Résumé court" value={a?.summary} rows={2} />
+          <TrilingualField name="description" label="Description (paragraphes séparés par une ligne vide)" value={a?.description} rows={8} />
+          <TrilingualField name="period" label="Période (ex. Septembre, Octobre…)" value={a?.period} />
+        </Card>
+        <Card className="space-y-4">
+          <ImageField name="coverImage" label="Image" initial={a?.coverImage} />
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div><label htmlFor="location" className="mb-1 block text-sm font-semibold">Lieu</label><input id="location" name="location" defaultValue={a?.location ?? ""} className="field" /></div>
+            <div><label htmlFor="order" className="mb-1 block text-sm font-semibold">Ordre d'affichage</label><input id="order" name="order" type="number" defaultValue={a?.order ?? 0} className="field" /></div>
+          </div>
+          <label className="flex items-center gap-2"><input type="checkbox" name="published" defaultChecked={a?.published ?? true} className="h-5 w-5 accent-green-700" /> Publié</label>
+        </Card>
+        <button className="btn btn-primary">Enregistrer</button>
+      </form>
+      {a && <form action={deleteActivity} className="mt-6"><input type="hidden" name="id" value={a.id} /><button className="text-sm text-red-700 underline">Supprimer cette action</button></form>}
+    </>
+  );
+}

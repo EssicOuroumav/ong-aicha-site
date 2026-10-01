@@ -1,0 +1,214 @@
+"use server";
+
+import bcrypt from "bcryptjs";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
+import { z } from "zod";
+import { db } from "@/lib/db";
+import { auth, signOut } from "@/auth";
+import { requireArea, requireUser } from "@/lib/guard";
+import { siteUrl } from "@/lib/request";
+import { addPeriod, sendSponsorshipReminder } from "@/lib/sponsorship";
+
+const L = z.object({ fr: z.string().default(""), en: z.string().default(""), ar: z.string().default("") });
+const loc = (form: FormData, name: string) => ({
+  fr: String(form.get(`${name}_fr`) ?? "").trim(),
+  en: String(form.get(`${name}_en`) ?? "").trim(),
+  ar: String(form.get(`${name}_ar`) ?? "").trim(),
+});
+const slugify = (s: string) =>
+  s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 80);
+
+function refresh() {
+  revalidatePath("/", "layout");
+}
+
+// ───────── Mot de passe ─────────
+export async function changePassword(_: unknown, form: FormData): Promise<{ error?: string; done?: boolean }> {
+  const session = await requireUser();
+  const current = String(form.get("current") ?? "");
+  const next = String(form.get("next") ?? "");
+  if (next.length < 10 || !/[A-Za-z]/.test(next) || !/\d/.test(next)) return { error: "Le nouveau mot de passe doit faire au moins 10 caractères, avec lettres et chiffres." };
+  if (next !== String(form.get("confirm") ?? "")) return { error: "La confirmation ne correspond pas." };
+  const user = await db.user.findUnique({ where: { id: session.id } });
+  if (!user || !(await bcrypt.compare(current, user.passwordHash))) return { error: "Mot de passe actuel incorrect." };
+  await db.user.update({ where: { id: user.id }, data: { passwordHash: await bcrypt.hash(next, 12), mustChangePw: false } });
+  // Le jeton de session mémorise mustChangePw : on force une reconnexion
+  await signOut({ redirectTo: "/admin/login" });
+  return { done: true };
+}
+
+// ───────── Blog ─────────
+export async function savePost(form: FormData) {
+  const user = await requireArea("content");
+  const id = String(form.get("id") ?? "");
+  const title = loc(form, "title");
+  if (!title.fr) throw new Error("Titre français requis");
+  const data = {
+    title,
+    excerpt: loc(form, "excerpt"),
+    content: loc(form, "content"),
+    coverImage: String(form.get("coverImage") ?? "").trim() || null,
+    published: form.get("published") === "on",
+    publishedAt: form.get("published") === "on" ? new Date(String(form.get("publishedAt") || Date.now())) : null,
+  };
+  if (id) {
+    await db.post.update({ where: { id }, data });
+  } else {
+    let slug = slugify(title.fr) || `article-${Date.now()}`;
+    if (await db.post.findUnique({ where: { slug } })) slug += `-${Date.now().toString(36)}`;
+    await db.post.create({ data: { ...data, slug, authorId: user.id } });
+  }
+  refresh();
+  redirect("/admin/posts");
+}
+
+export async function deletePost(form: FormData) {
+  await requireArea("content");
+  await db.post.delete({ where: { id: String(form.get("id")) } });
+  refresh();
+  redirect("/admin/posts");
+}
+
+// ───────── Actions (activités) ─────────
+export async function saveActivity(form: FormData) {
+  await requireArea("content");
+  const id = String(form.get("id") ?? "");
+  const title = loc(form, "title");
+  if (!title.fr) throw new Error("Titre français requis");
+  const data = {
+    title, summary: loc(form, "summary"), description: loc(form, "description"), period: loc(form, "period"),
+    coverImage: String(form.get("coverImage") ?? "").trim() || null,
+    location: String(form.get("location") ?? "").trim() || null,
+    order: Number(form.get("order") ?? 0) || 0,
+    published: form.get("published") === "on",
+  };
+  if (id) await db.activity.update({ where: { id }, data });
+  else {
+    let slug = slugify(title.fr) || `action-${Date.now()}`;
+    if (await db.activity.findUnique({ where: { slug } })) slug += `-${Date.now().toString(36)}`;
+    await db.activity.create({ data: { ...data, slug } });
+  }
+  refresh();
+  redirect("/admin/activities");
+}
+
+export async function deleteActivity(form: FormData) {
+  await requireArea("content");
+  await db.activity.delete({ where: { id: String(form.get("id")) } });
+  refresh();
+  redirect("/admin/activities");
+}
+
+// ───────── Galerie ─────────
+export async function addMedia(form: FormData) {
+  await requireArea("content");
+  const url = String(form.get("url") ?? "").trim();
+  if (!url) return;
+  if (!/^(https:\/\/|\/images\/)/.test(url)) throw new Error("URL invalide");
+  await db.mediaItem.create({
+    data: { url, kind: String(form.get("kind")) === "VIDEO" ? "VIDEO" : "PHOTO", album: String(form.get("album") ?? "") || null, caption: loc(form, "caption") },
+  });
+  refresh();
+  revalidatePath("/admin/media");
+}
+
+export async function deleteMedia(form: FormData) {
+  await requireArea("content");
+  await db.mediaItem.delete({ where: { id: String(form.get("id")) } });
+  refresh();
+  revalidatePath("/admin/media");
+}
+
+// ───────── Dons / demandes ─────────
+export async function setDonationStatus(form: FormData) {
+  await requireArea("donations");
+  const status = z.enum(["PENDING", "COMPLETED", "FAILED", "CANCELLED"]).parse(form.get("status"));
+  await db.donation.update({ where: { id: String(form.get("id")) }, data: { status } });
+  revalidatePath("/admin/donations");
+}
+
+const requestStatus = z.enum(["NEW", "IN_PROGRESS", "APPROVED", "REJECTED"]);
+
+export async function setSponsorship(form: FormData) {
+  await requireArea("requests");
+  const id = String(form.get("id"));
+  const status = requestStatus.parse(form.get("status"));
+  const amount = Number(form.get("amount") || 0) || null;
+  const current = await db.sponsorship.findUniqueOrThrow({ where: { id } });
+  await db.sponsorship.update({
+    where: { id },
+    data: { status, amount, nextDueAt: status === "APPROVED" ? current.nextDueAt ?? addPeriod(new Date(), current.frequency) : current.nextDueAt },
+  });
+  revalidatePath("/admin/sponsorships");
+}
+
+export async function remindSponsor(form: FormData) {
+  await requireArea("requests");
+  const res = await sendSponsorshipReminder(String(form.get("id")), await siteUrl());
+  revalidatePath("/admin/sponsorships");
+  redirect(`/admin/sponsorships?reminder=${res.ok ? "ok" : encodeURIComponent(res.reason ?? "erreur")}`);
+}
+
+export async function setMembership(form: FormData) {
+  await requireArea("requests");
+  await db.membership.update({ where: { id: String(form.get("id")) }, data: { status: requestStatus.parse(form.get("status")) } });
+  revalidatePath("/admin/memberships");
+}
+
+export async function toggleMessageRead(form: FormData) {
+  await requireArea("requests");
+  const id = String(form.get("id"));
+  const m = await db.contactMessage.findUniqueOrThrow({ where: { id } });
+  await db.contactMessage.update({ where: { id }, data: { read: !m.read } });
+  revalidatePath("/admin/messages");
+}
+
+// ───────── Réglages ─────────
+export async function saveSettings(form: FormData) {
+  await requireArea("settings");
+  for (const key of ["phone", "donationPhone", "email", "address", "facebook", "youtube", "instagram"]) {
+    const value = String(form.get(key) ?? "").trim();
+    await db.setting.upsert({ where: { key }, update: { value }, create: { key, value } });
+  }
+  refresh();
+  revalidatePath("/admin/settings");
+}
+
+// ───────── Utilisateurs ─────────
+const roleSchema = z.enum(["SUPER_ADMIN", "EDITOR", "DONATIONS_MANAGER"]);
+
+export async function createUser(_: unknown, form: FormData): Promise<{ error?: string; password?: string }> {
+  await requireArea("users");
+  const parsed = z.object({ email: z.string().email(), name: z.string().min(2).max(100), role: roleSchema }).safeParse(Object.fromEntries(form));
+  if (!parsed.success) return { error: "Données invalides." };
+  const email = parsed.data.email.toLowerCase();
+  if (await db.user.findUnique({ where: { email } })) return { error: "Cet e-mail existe déjà." };
+  const { randomBytes } = await import("node:crypto");
+  const password = randomBytes(9).toString("base64url");
+  await db.user.create({ data: { email, name: parsed.data.name, role: parsed.data.role, mustChangePw: true, passwordHash: await bcrypt.hash(password, 12) } });
+  revalidatePath("/admin/users");
+  return { password };
+}
+
+export async function updateUser(form: FormData) {
+  const me = await requireArea("users");
+  const id = String(form.get("id"));
+  const role = roleSchema.parse(form.get("role"));
+  const active = form.get("active") === "on";
+  if (id === me.id && (role !== "SUPER_ADMIN" || !active)) return; // on ne se retire pas ses propres droits
+  await db.user.update({ where: { id }, data: { role, active } });
+  revalidatePath("/admin/users");
+}
+
+export async function resetUserPassword(_: unknown, form: FormData): Promise<{ error?: string; password?: string }> {
+  await requireArea("users");
+  const { randomBytes } = await import("node:crypto");
+  const password = randomBytes(9).toString("base64url");
+  await db.user.update({ where: { id: String(form.get("id")) }, data: { passwordHash: await bcrypt.hash(password, 12), mustChangePw: true } });
+  return { password };
+}
+
+export async function whoAmI() {
+  return (await auth())?.user ?? null;
+}

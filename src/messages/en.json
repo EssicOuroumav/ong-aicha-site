@@ -1,0 +1,234 @@
+{
+  "meta": {
+    "siteName": "ONG AICHA",
+    "tagline": "Supporting to relieve",
+    "fullName": "Active Islamic Charitable Humanitarian Association",
+    "description": "ONG AICHA – Active Islamic Charitable Humanitarian Association: health, education and humanitarian aid for the most vulnerable in Côte d'Ivoire."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "activities": "Our work",
+    "blog": "News",
+    "gallery": "Gallery",
+    "contact": "Contact",
+    "donate": "Donate",
+    "sponsor": "Sponsor",
+    "join": "Become a member",
+    "language": "Language",
+    "menu": "Menu",
+    "close": "Close",
+    "skip": "Skip to content"
+  },
+  "common": {
+    "readMore": "Read more",
+    "seeAll": "See all",
+    "learnMore": "Learn more",
+    "send": "Send",
+    "sending": "Sending…",
+    "required": "Required field",
+    "optional": "optional",
+    "backToList": "Back",
+    "publishedOn": "Published on",
+    "noResults": "Nothing to show for now.",
+    "error": "Something went wrong. Please try again.",
+    "thanks": "Thank you!",
+    "share": "Share"
+  },
+  "home": {
+    "heroEyebrow": "ONG AICHA · Côte d'Ivoire",
+    "heroTitle": "Supporting to relieve",
+    "heroText": "Health, education, humanitarian aid: since 2019, young volunteers have stood alongside children, widows and the most vulnerable families.",
+    "ctaDonate": "Donate",
+    "ctaJoin": "Join us",
+    "pillarsTitle": "Our mission",
+    "pillars": [
+      { "title": "Support", "text": "children and families in need: health, education and social well-being." },
+      { "title": "Assist", "text": "vulnerable people, orphans and widows, all year round." },
+      { "title": "Raise awareness", "text": "through screening and prevention campaigns against disease." },
+      { "title": "Come to the rescue", "text": "of any child or community in distress, regardless of origin." }
+    ],
+    "aboutTitle": "Who are we?",
+    "aboutText": "Founded in 2019 by a group of young Muslims from many different professions, ONG AICHA fills the gaps in social support for the most disadvantaged in Côte d'Ivoire, regardless of race or origin. All founding members act as volunteers.",
+    "statsTitle": "Our work in numbers",
+    "stats": [
+      { "value": "2019", "label": "year of founding" },
+      { "value": "710", "label": "families helped during Ramadan 2025" },
+      { "value": "500+", "label": "women screened in a single day" },
+      { "value": "350", "label": "beneficiaries of the Tabaski campaign (orphans and widows)" }
+    ],
+    "activitiesTitle": "Our work on the ground",
+    "activitiesLead": "Concrete programs, carried out all year round with communities.",
+    "newsTitle": "Latest news",
+    "involveTitle": "How can you get involved?",
+    "involve": [
+      { "title": "Donate", "text": "In kind or in cash, in a few clicks and in complete security.", "cta": "Give" },
+      { "title": "Sponsor a child", "text": "Give lasting support to an orphaned or vulnerable child.", "cta": "Sponsor" },
+      { "title": "Become a member or volunteer", "text": "Put your skills and your time at the service of others.", "cta": "Join" }
+    ],
+    "videoTitle": "In pictures"
+  },
+  "about": {
+    "title": "About ONG AICHA",
+    "lead": "Active Islamic Charitable Humanitarian Association",
+    "storyTitle": "Our story",
+    "story": [
+      "The Active Islamic Charitable Humanitarian Association (AICHA) was founded in 2019 by a group of young Muslims from a variety of professions. Seeing how little social support reached the most disadvantaged in Côte d'Ivoire, they decided to put their skills at the service of others, regardless of race or origin.",
+      "Its founding members came together spontaneously and as volunteers, driven by a spirit of solidarity and self-giving for the well-being of others, core values of Islam. Their work covers health, humanitarian aid, social well-being and education, with vulnerable populations as the priority.",
+      "Since April 2021, the NGO's headquarters have been in Port-Bouët, Abidjan."
+    ],
+    "objectivesTitle": "Our objectives",
+    "objectives": [
+      "To support children in difficulty and their families in the areas of health, education, humanitarian aid and social well-being.",
+      "To assist vulnerable people.",
+      "To run awareness campaigns against all diseases.",
+      "To come to the rescue of any child or community in distress."
+    ],
+    "fundingTitle": "How we fund our work",
+    "funding": "Our activities are funded by member contributions and by donations, in kind or in cash, from generous individuals as well as senior public figures.",
+    "leadershipTitle": "Leadership",
+    "leadership": "The Central Executive Director is Pr Kourouma Hamdan Sarah, supported by a dynamic Executive Board.",
+    "valuesTitle": "Our values",
+    "values": [
+      { "title": "Solidarity", "text": "A collective, volunteer-driven effort in the service of those who suffer." },
+      { "title": "Transparency", "text": "Actions that are monitored and made public, with rigor." },
+      { "title": "Dignity", "text": "Helping without distinction of race, origin or belief." },
+      { "title": "Commitment", "text": "A regular presence on the ground, all year round." }
+    ]
+  },
+  "activities": {
+    "title": "Our work",
+    "lead": "Health, education, social aid: discover the programs we carry out on the ground.",
+    "period": "Period",
+    "location": "Location",
+    "otherActions": "Other actions"
+  },
+  "blog": {
+    "title": "News",
+    "lead": "The story of our campaigns and our work on the ground.",
+    "empty": "No articles published yet.",
+    "latest": "Also worth reading"
+  },
+  "gallery": {
+    "title": "Gallery",
+    "lead": "Our work in photos and videos.",
+    "photos": "Photos",
+    "videos": "Videos",
+    "all": "All",
+    "albums": {
+      "vague-rose": "The Pink and Red Wave",
+      "ramadan": "Ramadan Food Baskets",
+      "cliniques": "Mobile Clinics",
+      "ecole": "On the Way to School",
+      "conventions": "Partnerships",
+      "autres": "Other Moments"
+    },
+    "close": "Close",
+    "previous": "Previous",
+    "next": "Next"
+  },
+  "contact": {
+    "title": "Contact us",
+    "lead": "A question, a partnership proposal? We reply within 24 working hours.",
+    "name": "Full name",
+    "email": "Email",
+    "subject": "Subject",
+    "message": "Your message",
+    "success": "Your message has been sent. We will get back to you very soon.",
+    "infoTitle": "Our contact details",
+    "phone": "Phone",
+    "address": "Address",
+    "emailLabel": "Email",
+    "follow": "Follow us"
+  },
+  "donate": {
+    "title": "Donate",
+    "lead": "Your generosity changes lives. Every donation goes to fund our work on the ground with the most vulnerable.",
+    "chooseAmount": "Choose an amount",
+    "otherAmount": "Other amount (FCFA)",
+    "cause": "Your donation supports",
+    "causes": {
+      "general": "Wherever the need is greatest",
+      "health": "Health: screenings and mobile clinics",
+      "education": "Education: On the Way to School",
+      "ramadan": "Ramadan and Tabaski food baskets",
+      "orphans": "Orphans and widows"
+    },
+    "name": "Full name",
+    "email": "Email (for your receipt)",
+    "phone": "Phone",
+    "country": "Country and city",
+    "message": "Message (optional)",
+    "anonymous": "I would like my donation to remain anonymous",
+    "submit": "I donate",
+    "secure": "Secure payment by PayDunya: Orange Money, MTN, Moov, Wave and bank cards.",
+    "minAmount": "The minimum amount is 500 FCFA.",
+    "otherWaysTitle": "Other ways to give",
+    "otherWays": "In-kind donations: drop them off at our headquarters in Port-Bouët Abattoir or contact us and we will come to collect them. Bank transfer or cheque: contact us to get our bank details.",
+    "successTitle": "Thank you for your generosity!",
+    "successText": "Your donation has been recorded. May Allah reward you a hundredfold. A receipt will be sent to you by email.",
+    "pendingTitle": "Payment being verified",
+    "pendingText": "We are waiting for confirmation from your operator. This page will update automatically.",
+    "failedTitle": "The payment did not go through",
+    "failedText": "No amount has been charged. You can try again.",
+    "retry": "Try again",
+    "reference": "Reference"
+  },
+  "sponsor": {
+    "title": "Sponsor a child",
+    "lead": "Give lasting support to an orphaned or vulnerable child: schooling, health, day-to-day care. Fill in this form and our team will contact you to finalize the sponsorship.",
+    "name": "Full name",
+    "email": "Email",
+    "phone": "Phone",
+    "country": "Country and city",
+    "children": "Number of children to sponsor",
+    "frequency": "Frequency of your contribution",
+    "frequencies": { "MONTHLY": "Monthly", "QUARTERLY": "Quarterly", "YEARLY": "Yearly" },
+    "note": "Message (optional)",
+    "confirm": "I confirm that the information provided is accurate.",
+    "submit": "Send my request",
+    "success": "Thank you! Your sponsorship request has been received. We will contact you very soon. At each due date, you will receive an email reminder with a secure payment link.",
+    "howTitle": "How does it work?",
+    "how": [
+      "You fill in the sponsorship form.",
+      "Our team contacts you and validates your request.",
+      "At each due date, you receive an email with a secure payment link."
+    ]
+  },
+  "join": {
+    "title": "Become a member or volunteer",
+    "lead": "Tell us you wish to join ONG AICHA: put your skills at the service of others.",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "phone": "Phone",
+    "email": "Email",
+    "city": "City",
+    "type": "Type of membership",
+    "types": { "MEMBER": "Member", "VOLUNTEER": "Volunteer" },
+    "message": "Your motivations or skills (optional)",
+    "submit": "Send my application",
+    "success": "Thank you! Your request has been received. We will get back to you very soon."
+  },
+  "footer": {
+    "about": "Active Islamic Charitable Humanitarian Association. Supporting to relieve.",
+    "links": "Useful links",
+    "contact": "Contact",
+    "rights": "All rights reserved.",
+    "legal": "Legal notice",
+    "admin": "Admin area"
+  },
+  "legal": {
+    "title": "Legal notice",
+    "body": [
+      "This website is published by ONG AICHA – Active Islamic Charitable Humanitarian Association, whose headquarters are located at Port-Bouët Abattoir, Abidjan, Côte d'Ivoire.",
+      "Contact: ongaicha2022@gmail.com – (+225) 07 08 99 96 26.",
+      "Hosting: Vercel Inc.",
+      "Personal data: the information collected through the forms (donations, sponsorship, membership, contact) is used solely to process your request and is never resold. Payments are processed by PayDunya; ONG AICHA does not store any banking data. To exercise your rights of access, rectification or deletion, write to us at ongaicha2022@gmail.com."
+    ]
+  },
+  "notFound": {
+    "title": "Page not found",
+    "text": "The page you are looking for does not exist or has been moved.",
+    "back": "Back to home"
+  }
+}

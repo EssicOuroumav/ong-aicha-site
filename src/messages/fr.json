@@ -1,0 +1,234 @@
+{
+  "meta": {
+    "siteName": "ONG AICHA",
+    "tagline": "Soutenir pour soulager",
+    "fullName": "Association Islamique Caritative Humanitaire Active",
+    "description": "ONG AICHA – Association Islamique Caritative Humanitaire Active : santé, éducation et aide humanitaire pour les plus vulnérables en Côte d'Ivoire."
+  },
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "activities": "Nos actions",
+    "blog": "Actualités",
+    "gallery": "Galerie",
+    "contact": "Contact",
+    "donate": "Faire un don",
+    "sponsor": "Parrainer",
+    "join": "Devenir membre",
+    "language": "Langue",
+    "menu": "Menu",
+    "close": "Fermer",
+    "skip": "Aller au contenu"
+  },
+  "common": {
+    "readMore": "Lire la suite",
+    "seeAll": "Tout voir",
+    "learnMore": "En savoir plus",
+    "send": "Envoyer",
+    "sending": "Envoi en cours…",
+    "required": "Champ obligatoire",
+    "optional": "facultatif",
+    "backToList": "Retour",
+    "publishedOn": "Publié le",
+    "noResults": "Rien à afficher pour le moment.",
+    "error": "Une erreur est survenue. Veuillez réessayer.",
+    "thanks": "Merci !",
+    "share": "Partager"
+  },
+  "home": {
+    "heroEyebrow": "ONG AICHA · Côte d'Ivoire",
+    "heroTitle": "Soutenir pour soulager",
+    "heroText": "Santé, éducation, aide humanitaire : depuis 2019, des jeunes bénévoles se mobilisent aux côtés des enfants, des veuves et des familles les plus vulnérables.",
+    "ctaDonate": "Faire un don",
+    "ctaJoin": "Nous rejoindre",
+    "pillarsTitle": "Notre mission",
+    "pillars": [
+      { "title": "Soutenir", "text": "les enfants et les familles en difficulté : santé, éducation, bien-être social." },
+      { "title": "Secourir", "text": "les personnes vulnérables, orphelins et veuves, tout au long de l'année." },
+      { "title": "Sensibiliser", "text": "par des campagnes de dépistage et de prévention contre les maladies." },
+      { "title": "Porter secours", "text": "à tout enfant ou toute communauté en détresse, sans distinction d'origine." }
+    ],
+    "aboutTitle": "Qui sommes-nous ?",
+    "aboutText": "Fondée en 2019 par un collectif de jeunes musulmans de diverses professions, l'ONG AICHA comble les lacunes du soutien social aux plus démunis en Côte d'Ivoire, sans distinction de race ni d'origine. Tous les membres fondateurs agissent bénévolement.",
+    "statsTitle": "Notre action en chiffres",
+    "stats": [
+      { "value": "2019", "label": "année de création" },
+      { "value": "710", "label": "familles aidées pendant le Ramadan 2025" },
+      { "value": "500+", "label": "femmes dépistées lors d'une seule journée" },
+      { "value": "350", "label": "bénéficiaires de la campagne Tabaski (orphelins et veuves)" }
+    ],
+    "activitiesTitle": "Nos actions de terrain",
+    "activitiesLead": "Des programmes concrets, menés toute l'année auprès des communautés.",
+    "newsTitle": "Dernières actualités",
+    "involveTitle": "Comment agir avec nous ?",
+    "involve": [
+      { "title": "Faire un don", "text": "En nature ou en espèces, en quelques clics et en toute sécurité.", "cta": "Donner" },
+      { "title": "Parrainer un enfant", "text": "Accompagnez durablement un enfant orphelin ou vulnérable.", "cta": "Parrainer" },
+      { "title": "Devenir membre ou bénévole", "text": "Mettez vos compétences et votre temps au service des autres.", "cta": "Adhérer" }
+    ],
+    "videoTitle": "En images"
+  },
+  "about": {
+    "title": "À propos de l'ONG AICHA",
+    "lead": "Association Islamique Caritative Humanitaire Active",
+    "storyTitle": "Notre histoire",
+    "story": [
+      "L'Association Islamique Caritative Humanitaire Active (AICHA) a été fondée en 2019 par un collectif de jeunes musulmans aux diverses professions. Constatant l'insuffisance du soutien social aux plus démunis en Côte d'Ivoire, ils ont décidé de mettre leurs compétences au service des autres, sans égard pour la race ou l'origine.",
+      "Ses membres fondateurs se sont réunis spontanément et bénévolement, mus par un élan de solidarité et de don de soi pour le bien-être d'autrui, valeurs clés de l'islam. Leur action s'étend à la santé, à l'humanitaire, au bien-être social et à l'éducation, avec pour priorité les populations vulnérables.",
+      "Depuis avril 2021, le siège de l'ONG est établi à Port-Bouët, à Abidjan."
+    ],
+    "objectivesTitle": "Nos objectifs",
+    "objectives": [
+      "Soutenir les enfants en difficulté ainsi que leurs familles dans les domaines de la santé, de l'éducation, de l'humanitaire et du bien-être social.",
+      "Secourir les personnes vulnérables.",
+      "Mener des campagnes de sensibilisation contre toutes les maladies.",
+      "Porter secours à tout enfant ou toute communauté en détresse."
+    ],
+    "fundingTitle": "Comment nous finançons nos actions",
+    "funding": "Les activités sont financées grâce aux cotisations des membres, aux dons en nature ou en espèces de personnes généreuses, ainsi que de hautes personnalités administratives.",
+    "leadershipTitle": "Direction",
+    "leadership": "La Directrice Exécutive Centrale est le Pr Kourouma Hamdan Sarah, appuyée par un Bureau Exécutif dynamique.",
+    "valuesTitle": "Nos valeurs",
+    "values": [
+      { "title": "Solidarité", "text": "Un élan collectif et bénévole au service de ceux qui souffrent." },
+      { "title": "Transparence", "text": "Des actions suivies et rendues publiques, avec rigueur." },
+      { "title": "Dignité", "text": "Aider sans distinction de race, d'origine ou de croyance." },
+      { "title": "Engagement", "text": "Une présence régulière sur le terrain, toute l'année." }
+    ]
+  },
+  "activities": {
+    "title": "Nos actions",
+    "lead": "Santé, éducation, aide sociale : découvrez les programmes que nous menons sur le terrain.",
+    "period": "Période",
+    "location": "Lieu",
+    "otherActions": "Autres actions"
+  },
+  "blog": {
+    "title": "Actualités",
+    "lead": "Le récit de nos campagnes et de nos actions de terrain.",
+    "empty": "Aucun article publié pour le moment.",
+    "latest": "À lire aussi"
+  },
+  "gallery": {
+    "title": "Galerie",
+    "lead": "Nos actions en photos et en vidéos.",
+    "photos": "Photos",
+    "videos": "Vidéos",
+    "all": "Tout",
+    "albums": {
+      "vague-rose": "La Vague Rose et Rouge",
+      "ramadan": "Paniers du Ramadan",
+      "cliniques": "Cliniques mobiles",
+      "ecole": "En route pour l'école",
+      "conventions": "Partenariats",
+      "autres": "Autres moments"
+    },
+    "close": "Fermer",
+    "previous": "Précédente",
+    "next": "Suivante"
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "lead": "Une question, une proposition de partenariat ? Nous répondons sous 24 heures ouvrées.",
+    "name": "Nom et prénom",
+    "email": "E-mail",
+    "subject": "Objet",
+    "message": "Votre message",
+    "success": "Votre message a bien été envoyé. Nous vous répondrons très vite.",
+    "infoTitle": "Nos coordonnées",
+    "phone": "Téléphone",
+    "address": "Adresse",
+    "emailLabel": "E-mail",
+    "follow": "Suivez-nous"
+  },
+  "donate": {
+    "title": "Faire un don",
+    "lead": "Votre générosité change des vies. Chaque don est utilisé pour financer nos actions de terrain auprès des plus vulnérables.",
+    "chooseAmount": "Choisissez un montant",
+    "otherAmount": "Autre montant (FCFA)",
+    "cause": "Votre don soutient",
+    "causes": {
+      "general": "Là où le besoin est le plus grand",
+      "health": "Santé : dépistages et cliniques mobiles",
+      "education": "Éducation : En route pour l'école",
+      "ramadan": "Paniers du Ramadan et Tabaski",
+      "orphans": "Orphelins et veuves"
+    },
+    "name": "Nom et prénom",
+    "email": "E-mail (pour votre reçu)",
+    "phone": "Téléphone",
+    "country": "Pays et ville",
+    "message": "Message (facultatif)",
+    "anonymous": "Je souhaite que mon don reste anonyme",
+    "submit": "Je donne",
+    "secure": "Paiement sécurisé par PayDunya : Orange Money, MTN, Moov, Wave et cartes bancaires.",
+    "minAmount": "Le montant minimum est de 500 FCFA.",
+    "otherWaysTitle": "Autres façons de donner",
+    "otherWays": "Dons en nature : déposez-les à notre siège de Port-Bouët Abattoir ou contactez-nous pour que nous venions les récupérer. Virement ou chèque : contactez-nous pour obtenir nos coordonnées bancaires.",
+    "successTitle": "Merci pour votre générosité !",
+    "successText": "Votre don a bien été enregistré. Qu'Allah vous le rende au centuple. Un reçu vous sera envoyé par e-mail.",
+    "pendingTitle": "Paiement en cours de vérification",
+    "pendingText": "Nous attendons la confirmation de votre opérateur. Cette page se mettra à jour automatiquement.",
+    "failedTitle": "Le paiement n'a pas abouti",
+    "failedText": "Aucun montant n'a été débité. Vous pouvez réessayer.",
+    "retry": "Réessayer",
+    "reference": "Référence"
+  },
+  "sponsor": {
+    "title": "Parrainer un enfant",
+    "lead": "Accompagnez durablement un enfant orphelin ou vulnérable : scolarité, santé, soutien au quotidien. Remplissez ce formulaire : notre équipe vous contacte pour finaliser le parrainage.",
+    "name": "Nom et prénom",
+    "email": "E-mail",
+    "phone": "Téléphone",
+    "country": "Pays et ville",
+    "children": "Nombre d'enfants à parrainer",
+    "frequency": "Fréquence de votre contribution",
+    "frequencies": { "MONTHLY": "Mensuelle", "QUARTERLY": "Trimestrielle", "YEARLY": "Annuelle" },
+    "note": "Message (facultatif)",
+    "confirm": "J'atteste l'exactitude des informations fournies.",
+    "submit": "Envoyer ma demande",
+    "success": "Merci ! Votre demande de parrainage a bien été reçue. Nous vous contacterons très vite. À chaque échéance, vous recevrez un rappel par e-mail avec un lien de paiement sécurisé.",
+    "howTitle": "Comment ça marche ?",
+    "how": [
+      "Vous remplissez le formulaire de parrainage.",
+      "Notre équipe vous contacte et valide votre demande.",
+      "À chaque échéance, vous recevez un e-mail avec un lien de paiement sécurisé."
+    ]
+  },
+  "join": {
+    "title": "Devenir membre ou bénévole",
+    "lead": "Exprimez votre intention de rejoindre l'ONG AICHA : mettez vos compétences au service des autres.",
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "phone": "Téléphone",
+    "email": "E-mail",
+    "city": "Ville",
+    "type": "Type d'adhésion",
+    "types": { "MEMBER": "Membre", "VOLUNTEER": "Bénévole" },
+    "message": "Vos motivations ou compétences (facultatif)",
+    "submit": "Envoyer ma candidature",
+    "success": "Merci ! Votre demande a bien été reçue. Nous vous recontactons très prochainement."
+  },
+  "footer": {
+    "about": "Association Islamique Caritative Humanitaire Active. Soutenir pour soulager.",
+    "links": "Liens utiles",
+    "contact": "Contact",
+    "rights": "Tous droits réservés.",
+    "legal": "Mentions légales",
+    "admin": "Espace administrateur"
+  },
+  "legal": {
+    "title": "Mentions légales",
+    "body": [
+      "Le présent site est édité par l'ONG AICHA – Association Islamique Caritative Humanitaire Active, dont le siège est situé à Port-Bouët Abattoir, Abidjan, Côte d'Ivoire.",
+      "Contact : ongaicha2022@gmail.com – (+225) 07 08 99 96 26.",
+      "Hébergement : Vercel Inc.",
+      "Données personnelles : les informations recueillies via les formulaires (dons, parrainage, adhésion, contact) sont utilisées uniquement pour le traitement de votre demande et ne sont jamais revendues. Les paiements sont traités par PayDunya ; l'ONG AICHA ne conserve aucune donnée bancaire. Pour exercer vos droits d'accès, de rectification ou de suppression, écrivez-nous à ongaicha2022@gmail.com."
+    ]
+  },
+  "notFound": {
+    "title": "Page introuvable",
+    "text": "La page que vous cherchez n'existe pas ou a été déplacée.",
+    "back": "Retour à l'accueil"
+  }
+}
