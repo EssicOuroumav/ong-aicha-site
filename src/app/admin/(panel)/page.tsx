@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { db } from "@/lib/db";
 import { can, requireUser } from "@/lib/guard";
 import { Card, Title, fcfa } from "@/components/admin/ui";
@@ -7,7 +8,7 @@ export const dynamic = "force-dynamic";
 
 export default async function Dashboard({ searchParams }: PageProps<"/admin">) {
   const user = await requireUser();
-  if (user.mustChangePw) return null;
+  if (user.mustChangePw) redirect("/admin/password");
   const { denied } = await searchParams;
   const showMoney = can(user.role, "donations");
   const [sum, count, spons, members, msgs, posts] = await Promise.all([
