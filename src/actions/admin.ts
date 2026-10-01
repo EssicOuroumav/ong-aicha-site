@@ -5,7 +5,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { db } from "@/lib/db";
-import { auth, signOut } from "@/auth";
+import { signOut } from "@/auth";
 import { requireArea, requireUser } from "@/lib/guard";
 import { siteUrl } from "@/lib/request";
 import { addPeriod, sendSponsorshipReminder } from "@/lib/sponsorship";
@@ -207,8 +207,4 @@ export async function resetUserPassword(_: unknown, form: FormData): Promise<{ e
   const password = randomBytes(9).toString("base64url");
   await db.user.update({ where: { id: String(form.get("id")) }, data: { passwordHash: await bcrypt.hash(password, 12), mustChangePw: true } });
   return { password };
-}
-
-export async function whoAmI() {
-  return (await auth())?.user ?? null;
 }
