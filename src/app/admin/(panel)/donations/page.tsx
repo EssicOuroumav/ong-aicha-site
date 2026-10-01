@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { db } from "@/lib/db";
 import { requireArea } from "@/lib/guard";
-import { setDonationStatus } from "@/actions/admin";
-import { Badge, StatusSelect, Table, Title, dt, fcfa } from "@/components/admin/ui";
+import { addManualDonation, setDonationStatus } from "@/actions/admin";
+import { Badge, Card, StatusSelect, Table, Title, dt, fcfa } from "@/components/admin/ui";
 
 export const dynamic = "force-dynamic";
 
@@ -12,6 +12,18 @@ export default async function DonationsPage() {
   return (
     <>
       <Title action={<Link href="/admin/donations/export" className="btn btn-primary !py-2 text-sm">Exporter en CSV</Link>}>Dons</Title>
+      <Card className="mb-6">
+        <form action={addManualDonation} className="grid gap-3 sm:grid-cols-6">
+          <h2 className="font-bold text-green-800 sm:col-span-6">Enregistrer un don reçu hors ligne</h2>
+          <input name="donorName" placeholder="Nom du donateur" required className="field sm:col-span-2" aria-label="Nom du donateur" />
+          <input name="amount" type="number" min={100} step={100} placeholder="Montant FCFA" required className="field" aria-label="Montant en FCFA" />
+          <select name="method" className="field" aria-label="Mode de réception">{["Mobile Money", "Espèces", "Virement", "Chèque", "Autre"].map((m) => <option key={m}>{m}</option>)}</select>
+          <select name="cause" className="field" aria-label="Cause">{[["general", "Général"], ["health", "Santé"], ["education", "Éducation"], ["ramadan", "Ramadan/Tabaski"], ["orphans", "Orphelins et veuves"]].map(([v, l]) => <option key={v} value={v}>{l}</option>)}</select>
+          <button className="btn btn-primary">Enregistrer</button>
+          <input name="email" type="email" placeholder="E-mail (facultatif)" className="field sm:col-span-3" aria-label="E-mail" />
+          <input name="note" placeholder="Note (facultatif)" className="field sm:col-span-3" aria-label="Note" />
+        </form>
+      </Card>
       <Table head={["Date", "Donateur", "Montant", "Cause", "Référence", "Statut", ""]}>
         {donations.map((d) => (
           <tr key={d.id}>

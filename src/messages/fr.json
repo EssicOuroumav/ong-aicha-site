@@ -43,28 +43,64 @@
     "ctaJoin": "Nous rejoindre",
     "pillarsTitle": "Notre mission",
     "pillars": [
-      { "title": "Soutenir", "text": "les enfants et les familles en difficulté : santé, éducation, bien-être social." },
-      { "title": "Secourir", "text": "les personnes vulnérables, orphelins et veuves, tout au long de l'année." },
-      { "title": "Sensibiliser", "text": "par des campagnes de dépistage et de prévention contre les maladies." },
-      { "title": "Porter secours", "text": "à tout enfant ou toute communauté en détresse, sans distinction d'origine." }
+      {
+        "title": "Soutenir",
+        "text": "les enfants et les familles en difficulté : santé, éducation, bien-être social."
+      },
+      {
+        "title": "Secourir",
+        "text": "les personnes vulnérables, orphelins et veuves, tout au long de l'année."
+      },
+      {
+        "title": "Sensibiliser",
+        "text": "par des campagnes de dépistage et de prévention contre les maladies."
+      },
+      {
+        "title": "Porter secours",
+        "text": "à tout enfant ou toute communauté en détresse, sans distinction d'origine."
+      }
     ],
     "aboutTitle": "Qui sommes-nous ?",
     "aboutText": "Fondée en 2019 par un collectif de jeunes musulmans de diverses professions, l'ONG AICHA comble les lacunes du soutien social aux plus démunis en Côte d'Ivoire, sans distinction de race ni d'origine. Tous les membres fondateurs agissent bénévolement.",
     "statsTitle": "Notre action en chiffres",
     "stats": [
-      { "value": "2019", "label": "année de création" },
-      { "value": "710", "label": "familles aidées pendant le Ramadan 2025" },
-      { "value": "500+", "label": "femmes dépistées lors d'une seule journée" },
-      { "value": "350", "label": "bénéficiaires de la campagne Tabaski (orphelins et veuves)" }
+      {
+        "value": "2019",
+        "label": "année de création"
+      },
+      {
+        "value": "710",
+        "label": "familles aidées pendant le Ramadan 2025"
+      },
+      {
+        "value": "500+",
+        "label": "femmes dépistées lors d'une seule journée"
+      },
+      {
+        "value": "350",
+        "label": "bénéficiaires de la campagne Tabaski (orphelins et veuves)"
+      }
     ],
     "activitiesTitle": "Nos actions de terrain",
     "activitiesLead": "Des programmes concrets, menés toute l'année auprès des communautés.",
     "newsTitle": "Dernières actualités",
     "involveTitle": "Comment agir avec nous ?",
     "involve": [
-      { "title": "Faire un don", "text": "En nature ou en espèces, en quelques clics et en toute sécurité.", "cta": "Donner" },
-      { "title": "Parrainer un enfant", "text": "Accompagnez durablement un enfant orphelin ou vulnérable.", "cta": "Parrainer" },
-      { "title": "Devenir membre ou bénévole", "text": "Mettez vos compétences et votre temps au service des autres.", "cta": "Adhérer" }
+      {
+        "title": "Faire un don",
+        "text": "En nature ou en espèces, en quelques clics et en toute sécurité.",
+        "cta": "Donner"
+      },
+      {
+        "title": "Parrainer un enfant",
+        "text": "Accompagnez durablement un enfant orphelin ou vulnérable.",
+        "cta": "Parrainer"
+      },
+      {
+        "title": "Devenir membre ou bénévole",
+        "text": "Mettez vos compétences et votre temps au service des autres.",
+        "cta": "Adhérer"
+      }
     ],
     "videoTitle": "En images"
   },
@@ -90,10 +126,22 @@
     "leadership": "La Directrice Exécutive Centrale est le Pr Kourouma Hamdan Sarah, appuyée par un Bureau Exécutif dynamique.",
     "valuesTitle": "Nos valeurs",
     "values": [
-      { "title": "Solidarité", "text": "Un élan collectif et bénévole au service de ceux qui souffrent." },
-      { "title": "Transparence", "text": "Des actions suivies et rendues publiques, avec rigueur." },
-      { "title": "Dignité", "text": "Aider sans distinction de race, d'origine ou de croyance." },
-      { "title": "Engagement", "text": "Une présence régulière sur le terrain, toute l'année." }
+      {
+        "title": "Solidarité",
+        "text": "Un élan collectif et bénévole au service de ceux qui souffrent."
+      },
+      {
+        "title": "Transparence",
+        "text": "Des actions suivies et rendues publiques, avec rigueur."
+      },
+      {
+        "title": "Dignité",
+        "text": "Aider sans distinction de race, d'origine ou de croyance."
+      },
+      {
+        "title": "Engagement",
+        "text": "Une présence régulière sur le terrain, toute l'année."
+      }
     ]
   },
   "activities": {
@@ -172,7 +220,10 @@
     "failedTitle": "Le paiement n'a pas abouti",
     "failedText": "Aucun montant n'a été débité. Vous pouvez réessayer.",
     "retry": "Réessayer",
-    "reference": "Référence"
+    "reference": "Référence",
+    "offlineTitle": "Donnez par Mobile Money",
+    "offlineText": "Le paiement en ligne arrive bientôt. En attendant, vous pouvez donner dès maintenant par Mobile Money (Orange, MTN, Moov, Wave) au numéro ci-dessous, puis nous écrire pour recevoir votre reçu.",
+    "offlineCta": "Nous envoyer la référence du don"
   },
   "sponsor": {
     "title": "Parrainer un enfant",
@@ -183,7 +234,11 @@
     "country": "Pays et ville",
     "children": "Nombre d'enfants à parrainer",
     "frequency": "Fréquence de votre contribution",
-    "frequencies": { "MONTHLY": "Mensuelle", "QUARTERLY": "Trimestrielle", "YEARLY": "Annuelle" },
+    "frequencies": {
+      "MONTHLY": "Mensuelle",
+      "QUARTERLY": "Trimestrielle",
+      "YEARLY": "Annuelle"
+    },
     "note": "Message (facultatif)",
     "confirm": "J'atteste l'exactitude des informations fournies.",
     "submit": "Envoyer ma demande",
@@ -204,7 +259,10 @@
     "email": "E-mail",
     "city": "Ville",
     "type": "Type d'adhésion",
-    "types": { "MEMBER": "Membre", "VOLUNTEER": "Bénévole" },
+    "types": {
+      "MEMBER": "Membre",
+      "VOLUNTEER": "Bénévole"
+    },
     "message": "Vos motivations ou compétences (facultatif)",
     "submit": "Envoyer ma candidature",
     "success": "Merci ! Votre demande a bien été reçue. Nous vous recontactons très prochainement."

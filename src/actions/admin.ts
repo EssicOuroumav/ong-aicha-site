@@ -121,6 +121,27 @@ export async function deleteMedia(form: FormData) {
 }
 
 // ───────── Dons / demandes ─────────
+export async function addManualDonation(form: FormData) {
+  await requireArea("donations");
+  const parsed = z.object({
+    donorName: z.string().trim().min(2).max(120),
+    amount: z.coerce.number().int().min(100).max(100_000_000),
+    method: z.enum(["Mobile Money", "Espèces", "Virement", "Chèque", "Autre"]),
+    cause: z.string().max(40).default("general"),
+    email: z.union([z.literal(""), z.string().email()]).optional(),
+    note: z.string().max(500).optional(),
+  }).parse(Object.fromEntries(form));
+  const reference = `AICHA-M-${Date.now().toString(36).toUpperCase()}`;
+  await db.donation.create({
+    data: {
+      reference, donorName: parsed.donorName, amount: parsed.amount, cause: parsed.cause, email: parsed.email || null,
+      message: `${parsed.method}${parsed.note ? " – " + parsed.note : ""}`, provider: "manual", status: "COMPLETED", receiptSent: true,
+    },
+  });
+  revalidatePath("/admin/donations");
+  revalidatePath("/admin");
+}
+
 export async function setDonationStatus(form: FormData) {
   await requireArea("donations");
   const status = z.enum(["PENDING", "COMPLETED", "FAILED", "CANCELLED"]).parse(form.get("status"));

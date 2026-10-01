@@ -43,28 +43,64 @@
     "ctaJoin": "Join us",
     "pillarsTitle": "Our mission",
     "pillars": [
-      { "title": "Support", "text": "children and families in need: health, education and social well-being." },
-      { "title": "Assist", "text": "vulnerable people, orphans and widows, all year round." },
-      { "title": "Raise awareness", "text": "through screening and prevention campaigns against disease." },
-      { "title": "Come to the rescue", "text": "of any child or community in distress, regardless of origin." }
+      {
+        "title": "Support",
+        "text": "children and families in need: health, education and social well-being."
+      },
+      {
+        "title": "Assist",
+        "text": "vulnerable people, orphans and widows, all year round."
+      },
+      {
+        "title": "Raise awareness",
+        "text": "through screening and prevention campaigns against disease."
+      },
+      {
+        "title": "Come to the rescue",
+        "text": "of any child or community in distress, regardless of origin."
+      }
     ],
     "aboutTitle": "Who are we?",
     "aboutText": "Founded in 2019 by a group of young Muslims from many different professions, ONG AICHA fills the gaps in social support for the most disadvantaged in Côte d'Ivoire, regardless of race or origin. All founding members act as volunteers.",
     "statsTitle": "Our work in numbers",
     "stats": [
-      { "value": "2019", "label": "year of founding" },
-      { "value": "710", "label": "families helped during Ramadan 2025" },
-      { "value": "500+", "label": "women screened in a single day" },
-      { "value": "350", "label": "beneficiaries of the Tabaski campaign (orphans and widows)" }
+      {
+        "value": "2019",
+        "label": "year of founding"
+      },
+      {
+        "value": "710",
+        "label": "families helped during Ramadan 2025"
+      },
+      {
+        "value": "500+",
+        "label": "women screened in a single day"
+      },
+      {
+        "value": "350",
+        "label": "beneficiaries of the Tabaski campaign (orphans and widows)"
+      }
     ],
     "activitiesTitle": "Our work on the ground",
     "activitiesLead": "Concrete programs, carried out all year round with communities.",
     "newsTitle": "Latest news",
     "involveTitle": "How can you get involved?",
     "involve": [
-      { "title": "Donate", "text": "In kind or in cash, in a few clicks and in complete security.", "cta": "Give" },
-      { "title": "Sponsor a child", "text": "Give lasting support to an orphaned or vulnerable child.", "cta": "Sponsor" },
-      { "title": "Become a member or volunteer", "text": "Put your skills and your time at the service of others.", "cta": "Join" }
+      {
+        "title": "Donate",
+        "text": "In kind or in cash, in a few clicks and in complete security.",
+        "cta": "Give"
+      },
+      {
+        "title": "Sponsor a child",
+        "text": "Give lasting support to an orphaned or vulnerable child.",
+        "cta": "Sponsor"
+      },
+      {
+        "title": "Become a member or volunteer",
+        "text": "Put your skills and your time at the service of others.",
+        "cta": "Join"
+      }
     ],
     "videoTitle": "In pictures"
   },
@@ -90,10 +126,22 @@
     "leadership": "The Central Executive Director is Pr Kourouma Hamdan Sarah, supported by a dynamic Executive Board.",
     "valuesTitle": "Our values",
     "values": [
-      { "title": "Solidarity", "text": "A collective, volunteer-driven effort in the service of those who suffer." },
-      { "title": "Transparency", "text": "Actions that are monitored and made public, with rigor." },
-      { "title": "Dignity", "text": "Helping without distinction of race, origin or belief." },
-      { "title": "Commitment", "text": "A regular presence on the ground, all year round." }
+      {
+        "title": "Solidarity",
+        "text": "A collective, volunteer-driven effort in the service of those who suffer."
+      },
+      {
+        "title": "Transparency",
+        "text": "Actions that are monitored and made public, with rigor."
+      },
+      {
+        "title": "Dignity",
+        "text": "Helping without distinction of race, origin or belief."
+      },
+      {
+        "title": "Commitment",
+        "text": "A regular presence on the ground, all year round."
+      }
     ]
   },
   "activities": {
@@ -172,7 +220,10 @@
     "failedTitle": "The payment did not go through",
     "failedText": "No amount has been charged. You can try again.",
     "retry": "Try again",
-    "reference": "Reference"
+    "reference": "Reference",
+    "offlineTitle": "Give by Mobile Money",
+    "offlineText": "Online payment is coming soon. In the meantime, you can give right now by Mobile Money (Orange, MTN, Moov, Wave) to the number below, then write to us to receive your receipt.",
+    "offlineCta": "Send us your donation reference"
   },
   "sponsor": {
     "title": "Sponsor a child",
@@ -183,7 +234,11 @@
     "country": "Country and city",
     "children": "Number of children to sponsor",
     "frequency": "Frequency of your contribution",
-    "frequencies": { "MONTHLY": "Monthly", "QUARTERLY": "Quarterly", "YEARLY": "Yearly" },
+    "frequencies": {
+      "MONTHLY": "Monthly",
+      "QUARTERLY": "Quarterly",
+      "YEARLY": "Yearly"
+    },
     "note": "Message (optional)",
     "confirm": "I confirm that the information provided is accurate.",
     "submit": "Send my request",
@@ -204,7 +259,10 @@
     "email": "Email",
     "city": "City",
     "type": "Type of membership",
-    "types": { "MEMBER": "Member", "VOLUNTEER": "Volunteer" },
+    "types": {
+      "MEMBER": "Member",
+      "VOLUNTEER": "Volunteer"
+    },
     "message": "Your motivations or skills (optional)",
     "submit": "Send my application",
     "success": "Thank you! Your request has been received. We will get back to you very soon."
