@@ -1,0 +1,165 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  SUPER_ADMIN
+  EDITOR
+  DONATIONS_MANAGER
+}
+
+enum DonationStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  CANCELLED
+}
+
+enum RequestStatus {
+  NEW
+  IN_PROGRESS
+  APPROVED
+  REJECTED
+}
+
+enum MembershipType {
+  MEMBER
+  VOLUNTEER
+}
+
+enum SponsorshipFrequency {
+  MONTHLY
+  QUARTERLY
+  YEARLY
+}
+
+enum MediaKind {
+  PHOTO
+  VIDEO
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String
+  passwordHash String
+  role         Role     @default(EDITOR)
+  active       Boolean  @default(true)
+  mustChangePw Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  posts        Post[]
+}
+
+// Contenu trilingue stocké en JSON : { fr: "...", en: "...", ar: "..." }
+model Post {
+  id          String    @id @default(cuid())
+  slug        String    @unique
+  title       Json
+  excerpt     Json
+  content     Json
+  coverImage  String?
+  published   Boolean   @default(false)
+  publishedAt DateTime?
+  authorId    String?
+  author      User?     @relation(fields: [authorId], references: [id], onDelete: SetNull)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Activity {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       Json
+  summary     Json
+  description Json
+  coverImage  String?
+  period      Json?
+  location    String?
+  order       Int      @default(0)
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model MediaItem {
+  id        String    @id @default(cuid())
+  kind      MediaKind @default(PHOTO)
+  url       String
+  caption   Json?
+  album     String?
+  order     Int       @default(0)
+  published Boolean   @default(true)
+  createdAt DateTime  @default(now())
+}
+
+model Donation {
+  id           String         @id @default(cuid())
+  reference    String         @unique
+  donorName    String
+  email        String?
+  phone        String?
+  country      String?
+  amount       Int
+  currency     String         @default("XOF")
+  cause        String?
+  message      String?
+  anonymous    Boolean        @default(false)
+  status       DonationStatus @default(PENDING)
+  provider     String         @default("paydunya")
+  providerToken String?
+  receiptSent  Boolean        @default(false)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+}
+
+model Sponsorship {
+  id          String               @id @default(cuid())
+  fullName    String
+  email       String
+  phone       String
+  country     String?
+  children    Int                  @default(1)
+  frequency   SponsorshipFrequency
+  note        String?
+  status      RequestStatus        @default(NEW)
+  nextDueAt   DateTime?
+  lastReminderAt DateTime?
+  createdAt   DateTime             @default(now())
+  updatedAt   DateTime             @updatedAt
+}
+
+model Membership {
+  id        String         @id @default(cuid())
+  firstName String
+  lastName  String
+  email     String?
+  phone     String
+  city      String?
+  type      MembershipType
+  message   String?
+  status    RequestStatus  @default(NEW)
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String?
+  message   String
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+// Réglages éditables du site (clé/valeur) : contacts, réseaux sociaux, textes
+model Setting {
+  key   String @id
+  value Json
+}
