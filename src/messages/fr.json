@@ -33,7 +33,8 @@
     "noResults": "Rien à afficher pour le moment.",
     "error": "Une erreur est survenue. Veuillez réessayer.",
     "thanks": "Merci !",
-    "share": "Partager"
+    "share": "Partager",
+    "invalid": "Veuillez vérifier ce champ."
   },
   "home": {
     "heroEyebrow": "ONG AICHA · Côte d'Ivoire",

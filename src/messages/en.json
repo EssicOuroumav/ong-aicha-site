@@ -33,7 +33,8 @@
     "noResults": "Nothing to show for now.",
     "error": "Something went wrong. Please try again.",
     "thanks": "Thank you!",
-    "share": "Share"
+    "share": "Share",
+    "invalid": "Please check this field."
   },
   "home": {
     "heroEyebrow": "ONG AICHA · Côte d'Ivoire",

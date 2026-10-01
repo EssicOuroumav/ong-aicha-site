@@ -3,14 +3,14 @@
 import type { ReactNode } from "react";
 import type { FormState } from "@/actions/forms";
 
-export function Field({ label, name, required, optional, children, error }: { label: string; name: string; required?: boolean; optional?: string; children: ReactNode; error?: boolean }) {
+export function Field({ label, name, required, optional, children, error, errorText }: { label: string; name: string; required?: boolean; optional?: string; children: ReactNode; error?: boolean; errorText?: string }) {
   return (
     <div>
       <label htmlFor={name} className="mb-1.5 block text-sm font-semibold text-green-900">
         {label} {required ? <span aria-hidden className="text-red-600">*</span> : optional ? <span className="font-normal text-muted">({optional})</span> : null}
       </label>
       {children}
-      {error && <p role="alert" className="mt-1 text-sm text-red-700">⚠</p>}
+      {error && <p role="alert" className="mt-1 text-sm text-red-700">⚠ {errorText}</p>}
     </div>
   );
 }

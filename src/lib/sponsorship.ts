@@ -41,6 +41,8 @@ export async function sendSponsorshipReminder(sponsorshipId: string, origin: str
     subject: "ONG AICHA – Rappel de votre parrainage",
     html: layout("Votre contribution de parrainage", `<p>Bonjour ${escapeHtml(s.fullName)},</p><p>Merci pour votre engagement auprès de ${s.children} enfant(s). Votre contribution de <b>${amount.toLocaleString("fr-FR")} FCFA</b> est attendue pour cette échéance.</p><p><a href="${link}" style="background:#1b6b3a;color:#fff;padding:12px 22px;border-radius:999px;text-decoration:none;font-weight:bold">Payer en toute sécurité</a></p><p style="color:#5b6b61;font-size:13px">Orange Money, MTN, Moov, Wave ou carte bancaire.</p>`),
   });
+  // On n'avance l'échéance que si le parrain a réellement reçu son lien (sinon le cron réessaiera demain)
+  if (!sent) return { ok: false, reason: "e-mail non envoyé (clé Resend absente ?)" };
   await db.sponsorship.update({ where: { id: s.id }, data: { lastReminderAt: new Date(), nextDueAt: addPeriod(s.nextDueAt ?? new Date(), s.frequency) } });
-  return sent ? { ok: true } : { ok: false, reason: "e-mail non envoyé (clé Resend absente ?)" };
+  return { ok: true };
 }

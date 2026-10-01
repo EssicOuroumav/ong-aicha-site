@@ -23,10 +23,10 @@ export function ContactForm({ t }: { t: Dictionary }) {
   return (
     <form action={action} className="relative space-y-5" noValidate>
       <Honeypot />
-      <Field label={t.contact.name} name="name" required error={bad("name")}><input id="name" name="name" required autoComplete="name" className="field" /></Field>
-      <Field label={t.contact.email} name="email" required error={bad("email")}><input id="email" name="email" type="email" required autoComplete="email" className="field" /></Field>
+      <Field label={t.contact.name} name="name" required error={bad("name")} errorText={t.common.invalid}><input id="name" name="name" required autoComplete="name" className="field" /></Field>
+      <Field label={t.contact.email} name="email" required error={bad("email")} errorText={t.common.invalid}><input id="email" name="email" type="email" required autoComplete="email" className="field" /></Field>
       <Field label={t.contact.subject} name="subject" optional={t.common.optional}><input id="subject" name="subject" className="field" /></Field>
-      <Field label={t.contact.message} name="message" required error={bad("message")}><textarea id="message" name="message" rows={6} required className="field" /></Field>
+      <Field label={t.contact.message} name="message" required error={bad("message")} errorText={t.common.invalid}><textarea id="message" name="message" rows={6} required className="field" /></Field>
       <Submit pending={pending} label={t.common.send} busy={t.common.sending} />
       <FormMessage state={state} success={t.contact.success} errors={errorsOf(t)} />
     </form>
@@ -40,10 +40,10 @@ export function JoinForm({ t }: { t: Dictionary }) {
     <form action={action} className="relative space-y-5" noValidate>
       <Honeypot />
       <div className="grid gap-5 sm:grid-cols-2">
-        <Field label={t.join.firstName} name="firstName" required error={bad("firstName")}><input id="firstName" name="firstName" required autoComplete="given-name" className="field" /></Field>
-        <Field label={t.join.lastName} name="lastName" required error={bad("lastName")}><input id="lastName" name="lastName" required autoComplete="family-name" className="field" /></Field>
-        <Field label={t.join.phone} name="phone" required error={bad("phone")}><input id="phone" name="phone" type="tel" required autoComplete="tel" dir="ltr" className="field" /></Field>
-        <Field label={t.join.email} name="email" optional={t.common.optional} error={bad("email")}><input id="email" name="email" type="email" autoComplete="email" className="field" /></Field>
+        <Field label={t.join.firstName} name="firstName" required error={bad("firstName")} errorText={t.common.invalid}><input id="firstName" name="firstName" required autoComplete="given-name" className="field" /></Field>
+        <Field label={t.join.lastName} name="lastName" required error={bad("lastName")} errorText={t.common.invalid}><input id="lastName" name="lastName" required autoComplete="family-name" className="field" /></Field>
+        <Field label={t.join.phone} name="phone" required error={bad("phone")} errorText={t.common.invalid}><input id="phone" name="phone" type="tel" required autoComplete="tel" dir="ltr" className="field" /></Field>
+        <Field label={t.join.email} name="email" optional={t.common.optional} error={bad("email")} errorText={t.common.invalid}><input id="email" name="email" type="email" autoComplete="email" className="field" /></Field>
         <Field label={t.join.city} name="city" optional={t.common.optional}><input id="city" name="city" className="field" /></Field>
         <Field label={t.join.type} name="type" required>
           <select id="type" name="type" className="field" defaultValue="MEMBER">
@@ -66,11 +66,11 @@ export function SponsorForm({ t }: { t: Dictionary }) {
     <form action={action} className="relative space-y-5" noValidate>
       <Honeypot />
       <div className="grid gap-5 sm:grid-cols-2">
-        <Field label={t.sponsor.name} name="fullName" required error={bad("fullName")}><input id="fullName" name="fullName" required autoComplete="name" className="field" /></Field>
-        <Field label={t.sponsor.email} name="email" required error={bad("email")}><input id="email" name="email" type="email" required autoComplete="email" className="field" /></Field>
-        <Field label={t.sponsor.phone} name="phone" required error={bad("phone")}><input id="phone" name="phone" type="tel" required autoComplete="tel" dir="ltr" className="field" /></Field>
+        <Field label={t.sponsor.name} name="fullName" required error={bad("fullName")} errorText={t.common.invalid}><input id="fullName" name="fullName" required autoComplete="name" className="field" /></Field>
+        <Field label={t.sponsor.email} name="email" required error={bad("email")} errorText={t.common.invalid}><input id="email" name="email" type="email" required autoComplete="email" className="field" /></Field>
+        <Field label={t.sponsor.phone} name="phone" required error={bad("phone")} errorText={t.common.invalid}><input id="phone" name="phone" type="tel" required autoComplete="tel" dir="ltr" className="field" /></Field>
         <Field label={t.sponsor.country} name="country" optional={t.common.optional}><input id="country" name="country" className="field" /></Field>
-        <Field label={t.sponsor.children} name="children" required error={bad("children")}><input id="children" name="children" type="number" min={1} max={50} defaultValue={1} required className="field" /></Field>
+        <Field label={t.sponsor.children} name="children" required error={bad("children")} errorText={t.common.invalid}><input id="children" name="children" type="number" min={1} max={50} defaultValue={1} required className="field" /></Field>
         <Field label={t.sponsor.frequency} name="frequency" required>
           <select id="frequency" name="frequency" defaultValue="MONTHLY" className="field">
             {(["MONTHLY", "QUARTERLY", "YEARLY"] as const).map((f) => <option key={f} value={f}>{t.sponsor.frequencies[f]}</option>)}
@@ -121,9 +121,9 @@ export function DonateForm({ t, lang }: { t: Dictionary; lang: Locale }) {
         </select>
       </Field>
       <div className="grid gap-5 sm:grid-cols-2">
-        <Field label={t.donate.name} name="donorName" required error={bad("donorName")}><input id="donorName" name="donorName" required autoComplete="name" className="field" /></Field>
-        <Field label={t.donate.email} name="email" required error={bad("email")}><input id="email" name="email" type="email" required autoComplete="email" className="field" /></Field>
-        <Field label={t.donate.phone} name="phone" optional={t.common.optional} error={bad("phone")}><input id="phone" name="phone" type="tel" autoComplete="tel" dir="ltr" className="field" /></Field>
+        <Field label={t.donate.name} name="donorName" required error={bad("donorName")} errorText={t.common.invalid}><input id="donorName" name="donorName" required autoComplete="name" className="field" /></Field>
+        <Field label={t.donate.email} name="email" required error={bad("email")} errorText={t.common.invalid}><input id="email" name="email" type="email" required autoComplete="email" className="field" /></Field>
+        <Field label={t.donate.phone} name="phone" optional={t.common.optional} error={bad("phone")} errorText={t.common.invalid}><input id="phone" name="phone" type="tel" autoComplete="tel" dir="ltr" className="field" /></Field>
         <Field label={t.donate.country} name="country" optional={t.common.optional}><input id="country" name="country" className="field" /></Field>
       </div>
       <Field label={t.donate.message} name="message"><textarea id="message" name="message" rows={3} className="field" /></Field>
