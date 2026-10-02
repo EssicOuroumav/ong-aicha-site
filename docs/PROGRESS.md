@@ -28,6 +28,9 @@
 - Avant : accueil mobile perf 71 (page blanche ~8 s : fond fixe + chargement) ; après corrections : 88 (SI 3,2 s → 0,9 s). Accessibilité 100 sur toutes les pages sauf corrections d'ordre des titres et d'étiquette du logo (faites). Bonnes pratiques 100, SEO 100.
 - Rejouer : `npx lighthouse <url> --only-categories=performance,accessibility`.
 
+## Garde-fou paiement
+- En production Vercel, le formulaire de don en ligne n'apparaît que si PAYDUNYA_MODE=live (clés de production). Avec des clés de test, la page affiche le Mobile Money de l'ONG : un visiteur ne peut pas « donner » pour de faux. Pour tester en production : ALLOW_TEST_PAYMENTS=1 (à retirer ensuite).
+
 ## Reste à faire
 1. Test d'un don PayDunya en mode test, puis passage en live (clés live + `PAYDUNYA_MODE=live` + URL IPN).
 2. Nouveau domaine au nom de l'ONG → Vercel → Resend → `NEXT_PUBLIC_SITE_URL`.

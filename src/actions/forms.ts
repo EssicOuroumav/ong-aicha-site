@@ -7,7 +7,7 @@ import { db } from "@/lib/db";
 import { rateLimit } from "@/lib/ratelimit";
 import { clientIp, siteUrl } from "@/lib/request";
 import { escapeHtml, layout, notifyAddress, sendEmail } from "@/lib/email";
-import { createInvoice, paydunyaConfigured } from "@/lib/paydunya";
+import { createInvoice, paymentsEnabled } from "@/lib/paydunya";
 
 export type FormState = { ok: boolean; error?: "validation" | "rate" | "server"; fields?: string[] };
 
@@ -161,7 +161,7 @@ export async function submitDonation(_: FormState | null, form: FormData): Promi
     });
     const returnUrl = `${origin}/${d.lang}/donate/result?ref=${reference}`;
 
-    if (paydunyaConfigured()) {
+    if (paymentsEnabled()) {
       const invoice = await createInvoice({
         amount: d.amount,
         description: `Don ONG AICHA – ${reference}`,

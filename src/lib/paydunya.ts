@@ -15,6 +15,17 @@ const authHeaders = () => ({
 export const paydunyaConfigured = () =>
   Boolean(process.env.PAYDUNYA_MASTER_KEY && process.env.PAYDUNYA_PRIVATE_KEY && process.env.PAYDUNYA_TOKEN);
 
+/**
+ * Paiement en ligne actif ? En production Vercel, seulement avec des clés LIVE (PAYDUNYA_MODE=live) :
+ * des clés de test ne doivent jamais permettre à un visiteur de « donner » sans qu'aucun argent ne bouge.
+ * Hors production (local, aperçus) : actif dès que les clés sont présentes (mode simulation sinon).
+ */
+export function paymentsEnabled(env: Record<string, string | undefined> = process.env): boolean {
+  const configured = Boolean(env.PAYDUNYA_MASTER_KEY && env.PAYDUNYA_PRIVATE_KEY && env.PAYDUNYA_TOKEN);
+  if (!configured) return false;
+  return env.VERCEL_ENV !== "production" || env.PAYDUNYA_MODE === "live" || env.ALLOW_TEST_PAYMENTS === "1";
+}
+
 export async function createInvoice(opts: {
   amount: number;
   description: string;

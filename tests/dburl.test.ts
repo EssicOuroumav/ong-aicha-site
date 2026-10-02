@@ -21,3 +21,15 @@ describe("choix de la base de données", () => {
     expect(() => databaseUrl({ DATABASE_URL: "postgres://prod", VERCEL_ENV: "preview" })).toThrow();
   });
 });
+
+import { paymentsEnabled } from "@/lib/paydunya";
+describe("paiement en ligne", () => {
+  const keys = { PAYDUNYA_MASTER_KEY: "a", PAYDUNYA_PRIVATE_KEY: "b", PAYDUNYA_TOKEN: "c" };
+  it("jamais actif sans clés", () => expect(paymentsEnabled({ VERCEL_ENV: "production", PAYDUNYA_MODE: "live" })).toBe(false));
+  it("en production, refuse les clés de test", () => {
+    expect(paymentsEnabled({ ...keys, VERCEL_ENV: "production", PAYDUNYA_MODE: "test" })).toBe(false);
+    expect(paymentsEnabled({ ...keys, VERCEL_ENV: "production" })).toBe(false);
+  });
+  it("en production, accepte les clés live", () => expect(paymentsEnabled({ ...keys, VERCEL_ENV: "production", PAYDUNYA_MODE: "live" })).toBe(true));
+  it("hors production, accepte le mode test", () => expect(paymentsEnabled({ ...keys, PAYDUNYA_MODE: "test" })).toBe(true));
+});

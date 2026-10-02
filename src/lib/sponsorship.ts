@@ -1,6 +1,6 @@
 import { randomBytes } from "node:crypto";
 import { db } from "@/lib/db";
-import { createInvoice, paydunyaConfigured } from "@/lib/paydunya";
+import { createInvoice, paymentsEnabled } from "@/lib/paydunya";
 import { escapeHtml, layout, sendEmail } from "@/lib/email";
 
 const monthsOf = { MONTHLY: 1, QUARTERLY: 3, YEARLY: 12 } as const;
@@ -21,7 +21,7 @@ export async function sendSponsorshipReminder(sponsorshipId: string, origin: str
   const reference = `AICHA-P-${Date.now().toString(36).toUpperCase()}-${randomBytes(3).toString("hex").toUpperCase()}`;
   let link = `${origin}/fr/donate`;
   let token: string | undefined;
-  if (paydunyaConfigured()) {
+  if (paymentsEnabled()) {
     const inv = await createInvoice({
       amount, description: `Parrainage ONG AICHA – ${reference}`, reference,
       returnUrl: `${origin}/fr/donate/result?ref=${reference}`,

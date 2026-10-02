@@ -6,7 +6,7 @@ import { getSettings } from "@/lib/settings";
 import { PageHero, Section, SectionTitle } from "@/components/ui";
 import Link from "next/link";
 import { DonateForm } from "@/components/Forms";
-import { paydunyaConfigured } from "@/lib/paydunya";
+import { paymentsEnabled } from "@/lib/paydunya";
 
 export const dynamic = "force-dynamic";
 
@@ -21,7 +21,7 @@ export default async function DonatePage({ params, searchParams }: PageProps<"/[
   const { cause } = await searchParams;
   if (!isLocale(lang)) notFound();
   const [t, s] = await Promise.all([getDictionary(lang), getSettings()]);
-  const online = paydunyaConfigured() || process.env.NODE_ENV !== "production";
+  const online = paymentsEnabled() || (process.env.NODE_ENV !== "production");
   return (
     <>
       <PageHero title={t.donate.title} lead={t.donate.lead} />
