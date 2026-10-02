@@ -5,6 +5,8 @@ import { isLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { PageHero, Section, SectionTitle } from "@/components/ui";
 import { Partners } from "@/components/Partners";
+import { PhotoCard } from "@/components/Cards";
+import { BookOpen, HandHeart, HeartHandshake, Stethoscope } from "lucide-react";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/about">): Promise<Metadata> {
   const { lang } = await params;
@@ -26,15 +28,15 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
             <Image src="/images/a-propos.jpg" alt="" fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
           </div>
           <div>
-            <h2 className="text-3xl font-bold text-green-800">{about.storyTitle}</h2>
-            <div className="mt-2 mb-5 h-1 w-16 rounded bg-gold" />
+            <p className="eyebrow mb-4">{t.home.eyebrows.about}</p>
+            <h2 className="mb-5 text-4xl text-green-950 sm:text-5xl">{about.storyTitle}</h2>
             {about.story.map((p) => <p key={p} className="mb-4 text-lg leading-relaxed text-ink/90">{p}</p>)}
           </div>
         </div>
       </Section>
       <section className="bg-green-50/50">
         <Section>
-          <SectionTitle title={about.objectivesTitle} />
+          <SectionTitle eyebrow={t.home.eyebrows.about} title={about.objectivesTitle} />
           <ol className="mx-auto grid max-w-4xl gap-4 sm:grid-cols-2">
             {about.objectives.map((o, i) => (
               <li key={o} className="glass flex gap-4 rounded-2xl p-5">
@@ -46,19 +48,18 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
         </Section>
       </section>
       <Section>
-        <SectionTitle title={about.domainsTitle} />
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {about.domains.map((d) => (
-            <div key={d.title} className="glass lift rounded-2xl p-6">
-              <h3 className="text-xl font-bold text-green-800">{d.title}</h3>
-              <p className="mt-2 text-muted">{d.text}</p>
-            </div>
+        <SectionTitle eyebrow={t.home.eyebrows.domains} title={about.domainsTitle} />
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {about.domains.map((d, i) => (
+            <PhotoCard key={d.title} icon={[Stethoscope, BookOpen, HandHeart, HeartHandshake][i] ?? HeartHandshake}
+              title={d.title} text={d.text} image={["/images/vague-rose-bouake-2025-04.jpg", "/images/tabaski-habits-neufs-2025-01.jpg", "/images/ramadan-paniers-2025-01.jpg", "/images/nuit-solidarite-2024-01.jpg"][i] ?? "/images/a-propos.jpg"}
+              href={`/${lang}/activities`} />
           ))}
         </div>
       </Section>
       <section className="bg-green-50/50">
         <Section>
-          <SectionTitle title={about.timelineTitle} />
+          <SectionTitle eyebrow={t.home.eyebrows.timeline} title={about.timelineTitle} />
           <ol className="relative mx-auto max-w-3xl border-s-2 border-green-700/30 ps-8">
             {about.timeline.map((e, i) => (
               <li key={i} className="mb-8 last:mb-0">

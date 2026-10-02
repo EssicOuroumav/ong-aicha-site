@@ -38,7 +38,9 @@
     "invalid": "Veuillez vérifier ce champ.",
     "consent": "J'accepte que mes informations soient utilisées pour traiter ma demande (voir les mentions légales).",
     "whatsapp": "Écrire sur WhatsApp",
-    "supportThis": "Soutenir cette action"
+    "supportThis": "Soutenir cette action",
+    "discover": "Découvrir",
+    "seeAllPrograms": "Voir tous nos programmes"
   },
   "home": {
     "heroEyebrow": "ONG AICHA · Côte d'Ivoire",
@@ -108,7 +110,25 @@
       }
     ],
     "videoTitle": "En vidéo",
-    "videoLead": "Découvrez nos actions sur le terrain."
+    "videoLead": "Découvrez nos actions sur le terrain.",
+    "eyebrows": {
+      "mission": "Notre mission",
+      "actions": "Nos programmes",
+      "involve": "Agir avec nous",
+      "news": "Actualités",
+      "partners": "Partenaires",
+      "about": "À propos",
+      "stats": "En chiffres",
+      "video": "En vidéo",
+      "domains": "Domaines",
+      "timeline": "Parcours",
+      "faq": "FAQ"
+    },
+    "hero": {
+      "slideLabel": "Diapositive",
+      "pause": "Mettre en pause",
+      "play": "Lecture automatique"
+    }
   },
   "about": {
     "title": "À propos de l'ONG AICHA",
@@ -407,12 +427,26 @@
     "title": "Ils nous accompagnent",
     "lead": "Des institutions et des organisations avec lesquelles l'ONG AICHA collabore.",
     "items": [
-      "Ministère de la Santé de Côte d'Ivoire",
-      "MFFE – Ministère de la Femme, de la Famille et de l'Enfant",
-      "PNLCC – Programme National de Lutte contre le Changement Climatique",
-      "COLCC",
-      "COSIM",
-      "OIEDEAH"
+      {
+        "name": "Ministère de la Santé, de l'Hygiène Publique et de la Couverture Maladie Universelle",
+        "logo": "/partners/ministere-sante.png"
+      },
+      {
+        "name": "Ministère de la Femme, de la Famille et de l'Enfant (MFFE)",
+        "logo": "/partners/mffe.jpg"
+      },
+      {
+        "name": "Coalition des Organisations de Lutte contre le Cancer (COLCC)",
+        "logo": "/partners/colcc.jpg"
+      },
+      {
+        "name": "Programme National de Lutte contre le Cancer (PNLCa)",
+        "logo": "/partners/pnlca.jpg"
+      },
+      {
+        "name": "Conseil Supérieur des Imams, des Mosquées et des Affaires Islamiques en Côte d'Ivoire (COSIM)",
+        "logo": "/partners/cosim.jpg"
+      }
     ]
   },
   "help": {

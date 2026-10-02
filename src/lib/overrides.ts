@@ -48,7 +48,7 @@ export function applyList(dict: Dict, key: ListKey, data: unknown, lang: keyof L
   if (!Array.isArray(data)) return;
   const items = data as Record<string, L | string>[];
   const d = dict as { partners: { items: unknown }; donate: { faq: unknown }; about: { timeline: unknown }; home: { stats: unknown } };
-  if (key === "partners") d.partners.items = items.map((i) => pickL(i.name, lang)).filter(Boolean);
+  if (key === "partners") d.partners.items = items.map((i) => ({ name: pickL(i.name, lang), logo: typeof i.logo === "string" ? i.logo : "" })).filter((i) => i.name);
   if (key === "faq") d.donate.faq = items.map((i) => ({ q: pickL(i.q, lang), a: pickL(i.a, lang) })).filter((i) => i.q);
   if (key === "timeline") d.about.timeline = items.map((i) => ({ year: String(i.year ?? ""), title: pickL(i.title, lang), text: pickL(i.text, lang) }));
   if (key === "stats") d.home.stats = items.map((i) => ({ value: String(i.value ?? ""), label: pickL(i.label, lang) }));

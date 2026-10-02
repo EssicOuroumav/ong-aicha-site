@@ -4,7 +4,7 @@ import { applyList, flatten, parsePath, setText, type Dict } from "@/lib/overrid
 const base = (): Dict => ({
   nav: { home: "Accueil" },
   home: { pillars: [{ title: "Soutenir" }, { title: "Secourir" }], stats: [{ value: "1", label: "a" }] },
-  partners: { items: ["A", "B"] },
+  partners: { items: [{ name: "A", logo: "/a.png" }, { name: "B", logo: "" }] },
   donate: { faq: [{ q: "Q1", a: "R1" }] },
   about: { timeline: [{ year: "2019", title: "T", text: "X" }] },
 });
@@ -31,14 +31,14 @@ describe("surcharges de textes", () => {
   });
   it("aplatit le dictionnaire", () => {
     expect(flatten(base())["home.pillars[1].title"]).toBe("Soutenir");
-    expect(Object.keys(flatten(base())).length).toBe(12);
+    expect(Object.keys(flatten(base())).length).toBe(14);
   });
   it("applique les listes avec repli sur le français", () => {
     const d = base();
-    applyList(d, "partners", [{ name: { fr: "Org FR", en: "", ar: "منظمة" } }, { name: { fr: "", en: "", ar: "" } }], "ar");
+    applyList(d, "partners", [{ name: { fr: "Org FR", en: "", ar: "منظمة" }, logo: "/x.png" }, { name: { fr: "", en: "", ar: "" }, logo: "" }], "ar");
     applyList(d, "faq", [{ q: { fr: "Question", en: "", ar: "" }, a: { fr: "Réponse", en: "Answer", ar: "" } }], "en");
     applyList(d, "stats", [{ value: 710, label: { fr: "familles", en: "", ar: "" } }], "fr");
-    expect((d.partners as { items: string[] }).items).toEqual(["منظمة"]);
+    expect((d.partners as { items: { name: string; logo: string }[] }).items).toEqual([{ name: "منظمة", logo: "/x.png" }]);
     expect((d.donate as { faq: { q: string; a: string }[] }).faq).toEqual([{ q: "Question", a: "Answer" }]);
     expect((d.home as { stats: { value: string }[] }).stats[0].value).toBe("710");
   });

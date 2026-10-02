@@ -38,7 +38,9 @@
     "invalid": "Please check this field.",
     "consent": "I agree to my information being used to process my request (see the legal notice).",
     "whatsapp": "Message us on WhatsApp",
-    "supportThis": "Support this initiative"
+    "supportThis": "Support this initiative",
+    "discover": "Discover",
+    "seeAllPrograms": "See all our programmes"
   },
   "home": {
     "heroEyebrow": "ONG AICHA · Côte d'Ivoire",
@@ -108,7 +110,25 @@
       }
     ],
     "videoTitle": "In video",
-    "videoLead": "See our work in the field."
+    "videoLead": "See our work in the field.",
+    "eyebrows": {
+      "mission": "Our mission",
+      "actions": "Our programmes",
+      "involve": "Get involved",
+      "news": "News",
+      "partners": "Partners",
+      "about": "About us",
+      "stats": "In numbers",
+      "video": "Video",
+      "domains": "Fields of action",
+      "timeline": "Our journey",
+      "faq": "FAQ"
+    },
+    "hero": {
+      "slideLabel": "Slide",
+      "pause": "Pause",
+      "play": "Autoplay"
+    }
   },
   "about": {
     "title": "About ONG AICHA",
@@ -407,12 +427,26 @@
     "title": "Our partners",
     "lead": "Institutions and organizations with which ONG AICHA works.",
     "items": [
-      "Ministry of Health of Côte d'Ivoire",
-      "MFFE – Ministry of Women, Family and Children",
-      "PNLCC – National Programme to Combat Climate Change",
-      "COLCC",
-      "COSIM",
-      "OIEDEAH"
+      {
+        "name": "Ministry of Health, Public Hygiene and Universal Health Coverage",
+        "logo": "/partners/ministere-sante.png"
+      },
+      {
+        "name": "Ministry of Women, Family and Children (MFFE)",
+        "logo": "/partners/mffe.jpg"
+      },
+      {
+        "name": "Coalition of Organisations Against Cancer (COLCC)",
+        "logo": "/partners/colcc.jpg"
+      },
+      {
+        "name": "National Cancer Control Programme (PNLCa)",
+        "logo": "/partners/pnlca.jpg"
+      },
+      {
+        "name": "Supreme Council of Imams, Mosques and Islamic Affairs of Côte d'Ivoire (COSIM)",
+        "logo": "/partners/cosim.jpg"
+      }
     ]
   },
   "help": {

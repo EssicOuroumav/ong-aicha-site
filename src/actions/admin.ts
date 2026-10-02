@@ -287,7 +287,7 @@ export async function resetTexts(form: FormData) {
 
 const loc3 = z.object({ fr: z.string().max(2000).default(""), en: z.string().max(2000).default(""), ar: z.string().max(2000).default("") });
 const listSchemas = {
-  partners: z.array(z.object({ name: loc3 })).max(40),
+  partners: z.array(z.object({ name: loc3, logo: z.string().max(500).refine((v) => v === "" || /^(https:\/\/|\/partners\/|\/images\/)/.test(v), "URL invalide").default("") })).max(40),
   faq: z.array(z.object({ q: loc3, a: loc3 })).max(40),
   timeline: z.array(z.object({ year: z.string().max(12), title: loc3, text: loc3 })).max(40),
   stats: z.array(z.object({ value: z.string().max(20), label: loc3 })).max(8),

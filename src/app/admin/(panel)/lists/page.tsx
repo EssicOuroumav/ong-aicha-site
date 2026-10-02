@@ -15,13 +15,13 @@ export default async function ListsPage() {
   const L = (get: (d: typeof base.fr) => string | undefined): Loc => ({ fr: get(base.fr) ?? "", en: get(base.en) ?? "", ar: get(base.ar) ?? "" });
 
   const defaults = {
-    partners: base.fr.partners.items.map((_, i) => ({ name: L((d) => d.partners.items[i]) })),
+    partners: base.fr.partners.items.map((it, i) => ({ name: L((d) => d.partners.items[i]?.name), logo: it.logo })),
     faq: base.fr.donate.faq.map((_, i) => ({ q: L((d) => d.donate.faq[i]?.q), a: L((d) => d.donate.faq[i]?.a) })),
     timeline: base.fr.about.timeline.map((e, i) => ({ year: e.year, title: L((d) => d.about.timeline[i]?.title), text: L((d) => d.about.timeline[i]?.text) })),
     stats: base.fr.home.stats.map((s, i) => ({ value: s.value, label: L((d) => d.home.stats[i]?.label) })),
   };
   const lists: { key: keyof typeof defaults; title: string; hint: string; itemLabel: string; fields: FieldDef[] }[] = [
-    { key: "partners", title: "Partenaires", hint: "Affichés sur l'accueil et la page À propos (nom de l'organisation).", itemLabel: "Partenaire", fields: [{ name: "name", label: "Nom", kind: "loc" }] },
+    { key: "partners", title: "Partenaires", hint: "Affichés sur l'accueil et la page À propos (nom de l'organisation).", itemLabel: "Partenaire", fields: [{ name: "name", label: "Nom", kind: "loc" }, { name: "logo", label: "Logo (image)", kind: "image" }] },
     { key: "faq", title: "Questions fréquentes (page Don)", hint: "Questions et réponses sous le formulaire de don.", itemLabel: "Question", fields: [{ name: "q", label: "Question", kind: "loc" }, { name: "a", label: "Réponse", kind: "loc", multiline: true }] },
     { key: "timeline", title: "Frise « Nos temps forts » (page À propos)", hint: "Les événements marquants, dans l'ordre d'affichage.", itemLabel: "Événement", fields: [{ name: "year", label: "Année", kind: "text" }, { name: "title", label: "Titre", kind: "loc" }, { name: "text", label: "Texte", kind: "loc", multiline: true }] },
     { key: "stats", title: "Chiffres de l'accueil", hint: "Jusqu'à 8 chiffres clés (ex. valeur « 710 », texte « familles aidées »).", itemLabel: "Chiffre", fields: [{ name: "value", label: "Valeur", kind: "text" }, { name: "label", label: "Texte", kind: "loc" }] },

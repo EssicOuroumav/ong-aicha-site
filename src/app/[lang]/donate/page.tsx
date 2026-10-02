@@ -45,7 +45,7 @@ export default async function DonatePage({ params, searchParams }: PageProps<"/[
         </div>
       </Section>
       <Section>
-        <SectionTitle title={t.donate.faqTitle} />
+        <SectionTitle eyebrow={t.home.eyebrows.faq} title={t.donate.faqTitle} />
         <div className="mx-auto max-w-3xl space-y-3">
           {t.donate.faq.map((f) => (
             <details key={f.q} className="glass group rounded-2xl p-5">

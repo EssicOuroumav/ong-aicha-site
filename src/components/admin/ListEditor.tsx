@@ -3,10 +3,39 @@
 import { useState } from "react";
 
 type Loc = { fr: string; en: string; ar: string };
-export type FieldDef = { name: string; label: string; kind: "loc" | "text"; multiline?: boolean };
+export type FieldDef = { name: string; label: string; kind: "loc" | "text" | "image"; multiline?: boolean };
 type Item = Record<string, string | Loc>;
 
 const empty = (fields: FieldDef[]): Item => Object.fromEntries(fields.map((f) => [f.name, f.kind === "loc" ? { fr: "", en: "", ar: "" } : ""]));
+
+function ImageInput({ label, value, onChange }: { label: string; value: string; onChange: (v: string) => void }) {
+  const [busy, setBusy] = useState(false);
+  const [err, setErr] = useState("");
+  async function upload(file: File) {
+    setBusy(true); setErr("");
+    const fd = new FormData(); fd.append("file", file);
+    try {
+      const res = await fetch("/api/admin/upload", { method: "POST", body: fd });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error ?? "Échec");
+      onChange(data.url);
+    } catch (e) { setErr((e as Error).message); } finally { setBusy(false); }
+  }
+  return (
+    <div>
+      <label className="text-xs text-muted">{label}</label>
+      <div className="flex flex-wrap items-center gap-3">
+        {value && /* eslint-disable-next-line @next/next/no-img-element */ <img src={value} alt="" className="h-14 w-20 rounded-lg bg-white object-contain" />}
+        <input value={value} onChange={(e) => onChange(e.target.value)} placeholder="/partners/… ou https://…" className="field min-w-0 flex-1" />
+        <label className="btn btn-outline cursor-pointer !py-2 text-sm text-green-700">
+          {busy ? "Envoi…" : "Téléverser"}
+          <input type="file" accept="image/jpeg,image/png,image/webp" className="sr-only" disabled={busy} onChange={(e) => e.target.files?.[0] && upload(e.target.files[0])} />
+        </label>
+      </div>
+      {err && <p role="alert" className="mt-1 text-sm text-red-700">{err}</p>}
+    </div>
+  );
+}
 
 export function ListEditor({ listKey, fields, initial, saveAction, resetAction, itemLabel }: {
   listKey: string; fields: FieldDef[]; initial: Item[]; itemLabel: string;
@@ -32,7 +61,9 @@ export function ListEditor({ listKey, fields, initial, saveAction, resetAction, 
             <button type="button" onClick={() => { if (window.confirm("Supprimer cet élément ?")) setItems((arr) => arr.filter((_, idx) => idx !== i)); }} className="rounded border border-red-200 px-2 text-xs text-red-700">Supprimer</button>
           </legend>
           {fields.map((f) =>
-            f.kind === "text" ? (
+            f.kind === "image" ? (
+              <ImageInput key={f.name} label={f.label} value={(it[f.name] as string) ?? ""} onChange={(v) => set(i, f.name, v)} />
+            ) : f.kind === "text" ? (
               <div key={f.name}>
                 <label className="text-xs text-muted">{f.label}</label>
                 <input value={(it[f.name] as string) ?? ""} onChange={(e) => set(i, f.name, e.target.value)} className="field max-w-xs" />

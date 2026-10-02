@@ -12,6 +12,8 @@
 
 - Admin : « Textes du site » (tous les textes fixes FR/EN/AR modifiables, retour à l'original possible) et « Listes » (partenaires, FAQ, frise, chiffres de l'accueil) ; chiffres d'impact et catégorie dans le formulaire des actions. Tables TextOverride et ContentList ; le dictionnaire de base reste dans src/messages/*.json.
 
+- Refonte visuelle d'après les maquettes fournies : en-tête vert flottant en verre (#1E7B35), titres Inter Tight en deux tons, surtitres dorés à filet, cartes « photo plein cadre » (dégradé vert, pastille dorée), bandeau d'accueil qui défile par activité, partenaires avec logos (public/partners). OIEDEAH retiré faute de logo ni de nom complet.
+
 ## Reste à faire
 1. Test d'un don PayDunya en mode test, puis passage en live (clés live + `PAYDUNYA_MODE=live` + URL IPN).
 2. Nouveau domaine au nom de l'ONG → Vercel → Resend → `NEXT_PUBLIC_SITE_URL`.
