@@ -4,14 +4,16 @@ import { randomBytes } from "node:crypto";
 import bcrypt from "bcryptjs";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "../src/generated/prisma/client";
+import { databaseUrl } from "../src/lib/dburl";
 
 config({ path: ".env.local" });
 config();
 
-const db = new PrismaClient({ adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL }) });
+const db = new PrismaClient({ adapter: new PrismaPg({ connectionString: databaseUrl() }) });
 const read = <T>(f: string): T[] => (existsSync(f) ? JSON.parse(readFileSync(f, "utf8")) : []);
 
 async function main() {
+  console.log(`Base ciblée : ${process.env.PRISMA_TARGET === "production" ? "PRODUCTION" : "test (développement)"}`);
   // Compte super-administrateur initial (mot de passe temporaire, à changer à la 1re connexion)
   const email = (process.env.SEED_ADMIN_EMAIL ?? "ongaicha2022@gmail.com").toLowerCase();
   if (!(await db.user.findUnique({ where: { email } }))) {

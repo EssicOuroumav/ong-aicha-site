@@ -7,15 +7,16 @@ Langues : français, anglais, arabe (RTL) via `/fr`, `/en`, `/ar`.
 ```bash
 vercel env pull .env.local     # variables du projet Vercel
 npm install
-npx prisma migrate deploy
-npx prisma db seed             # compte admin + contenu initial
+npm run db:deploy:test         # base de TEST (jamais la production)
+npm run db:seed:test           # compte admin + contenu initial
 npm run dev
 ```
 
 ## Variables d'environnement
 | Variable | Rôle |
 |---|---|
-| `DATABASE_URL`, `DATABASE_URL_UNPOOLED` | Postgres (fournies par l'intégration Neon) |
+| `DATABASE_URL`, `DATABASE_URL_UNPOOLED` | Postgres de **production** (utilisée seulement en production Vercel) |
+| `DEV_DATABASE_URL`, `DEV_DATABASE_URL_UNPOOLED` | Postgres de **test** (poste local et aperçus Vercel) |
 | `AUTH_SECRET` | secret des sessions admin |
 | `CRON_SECRET` | protège `/api/cron/reminders` |
 | `BLOB_READ_WRITE_TOKEN` | téléversement d'images (admin) |

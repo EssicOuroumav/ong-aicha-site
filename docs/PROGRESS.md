@@ -15,12 +15,17 @@
 - Bandeau d accueil : activités « mises en avant » (case dans l admin des actions), autoplay continu avec bouton pause.
 - Refonte visuelle d'après les maquettes fournies : en-tête vert flottant en verre (#1E7B35), titres Inter Tight en deux tons, surtitres dorés à filet, cartes « photo plein cadre » (dégradé vert, pastille dorée), bandeau d'accueil qui défile par activité, partenaires avec logos (public/partners). OIEDEAH retiré faute de logo ni de nom complet.
 
+## Bases de données séparées (2 octobre 2026)
+- **Production** : Neon « ong-aicha-db » (variable DATABASE_URL, utilisée uniquement quand VERCEL_ENV=production).
+- **Test** : Neon « ong-aicha-db-dev » (variables DEV_*, environnements Development et Preview). Poste local et aperçus Vercel l'utilisent ; aucun repli vers la production (src/lib/dburl.ts, testé).
+- Commandes : `npm run db:migrate:dev` (créer une migration, base de test), `npm run db:deploy:test`, `npm run db:seed:test` ; production : `npm run db:deploy:prod` (explicite, PRISMA_TARGET=production). Le build Vercel ne migre pas : appliquer `db:deploy:prod` à la main après chaque nouvelle migration, AVANT de publier le code qui en dépend.
+- Récupérer les variables de test en local : `vercel env pull` puis garder DEV_DATABASE_URL dans .env.local.
+
 ## Reste à faire
 1. Test d'un don PayDunya en mode test, puis passage en live (clés live + `PAYDUNYA_MODE=live` + URL IPN).
 2. Nouveau domaine au nom de l'ONG → Vercel → Resend → `NEXT_PUBLIC_SITE_URL`.
 3. Photos des activités (à fournir par l'ONG) : dossier `photos-a-ajouter/`.
 4. Relecture des traductions AR/EN ; relecture juridique des mentions légales.
-5. Séparer la base Neon de production de celle de développement (branche Neon).
 6. Accessibilité et performance à mesurer. Sauvegardes et suivi d'erreurs à prévoir.
 7. Vulnérabilités `npm audit` restantes : chaîne d'outils Prisma (mysql2, deepmerge-ts), non utilisées à l'exécution ; à rejouer à chaque mise à jour de Prisma.
 

@@ -9,9 +9,12 @@
     "lint": "eslint",
     "postinstall": "prisma generate",
     "test": "vitest run",
-    "db:seed": "prisma db seed",
     "typecheck": "tsc --noEmit",
-    "check:launch": "node scripts/check-launch.mjs"
+    "check:launch": "node scripts/check-launch.mjs",
+    "db:migrate:dev": "prisma migrate dev",
+    "db:deploy:test": "prisma migrate deploy",
+    "db:deploy:prod": "PRISMA_TARGET=production prisma migrate deploy",
+    "db:seed:test": "prisma db seed"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.10.0",
