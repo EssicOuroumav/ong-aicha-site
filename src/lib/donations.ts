@@ -24,14 +24,17 @@ export async function sendReceipt(reference: string) {
   const d = await db.donation.findUnique({ where: { reference } });
   if (!d || d.receiptSent) return;
   const amount = `${d.amount.toLocaleString("fr-FR")} FCFA`;
+  // On réserve l'envoi (un seul appel gagne), puis on annule la réservation si l'e-mail n'est pas parti
   const claimed = await db.donation.updateMany({ where: { reference, receiptSent: false }, data: { receiptSent: true } });
   if (claimed.count === 0) return;
+  let sent = true;
   if (d.email) {
-    await sendEmail({
+    sent = await sendEmail({
       to: d.email,
       subject: `ONG AICHA – Reçu de votre don (${d.reference})`,
       html: layout("Merci pour votre don !", `<p>Bonjour ${escapeHtml(d.donorName)},</p><p>Nous avons bien reçu votre don de <b>${amount}</b>. Qu'Allah vous le rende au centuple.</p><p>Référence : <b>${d.reference}</b></p>`),
     });
   }
   await sendEmail({ to: notifyAddress(), subject: `Nouveau don : ${amount}`, html: layout("Nouveau don reçu", `<p>${escapeHtml(d.donorName)} – ${amount} – ${d.reference}</p>`) });
+  if (!sent) await db.donation.update({ where: { reference }, data: { receiptSent: false } });
 }
