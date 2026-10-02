@@ -4,6 +4,7 @@ import { getBaseDictionaries } from "@/i18n/dictionaries";
 import { flatten } from "@/lib/overrides";
 import { editableKeys, resetTexts, saveTexts } from "@/actions/admin";
 import { Card, Title } from "@/components/admin/ui";
+import { SaveForm } from "@/components/admin/SaveForm";
 
 export const dynamic = "force-dynamic";
 
@@ -52,7 +53,7 @@ export default async function TextsPage() {
                 {changed > 0 && <span className="rounded-full bg-green-100 px-2.5 py-1 text-xs text-green-800">{changed} modifié{changed > 1 ? "s" : ""}</span>}
               </summary>
               <div className="border-t border-line p-4">
-                <form action={saveTexts} className="space-y-6">
+                <SaveForm action={saveTexts} className="space-y-6" label={`Enregistrer « ${title} »`} resetAction={resetTexts} resetLabel="Revenir aux textes d'origine" resetConfirm="Revenir aux textes d'origine pour cette section ?">
                   <input type="hidden" name="section" value={id} />
                   {keys.map((k) => (
                     <fieldset key={k} className="space-y-2 rounded-xl bg-green-50/40 p-3">
@@ -72,11 +73,7 @@ export default async function TextsPage() {
                       })}
                     </fieldset>
                   ))}
-                  <div className="sticky bottom-3 flex flex-wrap gap-3 rounded-2xl bg-white/90 p-3 shadow backdrop-blur">
-                    <button className="btn btn-primary">Enregistrer « {title} »</button>
-                    <button formAction={resetTexts} className="btn btn-outline text-red-700" formNoValidate>Revenir aux textes d'origine</button>
-                  </div>
-                </form>
+                </SaveForm>
               </div>
             </details>
           );

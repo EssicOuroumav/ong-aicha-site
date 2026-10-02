@@ -200,7 +200,7 @@ export async function toggleMessageRead(form: FormData) {
 }
 
 // ───────── Réglages ─────────
-export async function saveSettings(form: FormData) {
+export async function saveSettings(_: SaveState | null, form: FormData): Promise<SaveState> {
   await requireArea("settings");
   for (const key of ["phone", "donationPhone", "email", "address", "facebook", "youtube", "instagram"]) {
     const value = String(form.get(key) ?? "").trim();
@@ -208,6 +208,7 @@ export async function saveSettings(form: FormData) {
   }
   refresh();
   revalidatePath("/admin/settings");
+  return done("Enregistré ✓ — visible sur le site dans la minute.");
 }
 
 // ───────── Utilisateurs ─────────
@@ -257,25 +258,38 @@ export async function editableKeys(section: string) {
     .filter((k) => k !== "meta.siteName");
 }
 
-export async function saveTexts(form: FormData) {
+export type SaveState = { ok: boolean; message: string; at: number };
+const done = (message: string): SaveState => ({ ok: true, message, at: Date.now() });
+const failed = (message: string): SaveState => ({ ok: false, message, at: Date.now() });
+
+export async function saveTexts(_: SaveState | null, form: FormData): Promise<SaveState> {
   await requireArea("content");
   const section = String(form.get("section") ?? "");
   const base = await getBaseDictionaries();
   const flat = { fr: flatten(base.fr), en: flatten(base.en), ar: flatten(base.ar) };
   const keys = await editableKeys(section);
-  if (!keys.length) return;
+  if (!keys.length) return failed("Section inconnue.");
+
+  // Une seule lecture des surcharges existantes, puis uniquement les écritures nécessaires (en parallèle)
+  const existing = new Set((await db.textOverride.findMany({ where: { key: { in: keys } }, select: { key: true, lang: true } })).map((o) => `${o.key}||${o.lang}`));
+  const upserts: { key: string; lang: string; value: string }[] = [];
+  const removals: { key: string; lang: string }[] = [];
   for (const key of keys) {
     for (const lang of LANGS) {
       const raw = form.get(`${key}||${lang}`);
       if (raw === null) continue;
       const value = String(raw).trim().slice(0, 4000);
       const original = flat[lang][key] ?? "";
-      if (!value || value === original) await db.textOverride.deleteMany({ where: { key, lang } });
-      else await db.textOverride.upsert({ where: { key_lang: { key, lang } }, update: { value }, create: { key, lang, value } });
+      if (!value || value === original) { if (existing.has(`${key}||${lang}`)) removals.push({ key, lang }); }
+      else upserts.push({ key, lang, value });
     }
   }
+  if (removals.length) await db.textOverride.deleteMany({ where: { OR: removals } });
+  await Promise.all(upserts.map((u) => db.textOverride.upsert({ where: { key_lang: { key: u.key, lang: u.lang } }, update: { value: u.value }, create: u })));
   refresh();
   revalidatePath("/admin/texts");
+  const changes = upserts.length;
+  return done(changes ? `Enregistré ✓ (${changes} texte${changes > 1 ? "s" : ""} modifié${changes > 1 ? "s" : ""} en ligne)` : "Enregistré ✓ (aucune différence avec les textes d'origine)");
 }
 
 export async function resetTexts(form: FormData) {
@@ -294,10 +308,15 @@ const listSchemas = {
   stats: z.array(z.object({ value: z.string().max(20), label: loc3 })).max(8),
 };
 
-export async function saveList(form: FormData) {
+export async function saveList(_: SaveState | null, form: FormData): Promise<SaveState> {
   await requireArea("content");
   const key = z.enum(LIST_KEYS).parse(form.get("key"));
-  const data = listSchemas[key].parse(JSON.parse(String(form.get("data") ?? "[]")));
+  let data;
+  try {
+    data = listSchemas[key].parse(JSON.parse(String(form.get("data") ?? "[]")));
+  } catch {
+    return failed("Enregistrement refusé : un champ est invalide (texte trop long ou lien d'image incorrect). Vérifiez la ligne modifiée.");
+  }
   const clean = (data as { [k: string]: unknown }[]).filter((item) => {
     const first = Object.values(item)[0];
     return typeof first === "string" ? first.trim() : Object.values(first as Record<string, string>).some((v) => v.trim());
@@ -306,6 +325,7 @@ export async function saveList(form: FormData) {
   await db.contentList.upsert({ where: { key }, update: { data: json }, create: { key, data: json } });
   refresh();
   revalidatePath("/admin/lists");
+  return done(`Enregistré ✓ — ${clean.length} élément${clean.length > 1 ? "s" : ""}, visible${clean.length > 1 ? "s" : ""} sur le site dans la minute.`);
 }
 
 export async function resetList(form: FormData) {

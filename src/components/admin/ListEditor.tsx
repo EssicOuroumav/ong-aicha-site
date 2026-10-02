@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import type { SaveState } from "@/actions/admin";
+import { SaveForm } from "./SaveForm";
 
 type Loc = { fr: string; en: string; ar: string };
 export type FieldDef = { name: string; label: string; kind: "loc" | "text" | "image"; multiline?: boolean };
@@ -39,7 +41,7 @@ function ImageInput({ label, value, onChange }: { label: string; value: string; 
 
 export function ListEditor({ listKey, fields, initial, saveAction, resetAction, itemLabel }: {
   listKey: string; fields: FieldDef[]; initial: Item[]; itemLabel: string;
-  saveAction: (form: FormData) => void | Promise<void>; resetAction: (form: FormData) => void | Promise<void>;
+  saveAction: (prev: SaveState | null, form: FormData) => Promise<SaveState>; resetAction: (form: FormData) => void | Promise<void>;
 }) {
   const [items, setItems] = useState<Item[]>(initial);
   const set = (i: number, name: string, value: string | Loc) => setItems((arr) => arr.map((it, idx) => (idx === i ? { ...it, [name]: value } : it)));
@@ -49,7 +51,7 @@ export function ListEditor({ listKey, fields, initial, saveAction, resetAction, 
   });
 
   return (
-    <form action={saveAction} className="space-y-4">
+    <SaveForm action={saveAction} resetAction={resetAction} resetLabel="Revenir à la liste d'origine" resetConfirm="Revenir à la liste d'origine ? Vos modifications seront perdues.">
       <input type="hidden" name="key" value={listKey} />
       <input type="hidden" name="data" value={JSON.stringify(items)} />
       {items.map((it, i) => (
@@ -81,11 +83,9 @@ export function ListEditor({ listKey, fields, initial, saveAction, resetAction, 
           )}
         </fieldset>
       ))}
-      <div className="sticky bottom-3 flex flex-wrap gap-3 rounded-2xl bg-white/90 p-3 shadow backdrop-blur">
+      <div>
         <button type="button" onClick={() => setItems((arr) => [...arr, empty(fields)])} className="btn btn-outline text-green-700">+ Ajouter</button>
-        <button className="btn btn-primary">Enregistrer</button>
-        <button formAction={resetAction} formNoValidate onClick={(e) => { if (!window.confirm("Revenir à la liste d'origine ? Vos modifications seront perdues.")) e.preventDefault(); }} className="btn btn-outline text-red-700">Revenir à la liste d'origine</button>
       </div>
-    </form>
+    </SaveForm>
   );
 }
