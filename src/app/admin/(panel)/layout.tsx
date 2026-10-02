@@ -12,6 +12,7 @@ export default async function PanelLayout({ children }: { children: React.ReactN
     { href: "/admin/donations", label: "Dons", show: can(user.role, "donations") },
     { href: "/admin/sponsorships", label: "Parrainages", show: can(user.role, "requests") },
     { href: "/admin/memberships", label: "Adhésions", show: can(user.role, "requests") },
+    { href: "/admin/help", label: "Demandes d'aide", show: can(user.role, "requests") },
     { href: "/admin/messages", label: "Messages", show: can(user.role, "requests") },
     { href: "/admin/posts", label: "Blog", show: can(user.role, "content") },
     { href: "/admin/activities", label: "Actions", show: can(user.role, "content") },

@@ -1,18 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --green-900: #0f3d22;
-  --green-800: #14532d;
-  --green-700: #1b6b3a;
-  --green-600: #228a4a;
-  --green-100: #e3f1e8;
-  --green-50: #f0f7f2;
-  --gold-500: #c9a24b;
-  --gold-600: #a8832f;
-  --cream: #faf7f0;
-  --ink: #17251c;
-  --muted: #5b6b61;
-  --line: #e4e0d4;
+  --green-900: #043a1f;
+  --green-800: #07522c;
+  --green-700: #0a6b3a;   /* vert du logo */
+  --green-600: #138a4b;
+  --green-100: #dcf1e5;
+  --green-50: #eef8f1;
+  /* L'ancien "or" devient un vert clair d'accent : identité vert et blanc du logo */
+  --gold-500: #7fdca4;
+  --gold-600: #0e7c43;
+  --cream: #f3faf5;
+  --ink: #12261b;
+  --muted: #566a5e;
+  --line: #d6e6dc;
 }
 
 @theme inline {
@@ -37,7 +38,12 @@ html {
 }
 
 body {
-  background: var(--cream);
+  background:
+    radial-gradient(1100px 620px at 8% -8%, rgba(10, 107, 58, 0.22), transparent 62%),
+    radial-gradient(900px 520px at 100% 18%, rgba(127, 220, 164, 0.28), transparent 58%),
+    radial-gradient(900px 600px at 50% 105%, rgba(10, 107, 58, 0.16), transparent 60%),
+    var(--cream);
+  background-attachment: fixed;
   color: var(--ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
@@ -78,8 +84,10 @@ h1, h2, h3, h4 {
 .btn:active { transform: translateY(1px); }
 .btn-primary { background: var(--green-700); color: #fff; }
 .btn-primary:hover { background: var(--green-800); }
-.btn-gold { background: var(--gold-500); color: #1a1405; }
-.btn-gold:hover { background: #d8b35a; }
+.btn-gold { background: linear-gradient(135deg, #16a05a, #0a6b3a); color: #fff; box-shadow: 0 6px 20px rgba(10, 107, 58, 0.35); }
+.btn-gold:hover { background: linear-gradient(135deg, #1bb263, #0b7a43); box-shadow: 0 8px 26px rgba(10, 107, 58, 0.45); }
+.btn-white { background: #fff; color: var(--green-800); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18); }
+.btn-white:hover { background: var(--green-50); }
 .btn-outline { border: 2px solid currentColor; }
 .btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
@@ -105,3 +113,33 @@ h1, h2, h3, h4 {
   .reveal { animation: none; }
   * { transition-duration: 0.01ms !important; }
 }
+
+/* ---------- Glassmorphism ---------- */
+.glass {
+  background: rgba(255, 255, 255, 0.58);
+  -webkit-backdrop-filter: blur(18px) saturate(170%);
+  backdrop-filter: blur(18px) saturate(170%);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 10px 34px rgba(7, 82, 44, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+.glass-green {
+  background: rgba(7, 82, 44, 0.62);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+.glass-header {
+  background: linear-gradient(180deg, rgba(10, 107, 58, 0.9), rgba(7, 82, 44, 0.84));
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  backdrop-filter: blur(16px) saturate(150%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 6px 24px rgba(4, 58, 31, 0.28);
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass { background: rgba(255, 255, 255, 0.92); }
+  .glass-green { background: rgba(7, 82, 44, 0.95); }
+  .glass-header { background: #0a6b3a; }
+}
+.lift { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+.lift:hover { transform: translateY(-4px); box-shadow: 0 16px 42px rgba(7, 82, 44, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.9); }

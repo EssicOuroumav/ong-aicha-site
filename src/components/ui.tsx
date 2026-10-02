@@ -2,8 +2,8 @@ import type { ReactNode } from "react";
 
 export function PageHero({ title, lead, eyebrow }: { title: string; lead?: string; eyebrow?: string }) {
   return (
-    <section className="relative overflow-hidden bg-green-800 text-white">
-      <div aria-hidden className="absolute inset-0 opacity-20" style={{ backgroundImage: "radial-gradient(circle at 20% 20%, #c9a24b 0, transparent 40%), radial-gradient(circle at 85% 70%, #228a4a 0, transparent 45%)" }} />
+    <section className="relative overflow-hidden bg-gradient-to-br from-green-900 via-green-800 to-green-700 text-white">
+      <div aria-hidden className="absolute inset-0 opacity-20" style={{ backgroundImage: "radial-gradient(circle at 18% 25%, rgba(127,220,164,.55) 0, transparent 38%), radial-gradient(circle at 88% 75%, rgba(255,255,255,.22) 0, transparent 42%)" }} />
       <div className="relative mx-auto max-w-5xl px-4 py-16 text-center sm:px-6 sm:py-20">
         {eyebrow && <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-gold">{eyebrow}</p>}
         <h1 className="reveal text-4xl font-bold sm:text-5xl">{title}</h1>

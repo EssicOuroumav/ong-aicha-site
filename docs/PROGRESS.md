@@ -5,6 +5,11 @@
 - PayDunya : clés de **test** saisies dans Vercel ; test complet à faire.
 - Resend (e-mails) : en attente d'un domaine vérifié (le domaine ongaicha.org n'est pas récupérable pour l'instant).
 
+## Fait le 2 octobre 2026 (suite)
+- Design : vert du logo (#0A6B3A) et blanc, barre du haut verte, effet verre dépoli (glassmorphism).
+- Contenu repris de l'ancien site : programmes « Une enveloppe pour maman », « Ma famille solidaire AICHA », « Fonds d'aide sociale urgente » ; causes de don réelles (dont Zakat) ; partenaires (à valider) ; conditions du don de sang ; page « Demander de l'aide » + admin ; frise des temps forts ; FAQ ; WhatsApp ; vidéo.
+- Formulaires : consentement obligatoire, saisie conservée en cas d'erreur.
+
 ## Reste à faire
 1. Test d'un don PayDunya en mode test, puis passage en live (clés live + `PAYDUNYA_MODE=live` + URL IPN).
 2. Nouveau domaine au nom de l'ONG → Vercel → Resend → `NEXT_PUBLIC_SITE_URL`.

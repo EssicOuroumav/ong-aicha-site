@@ -35,7 +35,7 @@ export default async function DonationResult({ params, searchParams }: PageProps
     <>
       <PageHero title={t.donate.title} />
       <Section>
-        <div className="mx-auto max-w-xl rounded-3xl bg-white p-10 text-center shadow-sm">
+        <div className="mx-auto max-w-xl glass rounded-3xl p-10 text-center">
           <div className="flex justify-center">{view.icon}</div>
           <h2 className="mt-4 text-2xl font-bold text-green-800">{view.title}</h2>
           <p className="mt-3 text-muted">{view.text}{donation.status === "COMPLETED" && donation.email && process.env.RESEND_API_KEY ? ` ${t.donate.receiptNote}` : ""}</p>

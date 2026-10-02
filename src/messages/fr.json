@@ -18,7 +18,8 @@
     "language": "Langue",
     "menu": "Menu",
     "close": "Fermer",
-    "skip": "Aller au contenu"
+    "skip": "Aller au contenu",
+    "help": "Besoin d'aide ?"
   },
   "common": {
     "readMore": "Lire la suite",
@@ -34,7 +35,10 @@
     "error": "Une erreur est survenue. Veuillez réessayer.",
     "thanks": "Merci !",
     "share": "Partager",
-    "invalid": "Veuillez vérifier ce champ."
+    "invalid": "Veuillez vérifier ce champ.",
+    "consent": "J'accepte que mes informations soient utilisées pour traiter ma demande (voir les mentions légales).",
+    "whatsapp": "Écrire sur WhatsApp",
+    "supportThis": "Soutenir cette action"
   },
   "home": {
     "heroEyebrow": "ONG AICHA · Côte d'Ivoire",
@@ -103,7 +107,8 @@
         "cta": "Adhérer"
       }
     ],
-    "videoTitle": "En images"
+    "videoTitle": "En vidéo",
+    "videoLead": "Découvrez nos actions sur le terrain."
   },
   "about": {
     "title": "À propos de l'ONG AICHA",
@@ -143,6 +148,68 @@
         "title": "Engagement",
         "text": "Une présence régulière sur le terrain, toute l'année."
       }
+    ],
+    "timelineTitle": "Nos temps forts",
+    "timeline": [
+      {
+        "year": "2019",
+        "title": "Création de l'association",
+        "text": "Un collectif de jeunes musulmans de diverses professions fonde l'AICHA pour soutenir les plus démunis en Côte d'Ivoire."
+      },
+      {
+        "year": "2021",
+        "title": "Siège à Port-Bouët",
+        "text": "Depuis avril 2021, le siège de l'ONG est établi à Port-Bouët, à Abidjan."
+      },
+      {
+        "year": "2023",
+        "title": "La Vague Rose et Rouge à Grand-Bassam",
+        "text": "4e édition : plus de 500 femmes dépistées du cancer du sein et plus de 600 personnes consultées pour le diabète et l'hypertension, avec une collecte de sang."
+      },
+      {
+        "year": "2023",
+        "title": "Lancement des Cliniques mobiles",
+        "text": "Des consultations gratuites avec des médecins spécialistes, au cœur des quartiers défavorisés."
+      },
+      {
+        "year": "2024",
+        "title": "Des habits neufs pour la Tabaski",
+        "text": "Des vivres et des vêtements neufs pour 300 orphelins et 50 veuves du district d'Abidjan."
+      },
+      {
+        "year": "2025",
+        "title": "Paniers du Ramadan : 6e édition",
+        "text": "710 familles et personnes vulnérables aidées dans plusieurs communes d'Abidjan."
+      },
+      {
+        "year": "2025",
+        "title": "En route pour l'école",
+        "text": "160 enfants vulnérables équipés pour la rentrée, et la scolarité annuelle de 10 élèves du secondaire prise en charge."
+      },
+      {
+        "year": "2025",
+        "title": "Caravane Vague Rose et Rouge à Port-Bouët",
+        "text": "Le 4 octobre 2025 : dépistages, vaccination anti-HPV pour les jeunes filles et sensibilisation."
+      }
+    ],
+    "domainsTitle": "Nos domaines d'action",
+    "domains": [
+      {
+        "title": "Santé",
+        "text": "Dépistages gratuits, cliniques mobiles, sensibilisation et don de sang."
+      },
+      {
+        "title": "Éducation",
+        "text": "Kits scolaires, scolarité des enfants vulnérables et valorisation des meilleurs élèves."
+      },
+      {
+        "title": "Aide humanitaire",
+        "text": "Paniers du Ramadan, habits neufs de la Tabaski, soutien aux veuves et aux orphelins."
+      },
+      {
+        "title": "Bien-être social",
+        "text": "Fonds d'aide sociale urgente et accompagnement des familles en difficulté."
+      }
     ]
   },
   "activities": {
@@ -150,7 +217,23 @@
     "lead": "Santé, éducation, aide sociale : découvrez les programmes que nous menons sur le terrain.",
     "period": "Période",
     "location": "Lieu",
-    "otherActions": "Autres actions"
+    "otherActions": "Autres actions",
+    "filters": {
+      "all": "Toutes",
+      "health": "Santé",
+      "education": "Éducation",
+      "social": "Aide sociale"
+    },
+    "impactTitle": "En chiffres",
+    "galleryTitle": "En images",
+    "bloodTitle": "Don de sang : les conditions",
+    "blood": [
+      "Avoir au moins 18 ans et au plus 60 ans",
+      "Peser au moins 50 kg",
+      "Ne pas être malade",
+      "Ne pas avoir d'enfant à allaiter",
+      "Ne pas être enceinte"
+    ]
   },
   "blog": {
     "title": "Actualités",
@@ -188,7 +271,8 @@
     "phone": "Téléphone",
     "address": "Adresse",
     "emailLabel": "E-mail",
-    "follow": "Suivez-nous"
+    "follow": "Suivez-nous",
+    "whatsappText": "Réponse rapide par WhatsApp"
   },
   "donate": {
     "title": "Faire un don",
@@ -198,10 +282,14 @@
     "cause": "Votre don soutient",
     "causes": {
       "general": "Là où le besoin est le plus grand",
-      "health": "Santé : dépistages et cliniques mobiles",
-      "education": "Éducation : En route pour l'école",
-      "ramadan": "Paniers du Ramadan et Tabaski",
-      "orphans": "Orphelins et veuves"
+      "clinics": "Les Cliniques mobiles",
+      "widows": "Une enveloppe pour maman (soutien aux veuves)",
+      "orphans": "Ma famille solidaire AICHA (parrainage des orphelins)",
+      "school": "En route pour l'école (scolarité des enfants vulnérables)",
+      "emergency": "Fonds d'aide sociale urgente",
+      "red": "Initiative Rouge",
+      "pink": "La Classe Rose",
+      "zakat": "Zakat"
     },
     "name": "Nom et prénom",
     "email": "E-mail (pour votre reçu)",
@@ -225,7 +313,30 @@
     "offlineTitle": "Donnez par Mobile Money",
     "offlineText": "Le paiement en ligne arrive bientôt. En attendant, vous pouvez donner dès maintenant par Mobile Money (Orange, MTN, Moov, Wave) au numéro ci-dessous, puis nous écrire pour recevoir votre reçu.",
     "offlineCta": "Nous envoyer la référence du don",
-    "receiptNote": "Un reçu vous sera envoyé par e-mail."
+    "receiptNote": "Un reçu vous sera envoyé par e-mail.",
+    "faqTitle": "Questions fréquentes",
+    "faq": [
+      {
+        "q": "À quoi servent mes dons ?",
+        "a": "Ils financent les actions de terrain de l'ONG AICHA : santé, éducation, aide humanitaire et bien-être social en faveur des plus vulnérables."
+      },
+      {
+        "q": "Puis-je choisir l'action que je soutiens ?",
+        "a": "Oui. Dans le formulaire, vous choisissez le programme à soutenir, ou « là où le besoin est le plus grand »."
+      },
+      {
+        "q": "Puis-je donner ma Zakat ?",
+        "a": "Oui, choisissez « Zakat » dans la liste. Pour toute question, contactez-nous avant de donner."
+      },
+      {
+        "q": "Puis-je faire un don en nature ?",
+        "a": "Oui. Déposez-le à notre siège de Port-Bouët Abattoir ou contactez-nous pour que nous venions le récupérer."
+      },
+      {
+        "q": "Mon paiement est-il sécurisé ?",
+        "a": "Le paiement est traité par PayDunya (Orange Money, MTN, Moov, Wave, cartes bancaires). L'ONG AICHA ne conserve aucune donnée bancaire."
+      }
+    ]
   },
   "sponsor": {
     "title": "Parrainer un enfant",
@@ -275,7 +386,8 @@
     "contact": "Contact",
     "rights": "Tous droits réservés.",
     "legal": "Mentions légales",
-    "admin": "Espace administrateur"
+    "admin": "Espace administrateur",
+    "help": "Demander de l'aide"
   },
   "legal": {
     "title": "Mentions légales",
@@ -290,5 +402,35 @@
     "title": "Page introuvable",
     "text": "La page que vous cherchez n'existe pas ou a été déplacée.",
     "back": "Retour à l'accueil"
+  },
+  "partners": {
+    "title": "Ils nous accompagnent",
+    "lead": "Des institutions et des organisations avec lesquelles l'ONG AICHA collabore.",
+    "items": [
+      "Ministère de la Santé de Côte d'Ivoire",
+      "MFFE – Ministère de la Femme, de la Famille et de l'Enfant",
+      "PNLCC – Programme National de Lutte contre le Changement Climatique",
+      "COLCC",
+      "COSIM",
+      "OIEDEAH"
+    ]
+  },
+  "help": {
+    "title": "Demander de l'aide",
+    "lead": "Vous traversez une situation difficile ? Décrivez-nous votre besoin : notre équipe étudie chaque demande avec discrétion.",
+    "kind": "Type de demande",
+    "kinds": {
+      "SOS": "Urgence sociale (SOS)",
+      "WIDOW": "Aide aux veuves",
+      "OTHER": "Autre besoin"
+    },
+    "name": "Nom et prénom",
+    "phone": "Téléphone",
+    "email": "E-mail",
+    "nature": "Nature de l'urgence ou du besoin",
+    "message": "Précisions (facultatif)",
+    "submit": "Envoyer ma demande",
+    "success": "Votre demande a bien été reçue. Notre équipe vous contactera dès que possible.",
+    "notice": "L'ONG AICHA étudie chaque demande selon ses moyens. Une demande envoyée ne garantit pas une aide. En cas de danger immédiat, appelez les secours."
   }
 }

@@ -4,7 +4,7 @@ import { isLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getActivities } from "@/lib/content";
 import { PageHero, Section } from "@/components/ui";
-import { ActivityCard } from "@/components/Cards";
+import { ActivityFilter } from "@/components/ActivityFilter";
 
 export const revalidate = 60;
 
@@ -24,9 +24,8 @@ export default async function ActivitiesPage({ params }: PageProps<"/[lang]/acti
       <PageHero title={t.activities.title} lead={t.activities.lead} />
       <Section>
         {items.length === 0 ? <p className="text-center text-muted">{t.common.noResults}</p> : (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {items.map((a) => <ActivityCard key={a.id} a={a} lang={lang} label={t.common.readMore} />)}
-          </div>
+          <ActivityFilter lang={lang} filters={t.activities.filters} readMore={t.common.readMore}
+            items={items.map((a) => ({ id: a.id, slug: a.slug, coverImage: a.coverImage, title: a.title, summary: a.summary, category: a.category }))} />
         )}
       </Section>
     </>

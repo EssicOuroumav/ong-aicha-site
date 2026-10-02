@@ -18,7 +18,7 @@ function bad(error: z.ZodError): FormState {
   return { ok: false, error: "validation", fields: error.issues.map((i) => String(i.path[0])) };
 }
 
-async function guard(form: FormData, bucket: string, max = 5): Promise<FormState | null> {
+async function guard(form: FormData, bucket: string, max = 10): Promise<FormState | null> {
   // Champ piège : un humain ne remplit jamais "website"
   if (String(form.get("website") ?? "").length > 0) return { ok: true };
   const ip = await clientIp();
@@ -28,6 +28,7 @@ async function guard(form: FormData, bucket: string, max = 5): Promise<FormState
 
 // ───────────── Contact ─────────────
 const contactSchema = z.object({
+  consent: z.literal("on"),
   name: str(120).min(2),
   email: z.string().trim().email().max(160),
   subject: str(160).optional(),
@@ -57,6 +58,7 @@ export async function submitContact(_: FormState | null, form: FormData): Promis
 
 // ───────────── Adhésion ─────────────
 const joinSchema = z.object({
+  consent: z.literal("on"),
   firstName: str(80).min(2),
   lastName: str(80).min(2),
   phone,
@@ -98,6 +100,7 @@ const sponsorSchema = z.object({
   frequency: z.enum(["MONTHLY", "QUARTERLY", "YEARLY"]),
   note: str(2000).optional(),
   confirm: z.literal("on"),
+  consent: z.literal("on"),
 });
 
 export async function submitSponsorship(_: FormState | null, form: FormData): Promise<FormState> {
@@ -106,7 +109,7 @@ export async function submitSponsorship(_: FormState | null, form: FormData): Pr
   const parsed = sponsorSchema.safeParse(Object.fromEntries(form));
   if (!parsed.success) return bad(parsed.error);
   try {
-    const { confirm: _c, ...d } = parsed.data;
+    const { confirm: _c, consent: _k, ...d } = parsed.data;
     await db.sponsorship.create({ data: { ...d, country: d.country || null, note: d.note || null } });
     await sendEmail({
       to: notifyAddress(),
@@ -127,19 +130,20 @@ export async function submitSponsorship(_: FormState | null, form: FormData): Pr
 
 // ───────────── Don en ligne ─────────────
 const donationSchema = z.object({
+  consent: z.literal("on"),
   amount: z.coerce.number().int().min(500).max(50_000_000),
   donorName: str(120).min(2),
   email: z.string().trim().email().max(160),
   phone: phone.optional().or(z.literal("")),
   country: str(120).optional(),
-  cause: z.enum(["general", "health", "education", "ramadan", "orphans"]).default("general"),
+  cause: z.enum(["general", "clinics", "widows", "orphans", "school", "emergency", "red", "pink", "zakat"]).default("general"),
   message: str(1000).optional(),
   anonymous: z.string().optional(),
   lang: z.enum(["fr", "en", "ar"]).default("fr"),
 });
 
 export async function submitDonation(_: FormState | null, form: FormData): Promise<FormState> {
-  const blocked = await guard(form, "donate", 8);
+  const blocked = await guard(form, "donate", 15);
   if (blocked) return blocked;
   const parsed = donationSchema.safeParse(Object.fromEntries(form));
   if (!parsed.success) return bad(parsed.error);
@@ -181,4 +185,35 @@ export async function submitDonation(_: FormState | null, form: FormData): Promi
     return { ok: false, error: "server" };
   }
   redirect(target);
+}
+
+// ───────────── Demande d'aide ─────────────
+const helpSchema = z.object({
+  kind: z.enum(["SOS", "WIDOW", "OTHER"]),
+  name: str(120).min(2),
+  phone,
+  email: z.union([z.literal(""), z.string().trim().email().max(160)]).optional(),
+  nature: str(300).min(3),
+  message: str(3000).optional(),
+  consent: z.literal("on"),
+});
+
+export async function submitHelp(_: FormState | null, form: FormData): Promise<FormState> {
+  const blocked = await guard(form, "help", 8);
+  if (blocked) return blocked;
+  const parsed = helpSchema.safeParse(Object.fromEntries(form));
+  if (!parsed.success) return bad(parsed.error);
+  try {
+    const { consent: _c, ...d } = parsed.data;
+    await db.helpRequest.create({ data: { ...d, email: d.email || null, message: d.message || null } });
+    await sendEmail({
+      to: notifyAddress(),
+      subject: `Demande d'aide (${d.kind}) : ${d.name}`,
+      html: layout("Nouvelle demande d'aide", `<p><b>${escapeHtml(d.name)}</b> – ${escapeHtml(d.phone)}</p><p>${escapeHtml(d.nature)}</p>`),
+    });
+    return { ok: true };
+  } catch (e) {
+    console.error(e);
+    return { ok: false, error: "server" };
+  }
 }

@@ -18,7 +18,8 @@
     "language": "Language",
     "menu": "Menu",
     "close": "Close",
-    "skip": "Skip to content"
+    "skip": "Skip to content",
+    "help": "Need help?"
   },
   "common": {
     "readMore": "Read more",
@@ -34,7 +35,10 @@
     "error": "Something went wrong. Please try again.",
     "thanks": "Thank you!",
     "share": "Share",
-    "invalid": "Please check this field."
+    "invalid": "Please check this field.",
+    "consent": "I agree to my information being used to process my request (see the legal notice).",
+    "whatsapp": "Message us on WhatsApp",
+    "supportThis": "Support this initiative"
   },
   "home": {
     "heroEyebrow": "ONG AICHA · Côte d'Ivoire",
@@ -103,7 +107,8 @@
         "cta": "Join"
       }
     ],
-    "videoTitle": "In pictures"
+    "videoTitle": "In video",
+    "videoLead": "See our work in the field."
   },
   "about": {
     "title": "About ONG AICHA",
@@ -143,6 +148,68 @@
         "title": "Commitment",
         "text": "A regular presence on the ground, all year round."
       }
+    ],
+    "timelineTitle": "Our milestones",
+    "timeline": [
+      {
+        "year": "2019",
+        "title": "Founding of the association",
+        "text": "A group of young Muslims from a range of professions founds AICHA to support the most disadvantaged in Côte d'Ivoire."
+      },
+      {
+        "year": "2021",
+        "title": "Headquarters in Port-Bouët",
+        "text": "Since April 2021, the NGO's headquarters have been based in Port-Bouët, Abidjan."
+      },
+      {
+        "year": "2023",
+        "title": "The Pink and Red Wave in Grand-Bassam",
+        "text": "4th edition: more than 500 women screened for breast cancer and more than 600 people tested for diabetes and hypertension, along with a blood drive."
+      },
+      {
+        "year": "2023",
+        "title": "Launch of the Mobile Clinics",
+        "text": "Free consultations with specialist doctors, in the heart of underserved neighborhoods."
+      },
+      {
+        "year": "2024",
+        "title": "New clothes for Tabaski",
+        "text": "Food and new clothes for 300 orphans and 50 widows in the Abidjan district."
+      },
+      {
+        "year": "2025",
+        "title": "Ramadan Food Baskets: 6th edition",
+        "text": "710 vulnerable families and individuals assisted across several communes of Abidjan."
+      },
+      {
+        "year": "2025",
+        "title": "On the Way to School",
+        "text": "160 vulnerable children equipped for the new school year, and the annual school fees of 10 secondary school students covered."
+      },
+      {
+        "year": "2025",
+        "title": "Pink and Red Wave Caravan in Port-Bouët",
+        "text": "On 4 October 2025: screenings, HPV vaccination for young girls and awareness-raising."
+      }
+    ],
+    "domainsTitle": "Our areas of action",
+    "domains": [
+      {
+        "title": "Health",
+        "text": "Free screenings, mobile clinics, awareness-raising and blood donation."
+      },
+      {
+        "title": "Education",
+        "text": "School kits, schooling for vulnerable children and recognition of top students."
+      },
+      {
+        "title": "Humanitarian aid",
+        "text": "Ramadan food baskets, new clothes for Tabaski, support for widows and orphans."
+      },
+      {
+        "title": "Social welfare",
+        "text": "Emergency social assistance fund and support for families in difficulty."
+      }
     ]
   },
   "activities": {
@@ -150,7 +217,23 @@
     "lead": "Health, education, social aid: discover the programs we carry out on the ground.",
     "period": "Period",
     "location": "Location",
-    "otherActions": "Other actions"
+    "otherActions": "Other actions",
+    "filters": {
+      "all": "All",
+      "health": "Health",
+      "education": "Education",
+      "social": "Social aid"
+    },
+    "impactTitle": "By the numbers",
+    "galleryTitle": "In pictures",
+    "bloodTitle": "Blood donation: eligibility requirements",
+    "blood": [
+      "Be at least 18 and no older than 60",
+      "Weigh at least 50 kg",
+      "Be in good health",
+      "Not be breastfeeding",
+      "Not be pregnant"
+    ]
   },
   "blog": {
     "title": "News",
@@ -188,7 +271,8 @@
     "phone": "Phone",
     "address": "Address",
     "emailLabel": "Email",
-    "follow": "Follow us"
+    "follow": "Follow us",
+    "whatsappText": "Quick reply on WhatsApp"
   },
   "donate": {
     "title": "Donate",
@@ -197,11 +281,15 @@
     "otherAmount": "Other amount (FCFA)",
     "cause": "Your donation supports",
     "causes": {
-      "general": "Wherever the need is greatest",
-      "health": "Health: screenings and mobile clinics",
-      "education": "Education: On the Way to School",
-      "ramadan": "Ramadan and Tabaski food baskets",
-      "orphans": "Orphans and widows"
+      "general": "Where the need is greatest",
+      "clinics": "The Mobile Clinics",
+      "widows": "An Envelope for Mom (support for widows)",
+      "orphans": "My AICHA Supportive Family (orphan sponsorship)",
+      "school": "On the Way to School (schooling for vulnerable children)",
+      "emergency": "Emergency Social Assistance Fund",
+      "red": "Red Initiative",
+      "pink": "The Pink Class",
+      "zakat": "Zakat"
     },
     "name": "Full name",
     "email": "Email (for your receipt)",
@@ -225,7 +313,30 @@
     "offlineTitle": "Give by Mobile Money",
     "offlineText": "Online payment is coming soon. In the meantime, you can give right now by Mobile Money (Orange, MTN, Moov, Wave) to the number below, then write to us to receive your receipt.",
     "offlineCta": "Send us your donation reference",
-    "receiptNote": "A receipt will be sent to you by email."
+    "receiptNote": "A receipt will be sent to you by email.",
+    "faqTitle": "Frequently asked questions",
+    "faq": [
+      {
+        "q": "What are my donations used for?",
+        "a": "They fund the field work of ONG AICHA: health, education, humanitarian aid and social welfare for the most vulnerable."
+      },
+      {
+        "q": "Can I choose which program I support?",
+        "a": "Yes. In the form, you choose the program you wish to support, or \"where the need is greatest\"."
+      },
+      {
+        "q": "Can I give my Zakat?",
+        "a": "Yes, select \"Zakat\" from the list. If you have any questions, please contact us before giving."
+      },
+      {
+        "q": "Can I make an in-kind donation?",
+        "a": "Yes. Drop it off at our headquarters in Port-Bouët Abattoir, or contact us and we will come to collect it."
+      },
+      {
+        "q": "Is my payment secure?",
+        "a": "Payment is processed by PayDunya (Orange Money, MTN, Moov, Wave, bank cards). ONG AICHA does not store any banking data."
+      }
+    ]
   },
   "sponsor": {
     "title": "Sponsor a child",
@@ -275,7 +386,8 @@
     "contact": "Contact",
     "rights": "All rights reserved.",
     "legal": "Legal notice",
-    "admin": "Admin area"
+    "admin": "Admin area",
+    "help": "Request assistance"
   },
   "legal": {
     "title": "Legal notice",
@@ -290,5 +402,35 @@
     "title": "Page not found",
     "text": "The page you are looking for does not exist or has been moved.",
     "back": "Back to home"
+  },
+  "partners": {
+    "title": "Our partners",
+    "lead": "Institutions and organizations with which ONG AICHA works.",
+    "items": [
+      "Ministry of Health of Côte d'Ivoire",
+      "MFFE – Ministry of Women, Family and Children",
+      "PNLCC – National Programme to Combat Climate Change",
+      "COLCC",
+      "COSIM",
+      "OIEDEAH"
+    ]
+  },
+  "help": {
+    "title": "Request assistance",
+    "lead": "Going through a difficult time? Tell us what you need: our team reviews every request with discretion.",
+    "kind": "Type of request",
+    "kinds": {
+      "SOS": "Social emergency (SOS)",
+      "WIDOW": "Support for widows",
+      "OTHER": "Other need"
+    },
+    "name": "Full name",
+    "phone": "Phone",
+    "email": "Email",
+    "nature": "Nature of the emergency or need",
+    "message": "Additional details (optional)",
+    "submit": "Send my request",
+    "success": "Your request has been received. Our team will contact you as soon as possible.",
+    "notice": "ONG AICHA reviews each request within its means. Submitting a request does not guarantee assistance. In case of immediate danger, call the emergency services."
   }
 }

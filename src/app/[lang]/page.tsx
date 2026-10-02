@@ -8,6 +8,7 @@ import { getActivities, getPosts } from "@/lib/content";
 import { Section, SectionTitle } from "@/components/ui";
 import { ActivityCard, PostCard } from "@/components/Cards";
 import { HeroSlider } from "@/components/HeroSlider";
+import { Partners } from "@/components/Partners";
 
 export const revalidate = 60;
 
@@ -43,15 +44,15 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
       <section className="relative isolate flex min-h-[78vh] items-end overflow-hidden text-white">
         <HeroSlider images={heroImages} />
-        <div className="relative mx-auto w-full max-w-7xl px-4 pb-16 pt-32 sm:px-6 sm:pb-24">
+        <div className="relative mx-auto w-full max-w-7xl px-4 pb-14 pt-32 sm:px-6 sm:pb-20"><div className="glass-green max-w-3xl rounded-3xl p-6 sm:p-10">
           <p className="reveal text-sm font-semibold uppercase tracking-widest text-gold">{h.heroEyebrow}</p>
           <h1 className="reveal mt-3 max-w-3xl text-5xl font-bold leading-tight sm:text-6xl lg:text-7xl">{h.heroTitle}</h1>
           <p className="reveal mt-5 max-w-2xl text-lg text-green-50/95 sm:text-xl">{h.heroText}</p>
           <div className="reveal mt-8 flex flex-wrap gap-3">
-            <Link href={`/${lang}/donate`} className="btn btn-gold text-lg">{h.ctaDonate}</Link>
+            <Link href={`/${lang}/donate`} className="btn btn-white text-lg">{h.ctaDonate}</Link>
             <Link href={`/${lang}/join`} className="btn btn-outline text-white hover:bg-white hover:text-green-800">{h.ctaJoin}</Link>
           </div>
-        </div>
+        </div></div>
       </section>
 
       <Section>
@@ -60,7 +61,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           {h.pillars.map((p, i) => {
             const Icon = pillarIcons[i];
             return (
-              <div key={p.title} className="rounded-2xl border border-line bg-white p-6 text-center shadow-sm">
+              <div key={p.title} className="glass lift rounded-2xl p-6 text-center">
                 <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-green-100 text-green-700"><Icon /></span>
                 <h3 className="mt-4 text-xl font-bold text-green-800">{p.title}</h3>
                 <p className="mt-2 text-muted">{p.text}</p>
@@ -70,7 +71,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         </div>
       </Section>
 
-      <section className="bg-green-50">
+      <section className="bg-green-50/50">
         <Section>
           <div className="grid items-center gap-10 lg:grid-cols-2">
             <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-xl">
@@ -86,12 +87,12 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         </Section>
       </section>
 
-      <section className="bg-green-800 text-white">
+      <section className="bg-gradient-to-br from-green-900 via-green-800 to-green-700 text-white">
         <Section>
           <h2 className="mb-10 text-center text-3xl font-bold sm:text-4xl">{h.statsTitle}</h2>
           <dl className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {h.stats.map((s) => (
-              <div key={s.label} className="text-center">
+              <div key={s.label} className="glass-green rounded-2xl p-6 text-center">
                 <dt className="sr-only">{s.label}</dt>
                 <dd className="font-display text-5xl font-bold text-gold">{s.value}</dd>
                 <p className="mt-2 text-green-50/90">{s.label}</p>
@@ -111,12 +112,12 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         </Section>
       )}
 
-      <section className="bg-cream">
+      <section>
         <Section>
           <SectionTitle title={h.involveTitle} />
           <div className="grid gap-6 md:grid-cols-3">
             {h.involve.map((x, i) => (
-              <div key={x.title} className="flex flex-col rounded-3xl bg-white p-8 text-center shadow-sm">
+              <div key={x.title} className="glass lift flex flex-col rounded-3xl p-8 text-center">
                 <h3 className="text-2xl font-bold text-green-800">{x.title}</h3>
                 <p className="mt-3 flex-1 text-muted">{x.text}</p>
                 <Link href={`/${lang}/${["donate", "sponsor", "join"][i]}`} className={`btn mt-6 ${i === 0 ? "btn-gold" : "btn-primary"}`}>{x.cta}</Link>
@@ -135,6 +136,16 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           <div className="mt-10 text-center"><Link href={`/${lang}/blog`} className="btn btn-outline text-green-700">{t.common.seeAll}</Link></div>
         </Section>
       )}
+      <Section>
+        <SectionTitle title={h.videoTitle} lead={h.videoLead} />
+        <div className="glass mx-auto max-w-4xl overflow-hidden rounded-3xl p-2">
+          <div className="aspect-video overflow-hidden rounded-2xl bg-black">
+            <iframe className="h-full w-full" loading="lazy" title={h.videoTitle} src="https://www.youtube-nocookie.com/embed/p8BbKY_9Ftw" allow="accelerometer; encrypted-media; picture-in-picture" allowFullScreen />
+          </div>
+        </div>
+      </Section>
+
+      <Partners t={t} />
     </>
   );
 }

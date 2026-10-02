@@ -1,0 +1,154 @@
+{
+  "newActivities": [
+    {
+      "slug": "enveloppe-pour-maman",
+      "category": "social",
+      "order": 10,
+      "coverImage": "/images/ramadan-paniers-2025-01.jpg",
+      "title": {
+        "fr": "Une enveloppe pour maman",
+        "en": "An Envelope for Mom",
+        "ar": "ظرف لأمي"
+      },
+      "summary": {
+        "fr": "Le programme de soutien aux veuves de l'ONG AICHA, pour accompagner les mères restées seules.",
+        "en": "ONG AICHA's program supporting widows, to stand by mothers left on their own.",
+        "ar": "برنامج منظمة عائشة لدعم الأرامل ومساندة الأمهات اللواتي بقين وحدهن."
+      },
+      "description": {
+        "fr": "« Une enveloppe pour maman » est le programme de soutien aux veuves de l'ONG AICHA.\n\nIl vise à apporter une aide concrète aux mères restées seules, en prolongement des actions menées chaque année en faveur des veuves, notamment pendant le Ramadan et la Tabaski.\n\nPour soutenir ce programme, choisissez « Une enveloppe pour maman » dans le formulaire de don.",
+        "en": "\"An Envelope for Mom\" is ONG AICHA's program supporting widows.\n\nIt aims to provide concrete help to mothers left on their own, building on the work carried out every year for widows, particularly during Ramadan and Tabaski.\n\nTo support this program, select \"An Envelope for Mom\" in the donation form.",
+        "ar": "«ظرف لأمي» هو برنامج منظمة عائشة لدعم الأرامل.\n\nيهدف إلى تقديم عون ملموس للأمهات اللواتي بقين وحدهن، امتدادًا للأعمال التي تُنفَّذ كل عام لصالح الأرامل، ولا سيما في رمضان وعيد الأضحى.\n\nلدعم هذا البرنامج، اختر «ظرف لأمي» في نموذج التبرع."
+      }
+    },
+    {
+      "slug": "ma-famille-solidaire",
+      "category": "social",
+      "order": 11,
+      "coverImage": "/images/tabaski-habits-neufs-2025-01.jpg",
+      "title": {
+        "fr": "Ma famille solidaire AICHA",
+        "en": "My AICHA Supportive Family",
+        "ar": "عائلتي المتضامنة عائشة"
+      },
+      "summary": {
+        "fr": "Le programme de parrainage des orphelins : une famille solidaire accompagne durablement un enfant.",
+        "en": "The orphan sponsorship program: a supportive family provides lasting support to a child.",
+        "ar": "برنامج كفالة الأيتام: أسرة متضامنة ترعى طفلًا رعاية مستدامة."
+      },
+      "description": {
+        "fr": "« Ma famille solidaire AICHA » est le programme de parrainage des orphelins.\n\nUne famille, une personne ou une entreprise s'engage à accompagner un ou plusieurs enfants de façon régulière : chaque mois, chaque trimestre ou chaque année.\n\nPour parrainer un enfant, remplissez le formulaire de parrainage : notre équipe vous contacte pour finaliser votre engagement.",
+        "en": "\"My AICHA Supportive Family\" is the orphan sponsorship program.\n\nA family, an individual or a company commits to supporting one or more children on a regular basis: monthly, quarterly or annually.\n\nTo sponsor a child, fill in the sponsorship form: our team will contact you to finalize your commitment.",
+        "ar": "«عائلتي المتضامنة عائشة» هو برنامج كفالة الأيتام.\n\nتلتزم أسرة أو شخص أو شركة برعاية طفل أو أكثر بصفة منتظمة: شهريًا أو فصليًا أو سنويًا.\n\nلكفالة طفل، املأ نموذج الكفالة، وسيتواصل معك فريقنا لإتمام التزامك."
+      }
+    },
+    {
+      "slug": "fonds-aide-sociale-urgente",
+      "category": "social",
+      "order": 12,
+      "coverImage": "/images/ramadan-paniers-2025-01.jpg",
+      "title": {
+        "fr": "Fonds d'aide sociale urgente",
+        "en": "Emergency Social Assistance Fund",
+        "ar": "صندوق المساعدة الاجتماعية العاجلة"
+      },
+      "summary": {
+        "fr": "Un fonds pour répondre aux cas sociaux urgents.",
+        "en": "A fund to respond to urgent social cases.",
+        "ar": "صندوق للاستجابة للحالات الاجتماعية الطارئة."
+      },
+      "description": {
+        "fr": "Le Fonds d'aide sociale urgente permet à l'ONG AICHA de réagir face aux cas sociaux urgents.\n\nVous pouvez l'alimenter en choisissant « Fonds d'aide sociale urgente » dans le formulaire de don. Si vous traversez vous-même une situation difficile, vous pouvez nous adresser une demande d'aide.",
+        "en": "The Emergency Social Assistance Fund enables ONG AICHA to respond to urgent social cases.\n\nYou can contribute to it by selecting \"Emergency Social Assistance Fund\" in the donation form. If you are going through a difficult situation yourself, you can send us a request for assistance.",
+        "ar": "يتيح صندوق المساعدة الاجتماعية العاجلة لمنظمة عائشة الاستجابة للحالات الاجتماعية الطارئة.\n\nيمكنك المساهمة فيه باختيار «صندوق المساعدة الاجتماعية العاجلة» في نموذج التبرع. وإذا كنت تمرّ بظرف صعب، فبإمكانك إرسال طلب مساعدة إلينا."
+      }
+    }
+  ],
+  "categories": {
+    "paniers-du-ramadan": "social",
+    "habits-neufs-tabaski": "social",
+    "nuit-de-la-solidarite": "social",
+    "en-route-pour-l-ecole": "education",
+    "journee-d-excellence": "education",
+    "vague-rose-et-rouge": "health",
+    "classe-rose": "health",
+    "cliniques-mobiles": "health",
+    "clinique-du-diabete": "health"
+  },
+  "impact": {
+    "paniers-du-ramadan": [
+      {
+        "value": "710",
+        "label": {
+          "fr": "familles et personnes vulnérables aidées (édition 2025)",
+          "en": "vulnerable families and individuals assisted (2025 edition)",
+          "ar": "أسرة وشخص من الفئات الهشة تلقوا المساعدة (نسخة 2025)"
+        }
+      }
+    ],
+    "habits-neufs-tabaski": [
+      {
+        "value": "300",
+        "label": {
+          "fr": "orphelins",
+          "en": "orphans",
+          "ar": "يتيم"
+        }
+      },
+      {
+        "value": "50",
+        "label": {
+          "fr": "veuves",
+          "en": "widows",
+          "ar": "أرملة"
+        }
+      }
+    ],
+    "en-route-pour-l-ecole": [
+      {
+        "value": "160",
+        "label": {
+          "fr": "enfants équipés pour la rentrée 2025",
+          "en": "children equipped for the 2025 school year",
+          "ar": "طفلًا جُهِّزوا للعودة المدرسية 2025"
+        }
+      },
+      {
+        "value": "10",
+        "label": {
+          "fr": "élèves du secondaire dont la scolarité annuelle est prise en charge",
+          "en": "secondary school students whose annual school fees are covered",
+          "ar": "تلاميذ في المرحلة الثانوية يتكفّل البرنامج برسومهم الدراسية السنوية"
+        }
+      }
+    ],
+    "vague-rose-et-rouge": [
+      {
+        "value": "500+",
+        "label": {
+          "fr": "femmes dépistées du cancer du sein (Grand-Bassam, 2023)",
+          "en": "women screened for breast cancer (Grand-Bassam, 2023)",
+          "ar": "امرأة خضعن للكشف عن سرطان الثدي (غراند باسام، 2023)"
+        }
+      },
+      {
+        "value": "600+",
+        "label": {
+          "fr": "personnes consultées pour le diabète et l'hypertension",
+          "en": "people tested for diabetes and hypertension",
+          "ar": "شخص خضعوا للكشف عن السكري وارتفاع ضغط الدم"
+        }
+      }
+    ],
+    "cliniques-mobiles": [
+      {
+        "value": "167",
+        "label": {
+          "fr": "participants à la clinique mobile de Koumassi (120 hommes, 47 femmes)",
+          "en": "participants at the Koumassi mobile clinic (120 men, 47 women)",
+          "ar": "مشاركًا في العيادة المتنقلة بكوماسي (120 رجلًا و47 امرأة)"
+        }
+      }
+    ]
+  }
+}

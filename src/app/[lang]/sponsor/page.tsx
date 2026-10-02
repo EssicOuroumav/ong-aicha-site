@@ -20,7 +20,7 @@ export default async function SponsorPage({ params }: PageProps<"/[lang]/sponsor
       <PageHero title={t.sponsor.title} lead={t.sponsor.lead} />
       <Section>
         <div className="grid gap-10 lg:grid-cols-5">
-          <div className="lg:col-span-3 rounded-3xl bg-white p-6 shadow-sm sm:p-10"><SponsorForm t={t} /></div>
+          <div className="lg:col-span-3 glass rounded-3xl p-6 sm:p-10"><SponsorForm t={t} /></div>
           <aside className="lg:col-span-2">
             <h2 className="text-2xl font-bold text-green-800">{t.sponsor.howTitle}</h2>
             <ol className="mt-6 space-y-5">

@@ -24,13 +24,13 @@ export function Header({ lang, t }: { lang: Locale; t: Dictionary }) {
   const isActive = (href: string) => (href === "" ? rest === "" : rest.startsWith(href));
 
   return (
-    <header className="sticky top-0 z-40 bg-cream/90 backdrop-blur border-b border-line">
+    <header className="glass-header sticky top-0 z-40 text-white">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2 sm:px-6">
         <Link href={`/${lang}`} className="flex items-center gap-2 shrink-0" aria-label={t.meta.siteName}>
-          <Image src="/logo.png" alt="" width={56} height={56} priority className="h-14 w-14 object-contain" />
+          <span className="rounded-2xl bg-white/95 p-1 shadow-md"><Image src="/logo.png" alt="" width={56} height={56} priority className="h-12 w-12 object-contain" /></span>
           <span className="hidden sm:block leading-tight">
-            <span className="block font-display text-lg font-bold text-green-800">AICHA</span>
-            <span className="block text-xs text-muted">{t.meta.tagline}</span>
+            <span className="block font-display text-lg font-bold text-white">AICHA</span>
+            <span className="block text-xs text-green-100/90">{t.meta.tagline}</span>
           </span>
         </Link>
 
@@ -40,8 +40,8 @@ export function Header({ lang, t }: { lang: Locale; t: Dictionary }) {
               key={l.href}
               href={`/${lang}${l.href}`}
               aria-current={isActive(l.href) ? "page" : undefined}
-              className={`rounded-full px-3 py-2 text-sm font-medium transition-colors hover:bg-green-100 ${
-                isActive(l.href) ? "text-green-700 bg-green-50" : "text-ink"
+              className={`rounded-full px-3 py-2 text-sm font-medium transition-colors ${
+                isActive(l.href) ? "bg-white text-green-800 shadow" : "text-white/90 hover:bg-white/15 hover:text-white"
               }`}
             >
               {l.label}
@@ -51,12 +51,12 @@ export function Header({ lang, t }: { lang: Locale; t: Dictionary }) {
 
         <div className="flex items-center gap-2">
           <LangSwitch lang={lang} rest={rest} label={t.nav.language} />
-          <Link href={`/${lang}/donate`} className="btn btn-gold hidden sm:inline-flex !py-2 text-sm">
+          <Link href={`/${lang}/donate`} className="btn btn-white hidden sm:inline-flex !py-2 text-sm">
             {t.nav.donate}
           </Link>
           <button
             type="button"
-            className="lg:hidden rounded-full p-2 hover:bg-green-100"
+            className="lg:hidden rounded-full p-2 hover:bg-white/15"
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? t.nav.close : t.nav.menu}
@@ -68,22 +68,22 @@ export function Header({ lang, t }: { lang: Locale; t: Dictionary }) {
       </div>
 
       {open && (
-        <nav id="mobile-nav" aria-label="Mobile" className="lg:hidden border-t border-line bg-cream px-4 pb-4">
+        <nav id="mobile-nav" aria-label="Mobile" className="lg:hidden border-t border-white/15 px-4 pb-4">
           <ul className="flex flex-col py-2">
             {links.map((l) => (
               <li key={l.href}>
                 <Link
                   href={`/${lang}${l.href}`}
                   onClick={() => setOpen(false)}
-                  className="block rounded-lg px-3 py-3 font-medium hover:bg-green-100"
+                  className="block rounded-lg px-3 py-3 font-medium hover:bg-white/15"
                 >
                   {l.label}
                 </Link>
               </li>
             ))}
             <li className="flex gap-2 pt-2">
-              <Link href={`/${lang}/donate`} onClick={() => setOpen(false)} className="btn btn-gold flex-1">{t.nav.donate}</Link>
-              <Link href={`/${lang}/sponsor`} onClick={() => setOpen(false)} className="btn btn-primary flex-1">{t.nav.sponsor}</Link>
+              <Link href={`/${lang}/donate`} onClick={() => setOpen(false)} className="btn btn-white flex-1">{t.nav.donate}</Link>
+              <Link href={`/${lang}/sponsor`} onClick={() => setOpen(false)} className="btn glass-green flex-1">{t.nav.sponsor}</Link>
             </li>
           </ul>
         </nav>
@@ -94,7 +94,7 @@ export function Header({ lang, t }: { lang: Locale; t: Dictionary }) {
 
 function LangSwitch({ lang, rest, label }: { lang: Locale; rest: string; label: string }) {
   return (
-    <ul className="flex items-center rounded-full border border-line bg-white p-0.5" aria-label={label}>
+    <ul className="flex items-center rounded-full border border-white/30 bg-white/10 p-0.5" aria-label={label}>
       {locales.map((l) => (
         <li key={l}>
           <Link
@@ -104,7 +104,7 @@ function LangSwitch({ lang, rest, label }: { lang: Locale; rest: string; label: 
             aria-current={l === lang ? "true" : undefined}
             title={localeNames[l]}
             className={`block rounded-full px-2.5 py-1 text-xs font-semibold uppercase ${
-              l === lang ? "bg-green-700 text-white" : "text-muted hover:text-green-700"
+              l === lang ? "bg-white text-green-800" : "text-white/85 hover:text-white"
             }`}
           >
             {l}

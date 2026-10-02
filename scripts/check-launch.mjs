@@ -5,7 +5,7 @@ const ok = (c, msg) => { console.log(`${c ? "✔" : "✘"} ${msg}`); if (!c) fai
 const get = (p, o) => fetch(base + p, { redirect: "manual", ...o });
 
 for (const l of ["fr", "en", "ar"]) {
-  for (const p of ["", "/about", "/activities", "/blog", "/gallery", "/contact", "/donate", "/sponsor", "/join", "/legal"]) {
+  for (const p of ["", "/about", "/activities", "/blog", "/gallery", "/contact", "/donate", "/sponsor", "/join", "/help", "/legal"]) {
     const r = await get(`/${l}${p}`);
     ok(r.status === 200, `/${l}${p} → ${r.status}`);
   }

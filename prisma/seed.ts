@@ -28,6 +28,16 @@ async function main() {
   for (const a of read<A>("prisma/seed-data/activities.json")) {
     await db.activity.upsert({ where: { slug: a.slug }, update: {}, create: { ...a, period: a.period ?? undefined, published: true } });
   }
+  // Enrichissements : catégories, chiffres d'impact et nouveaux programmes issus de l'ancien site
+  type Extra = { newActivities: (A & { category: string })[]; categories: Record<string, string>; impact: Record<string, object[]> };
+  const extra: Extra | null = existsSync("prisma/seed-data/activities.additions.json") ? JSON.parse(readFileSync("prisma/seed-data/activities.additions.json", "utf8")) : null;
+  if (extra) {
+    for (const [slug, category] of Object.entries(extra.categories)) await db.activity.updateMany({ where: { slug }, data: { category } });
+    for (const [slug, impact] of Object.entries(extra.impact)) await db.activity.updateMany({ where: { slug }, data: { impact } });
+    for (const a of extra.newActivities) {
+      await db.activity.upsert({ where: { slug: a.slug }, update: {}, create: { ...a, period: undefined, location: null, published: true } });
+    }
+  }
   type P = { slug: string; publishedAt: string; coverImage: string; title: object; excerpt: object; content: object };
   for (const p of read<P>("prisma/seed-data/posts.json")) {
     await db.post.upsert({ where: { slug: p.slug }, update: {}, create: { ...p, publishedAt: new Date(p.publishedAt), published: true } });

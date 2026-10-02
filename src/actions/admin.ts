@@ -127,7 +127,7 @@ export async function addManualDonation(form: FormData) {
     donorName: z.string().trim().min(2).max(120),
     amount: z.coerce.number().int().min(100).max(100_000_000),
     method: z.enum(["Mobile Money", "Espèces", "Virement", "Chèque", "Autre"]),
-    cause: z.string().max(40).default("general"),
+    cause: z.enum(["general", "clinics", "widows", "orphans", "school", "emergency", "red", "pink", "zakat"]).default("general"),
     email: z.union([z.literal(""), z.string().email()]).optional(),
     note: z.string().max(500).optional(),
   }).parse(Object.fromEntries(form));
@@ -175,6 +175,12 @@ export async function setMembership(form: FormData) {
   await requireArea("requests");
   await db.membership.update({ where: { id: String(form.get("id")) }, data: { status: requestStatus.parse(form.get("status")) } });
   revalidatePath("/admin/memberships");
+}
+
+export async function setHelpRequest(form: FormData) {
+  await requireArea("requests");
+  await db.helpRequest.update({ where: { id: String(form.get("id")) }, data: { status: requestStatus.parse(form.get("status")) } });
+  revalidatePath("/admin/help");
 }
 
 export async function toggleMessageRead(form: FormData) {

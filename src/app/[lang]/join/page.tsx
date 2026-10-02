@@ -18,7 +18,7 @@ export default async function JoinPage({ params }: PageProps<"/[lang]/join">) {
   return (
     <>
       <PageHero title={t.join.title} lead={t.join.lead} />
-      <Section><div className="mx-auto max-w-3xl rounded-3xl bg-white p-6 shadow-sm sm:p-10"><JoinForm t={t} /></div></Section>
+      <Section><div className="mx-auto max-w-3xl glass rounded-3xl p-6 sm:p-10"><JoinForm t={t} /></div></Section>
     </>
   );
 }

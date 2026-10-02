@@ -1,10 +1,29 @@
 "use client";
 
-import { useActionState, useState } from "react";
+import { useActionState, useEffect, useRef, useState, startTransition } from "react";
 import { Field, FormMessage, Honeypot } from "./FormKit";
-import { submitContact, submitDonation, submitJoin, submitSponsorship, type FormState } from "@/actions/forms";
+import { submitContact, submitDonation, submitHelp, submitJoin, submitSponsorship, type FormState } from "@/actions/forms";
 import type { Dictionary } from "@/i18n/dictionaries";
 import type { Locale } from "@/i18n/config";
+
+/** Soumission sans réinitialisation automatique : le visiteur garde sa saisie en cas d'erreur, le formulaire est vidé après un succès. */
+function useServerForm(serverAction: (prev: FormState | null, form: FormData) => Promise<FormState>) {
+  const [state, dispatch, pending] = useActionState<FormState | null, FormData>(serverAction, null);
+  const ref = useRef<HTMLFormElement>(null);
+  useEffect(() => {
+    if (state?.ok) ref.current?.reset();
+  }, [state]);
+  const formProps = {
+    ref,
+    noValidate: true,
+    onSubmit: (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      const data = new FormData(e.currentTarget);
+      startTransition(() => dispatch(data));
+    },
+  };
+  return { state, pending, formProps };
+}
 
 type Errors = { validation: string; rate: string; server: string };
 const errorsOf = (t: Dictionary): Errors => ({
@@ -13,20 +32,30 @@ const errorsOf = (t: Dictionary): Errors => ({
   server: t.common.error,
 });
 
+function Consent({ t }: { t: Dictionary }) {
+  return (
+    <label className="flex items-start gap-3 text-sm text-muted">
+      <input type="checkbox" name="consent" required className="mt-1 h-5 w-5 shrink-0 accent-green-700" />
+      <span>{t.common.consent}</span>
+    </label>
+  );
+}
+
 function Submit({ pending, label, busy }: { pending: boolean; label: string; busy: string }) {
   return <button type="submit" disabled={pending} className="btn btn-primary w-full sm:w-auto">{pending ? busy : label}</button>;
 }
 
 export function ContactForm({ t }: { t: Dictionary }) {
-  const [state, action, pending] = useActionState<FormState | null, FormData>(submitContact, null);
+  const { state, pending, formProps } = useServerForm(submitContact);
   const bad = (n: string) => state?.fields?.includes(n);
   return (
-    <form action={action} className="relative space-y-5" noValidate>
+    <form {...formProps} className="relative space-y-5">
       <Honeypot />
       <Field label={t.contact.name} name="name" required error={bad("name")} errorText={t.common.invalid}><input id="name" name="name" required autoComplete="name" className="field" /></Field>
       <Field label={t.contact.email} name="email" required error={bad("email")} errorText={t.common.invalid}><input id="email" name="email" type="email" required autoComplete="email" className="field" /></Field>
       <Field label={t.contact.subject} name="subject" optional={t.common.optional}><input id="subject" name="subject" className="field" /></Field>
       <Field label={t.contact.message} name="message" required error={bad("message")} errorText={t.common.invalid}><textarea id="message" name="message" rows={6} required className="field" /></Field>
+      <Consent t={t} />
       <Submit pending={pending} label={t.common.send} busy={t.common.sending} />
       <FormMessage state={state} success={t.contact.success} errors={errorsOf(t)} />
     </form>
@@ -34,10 +63,10 @@ export function ContactForm({ t }: { t: Dictionary }) {
 }
 
 export function JoinForm({ t }: { t: Dictionary }) {
-  const [state, action, pending] = useActionState<FormState | null, FormData>(submitJoin, null);
+  const { state, pending, formProps } = useServerForm(submitJoin);
   const bad = (n: string) => state?.fields?.includes(n);
   return (
-    <form action={action} className="relative space-y-5" noValidate>
+    <form {...formProps} className="relative space-y-5">
       <Honeypot />
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label={t.join.firstName} name="firstName" required error={bad("firstName")} errorText={t.common.invalid}><input id="firstName" name="firstName" required autoComplete="given-name" className="field" /></Field>
@@ -53,6 +82,7 @@ export function JoinForm({ t }: { t: Dictionary }) {
         </Field>
       </div>
       <Field label={t.join.message} name="message"><textarea id="message" name="message" rows={4} className="field" /></Field>
+      <Consent t={t} />
       <Submit pending={pending} label={t.join.submit} busy={t.common.sending} />
       <FormMessage state={state} success={t.join.success} errors={errorsOf(t)} />
     </form>
@@ -60,10 +90,10 @@ export function JoinForm({ t }: { t: Dictionary }) {
 }
 
 export function SponsorForm({ t }: { t: Dictionary }) {
-  const [state, action, pending] = useActionState<FormState | null, FormData>(submitSponsorship, null);
+  const { state, pending, formProps } = useServerForm(submitSponsorship);
   const bad = (n: string) => state?.fields?.includes(n);
   return (
-    <form action={action} className="relative space-y-5" noValidate>
+    <form {...formProps} className="relative space-y-5">
       <Honeypot />
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label={t.sponsor.name} name="fullName" required error={bad("fullName")} errorText={t.common.invalid}><input id="fullName" name="fullName" required autoComplete="name" className="field" /></Field>
@@ -82,6 +112,7 @@ export function SponsorForm({ t }: { t: Dictionary }) {
         <input type="checkbox" name="confirm" required className="mt-1 h-5 w-5 accent-green-700" />
         <span>{t.sponsor.confirm}</span>
       </label>
+      <Consent t={t} />
       <Submit pending={pending} label={t.sponsor.submit} busy={t.common.sending} />
       <FormMessage state={state} success={t.sponsor.success} errors={errorsOf(t)} />
     </form>
@@ -90,13 +121,13 @@ export function SponsorForm({ t }: { t: Dictionary }) {
 
 const presets = [2000, 5000, 10000, 25000, 50000];
 
-export function DonateForm({ t, lang }: { t: Dictionary; lang: Locale }) {
-  const [state, action, pending] = useActionState<FormState | null, FormData>(submitDonation, null);
+export function DonateForm({ t, lang, initialCause = "general" }: { t: Dictionary; lang: Locale; initialCause?: string }) {
+  const { state, pending, formProps } = useServerForm(submitDonation);
   const [amount, setAmount] = useState<number>(10000);
   const bad = (n: string) => state?.fields?.includes(n);
   const fmt = (n: number) => new Intl.NumberFormat(lang === "ar" ? "ar-u-nu-latn" : lang === "en" ? "en-GB" : "fr-FR").format(n);
   return (
-    <form action={action} className="relative space-y-6" noValidate>
+    <form {...formProps} className="relative space-y-6">
       <Honeypot />
       <input type="hidden" name="lang" value={lang} />
       <fieldset>
@@ -116,7 +147,7 @@ export function DonateForm({ t, lang }: { t: Dictionary; lang: Locale }) {
         </div>
       </fieldset>
       <Field label={t.donate.cause} name="cause">
-        <select id="cause" name="cause" className="field" defaultValue="general">
+        <select id="cause" name="cause" className="field" defaultValue={initialCause}>
           {(Object.keys(t.donate.causes) as (keyof typeof t.donate.causes)[]).map((k) => <option key={k} value={k}>{t.donate.causes[k]}</option>)}
         </select>
       </Field>
@@ -128,11 +159,37 @@ export function DonateForm({ t, lang }: { t: Dictionary; lang: Locale }) {
       </div>
       <Field label={t.donate.message} name="message"><textarea id="message" name="message" rows={3} className="field" /></Field>
       <label className="flex items-center gap-3 text-sm"><input type="checkbox" name="anonymous" className="h-5 w-5 accent-green-700" />{t.donate.anonymous}</label>
+      <Consent t={t} />
       <button type="submit" disabled={pending || amount < 500} className="btn btn-gold w-full text-lg !py-4">
         {pending ? t.common.sending : `${t.donate.submit} · ${fmt(amount || 0)} FCFA`}
       </button>
       <p className="text-center text-sm text-muted">🔒 {t.donate.secure}</p>
       <FormMessage state={state} success="" errors={errorsOf(t)} />
+    </form>
+  );
+}
+
+export function HelpForm({ t }: { t: Dictionary }) {
+  const { state, pending, formProps } = useServerForm(submitHelp);
+  const bad = (n: string) => state?.fields?.includes(n);
+  return (
+    <form {...formProps} className="relative space-y-5">
+      <Honeypot />
+      <Field label={t.help.kind} name="kind" required>
+        <select id="kind" name="kind" className="field" defaultValue="SOS">
+          {(["SOS", "WIDOW", "OTHER"] as const).map((k) => <option key={k} value={k}>{t.help.kinds[k]}</option>)}
+        </select>
+      </Field>
+      <div className="grid gap-5 sm:grid-cols-2">
+        <Field label={t.help.name} name="name" required error={bad("name")} errorText={t.common.invalid}><input id="name" name="name" required autoComplete="name" className="field" /></Field>
+        <Field label={t.help.phone} name="phone" required error={bad("phone")} errorText={t.common.invalid}><input id="phone" name="phone" type="tel" required autoComplete="tel" dir="ltr" className="field" /></Field>
+      </div>
+      <Field label={t.help.email} name="email" optional={t.common.optional} error={bad("email")} errorText={t.common.invalid}><input id="email" name="email" type="email" autoComplete="email" className="field" /></Field>
+      <Field label={t.help.nature} name="nature" required error={bad("nature")} errorText={t.common.invalid}><input id="nature" name="nature" required className="field" /></Field>
+      <Field label={t.help.message} name="message"><textarea id="message" name="message" rows={4} className="field" /></Field>
+      <Consent t={t} />
+      <Submit pending={pending} label={t.help.submit} busy={t.common.sending} />
+      <FormMessage state={state} success={t.help.success} errors={errorsOf(t)} />
     </form>
   );
 }

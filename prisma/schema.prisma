@@ -38,6 +38,12 @@ enum SponsorshipFrequency {
   YEARLY
 }
 
+enum HelpKind {
+  SOS
+  WIDOW
+  OTHER
+}
+
 enum MediaKind {
   PHOTO
   VIDEO
@@ -75,6 +81,8 @@ model Post {
 model Activity {
   id          String   @id @default(cuid())
   slug        String   @unique
+  category    String?
+  impact      Json?
   title       Json
   summary     Json
   description Json
@@ -164,4 +172,18 @@ model ContactMessage {
 model Setting {
   key   String @id
   value Json
+}
+
+// Demandes d'aide adressées à l'ONG (urgence sociale, veuves, autre besoin)
+model HelpRequest {
+  id        String        @id @default(cuid())
+  kind      HelpKind      @default(SOS)
+  name      String
+  phone     String
+  email     String?
+  nature    String
+  message   String?
+  status    RequestStatus @default(NEW)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
 }

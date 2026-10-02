@@ -8,7 +8,7 @@ type Common = { slug: string; coverImage: string | null; title: unknown };
 
 export function ActivityCard({ a, lang, label }: { a: Common & { summary: unknown }; lang: Locale; label: string }) {
   return (
-    <Link href={`/${lang}/activities/${a.slug}`} className="group flex flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+    <Link href={`/${lang}/activities/${a.slug}`} className="group flex flex-col overflow-hidden rounded-2xl glass lift">
       <div className="relative aspect-[4/3] overflow-hidden bg-green-100">
         {a.coverImage && <Image src={a.coverImage} alt="" fill sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw" className="object-cover transition duration-500 group-hover:scale-105" />}
       </div>
@@ -23,7 +23,7 @@ export function ActivityCard({ a, lang, label }: { a: Common & { summary: unknow
 
 export function PostCard({ p, lang, label }: { p: Common & { excerpt: unknown; publishedAt: Date | null }; lang: Locale; label: string }) {
   return (
-    <Link href={`/${lang}/blog/${p.slug}`} className="group flex flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+    <Link href={`/${lang}/blog/${p.slug}`} className="group flex flex-col overflow-hidden rounded-2xl glass lift">
       <div className="relative aspect-[16/10] overflow-hidden bg-green-100">
         {p.coverImage && <Image src={p.coverImage} alt="" fill sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw" className="object-cover transition duration-500 group-hover:scale-105" />}
       </div>

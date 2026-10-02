@@ -18,7 +18,7 @@ export default async function DonationsPage() {
           <input name="donorName" placeholder="Nom du donateur" required className="field sm:col-span-2" aria-label="Nom du donateur" />
           <input name="amount" type="number" min={100} step={100} placeholder="Montant FCFA" required className="field" aria-label="Montant en FCFA" />
           <select name="method" className="field" aria-label="Mode de réception">{["Mobile Money", "Espèces", "Virement", "Chèque", "Autre"].map((m) => <option key={m}>{m}</option>)}</select>
-          <select name="cause" className="field" aria-label="Cause">{[["general", "Général"], ["health", "Santé"], ["education", "Éducation"], ["ramadan", "Ramadan/Tabaski"], ["orphans", "Orphelins et veuves"]].map(([v, l]) => <option key={v} value={v}>{l}</option>)}</select>
+          <select name="cause" className="field" aria-label="Cause">{[["general", "Général"], ["clinics", "Cliniques mobiles"], ["widows", "Une enveloppe pour maman"], ["orphans", "Ma famille solidaire"], ["school", "En route pour l'école"], ["emergency", "Aide sociale urgente"], ["red", "Initiative Rouge"], ["pink", "Classe Rose"], ["zakat", "Zakat"]].map(([v, l]) => <option key={v} value={v}>{l}</option>)}</select>
           <button className="btn btn-primary">Enregistrer</button>
           <input name="email" type="email" placeholder="E-mail (facultatif)" className="field sm:col-span-3" aria-label="E-mail" />
           <input name="note" placeholder="Note (facultatif)" className="field sm:col-span-3" aria-label="Note" />

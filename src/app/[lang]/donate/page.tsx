@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { isLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getSettings } from "@/lib/settings";
-import { PageHero, Section } from "@/components/ui";
+import { PageHero, Section, SectionTitle } from "@/components/ui";
 import Link from "next/link";
 import { DonateForm } from "@/components/Forms";
 import { paydunyaConfigured } from "@/lib/paydunya";
@@ -16,8 +16,9 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/donate">):
   return { title: (await getDictionary(lang)).donate.title };
 }
 
-export default async function DonatePage({ params }: PageProps<"/[lang]/donate">) {
+export default async function DonatePage({ params, searchParams }: PageProps<"/[lang]/donate">) {
   const { lang } = await params;
+  const { cause } = await searchParams;
   if (!isLocale(lang)) notFound();
   const [t, s] = await Promise.all([getDictionary(lang), getSettings()]);
   const online = paydunyaConfigured() || process.env.NODE_ENV !== "production";
@@ -26,8 +27,8 @@ export default async function DonatePage({ params }: PageProps<"/[lang]/donate">
       <PageHero title={t.donate.title} lead={t.donate.lead} />
       <Section>
         <div className="grid gap-10 lg:grid-cols-5">
-          <div className="lg:col-span-3 rounded-3xl bg-white p-6 shadow-sm sm:p-10">
-            {online ? <DonateForm t={t} lang={lang} /> : (
+          <div className="lg:col-span-3 glass rounded-3xl p-6 sm:p-10">
+            {online ? <DonateForm t={t} lang={lang} initialCause={typeof cause === "string" && cause in t.donate.causes ? cause : "general"} /> : (
               <div className="text-center">
                 <h2 className="text-2xl font-bold text-green-800">{t.donate.offlineTitle}</h2>
                 <p className="mt-4 text-muted">{t.donate.offlineText}</p>
@@ -36,11 +37,22 @@ export default async function DonatePage({ params }: PageProps<"/[lang]/donate">
               </div>
             )}
           </div>
-          <aside className="lg:col-span-2 rounded-3xl bg-green-50 p-6 sm:p-8 h-fit">
+          <aside className="lg:col-span-2 glass rounded-3xl p-6 sm:p-8 h-fit">
             <h2 className="text-2xl font-bold text-green-800">{t.donate.otherWaysTitle}</h2>
             <p className="mt-4 text-muted">{t.donate.otherWays}</p>
             <p className="mt-4 font-semibold" dir="ltr">{s.donationPhone}</p>
           </aside>
+        </div>
+      </Section>
+      <Section>
+        <SectionTitle title={t.donate.faqTitle} />
+        <div className="mx-auto max-w-3xl space-y-3">
+          {t.donate.faq.map((f) => (
+            <details key={f.q} className="glass group rounded-2xl p-5">
+              <summary className="cursor-pointer list-none font-semibold text-green-900 marker:hidden">{f.q}</summary>
+              <p className="mt-3 text-muted">{f.a}</p>
+            </details>
+          ))}
         </div>
       </Section>
     </>

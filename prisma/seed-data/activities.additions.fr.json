@@ -1,0 +1,28 @@
+{
+  "newActivities": [
+    { "slug": "enveloppe-pour-maman", "category": "social", "order": 10, "coverImage": "/images/ramadan-paniers-2025-01.jpg",
+      "title": "Une enveloppe pour maman",
+      "summary": "Le programme de soutien aux veuves de l'ONG AICHA, pour accompagner les mères restées seules.",
+      "description": "« Une enveloppe pour maman » est le programme de soutien aux veuves de l'ONG AICHA.\n\nIl vise à apporter une aide concrète aux mères restées seules, en prolongement des actions menées chaque année en faveur des veuves, notamment pendant le Ramadan et la Tabaski.\n\nPour soutenir ce programme, choisissez « Une enveloppe pour maman » dans le formulaire de don." },
+    { "slug": "ma-famille-solidaire", "category": "social", "order": 11, "coverImage": "/images/tabaski-habits-neufs-2025-01.jpg",
+      "title": "Ma famille solidaire AICHA",
+      "summary": "Le programme de parrainage des orphelins : une famille solidaire accompagne durablement un enfant.",
+      "description": "« Ma famille solidaire AICHA » est le programme de parrainage des orphelins.\n\nUne famille, une personne ou une entreprise s'engage à accompagner un ou plusieurs enfants de façon régulière : chaque mois, chaque trimestre ou chaque année.\n\nPour parrainer un enfant, remplissez le formulaire de parrainage : notre équipe vous contacte pour finaliser votre engagement." },
+    { "slug": "fonds-aide-sociale-urgente", "category": "social", "order": 12, "coverImage": "/images/ramadan-paniers-2025-01.jpg",
+      "title": "Fonds d'aide sociale urgente",
+      "summary": "Un fonds pour répondre aux cas sociaux urgents.",
+      "description": "Le Fonds d'aide sociale urgente permet à l'ONG AICHA de réagir face aux cas sociaux urgents.\n\nVous pouvez l'alimenter en choisissant « Fonds d'aide sociale urgente » dans le formulaire de don. Si vous traversez vous-même une situation difficile, vous pouvez nous adresser une demande d'aide." }
+  ],
+  "categories": {
+    "paniers-du-ramadan": "social", "habits-neufs-tabaski": "social", "nuit-de-la-solidarite": "social",
+    "en-route-pour-l-ecole": "education", "journee-d-excellence": "education",
+    "vague-rose-et-rouge": "health", "classe-rose": "health", "cliniques-mobiles": "health", "clinique-du-diabete": "health"
+  },
+  "impact": {
+    "paniers-du-ramadan": [ { "value": "710", "label": "familles et personnes vulnérables aidées (édition 2025)" }, { "value": "6e", "label": "édition du programme en 2025" } ],
+    "habits-neufs-tabaski": [ { "value": "300", "label": "orphelins" }, { "value": "50", "label": "veuves" } ],
+    "en-route-pour-l-ecole": [ { "value": "160", "label": "enfants équipés pour la rentrée 2025" }, { "value": "10", "label": "élèves du secondaire dont la scolarité annuelle est prise en charge" } ],
+    "vague-rose-et-rouge": [ { "value": "500+", "label": "femmes dépistées du cancer du sein (Grand-Bassam, 2023)" }, { "value": "600+", "label": "personnes consultées pour le diabète et l'hypertension" } ],
+    "cliniques-mobiles": [ { "value": "167", "label": "participants à la clinique mobile de Koumassi (120 hommes, 47 femmes)" } ]
+  }
+}

@@ -15,9 +15,10 @@ export function Footer({ lang, t, settings }: { lang: Locale; t: Dictionary; set
     { href: "/sponsor", label: t.nav.sponsor },
     { href: "/join", label: t.nav.join },
     { href: "/contact", label: t.nav.contact },
+    { href: "/help", label: t.footer.help },
   ];
   return (
-    <footer className="bg-green-900 text-green-50 mt-20">
+    <footer className="mt-20 bg-gradient-to-b from-green-800 to-green-900 text-green-50">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3">
         <div>
           <div className="flex items-center gap-3">
