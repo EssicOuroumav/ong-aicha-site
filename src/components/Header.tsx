@@ -27,7 +27,7 @@ export function Header({ lang, t }: { lang: Locale; t: Dictionary }) {
     <header className="sticky top-0 z-40 bg-white px-2 pb-2 pt-2 sm:px-4">
       <div className="glass-header mx-auto max-w-7xl rounded-2xl text-white">
         <div className="flex items-center justify-between gap-4 px-4 py-2.5 sm:px-6">
-          <Link href={`/${lang}`} className="flex shrink-0 items-center gap-3" aria-label={t.meta.siteName}>
+          <Link href={`/${lang}`} className="flex shrink-0 items-center gap-3" aria-label={`AICHA ${t.meta.tagline}`}>
             <span className="rounded-xl bg-white p-1 shadow-md"><Image src="/logo.png" alt="" width={56} height={56} priority className="h-10 w-10 object-contain" /></span>
             <span className="hidden leading-tight xl:block">
               <span className="block font-display text-lg font-extrabold uppercase tracking-[0.16em]">AICHA</span>

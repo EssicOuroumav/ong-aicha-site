@@ -24,6 +24,10 @@
 ## Sauvegardes et erreurs (2 octobre 2026)
 - Journal d'erreurs dans l'admin, sauvegarde JSON (admin + `npm run db:backup[:prod]`), voir docs/SAUVEGARDES.md.
 
+## Accessibilité et performance (2 octobre 2026, mesures Lighthouse sur le site en ligne)
+- Avant : accueil mobile perf 71 (page blanche ~8 s : fond fixe + chargement) ; après corrections : 88 (SI 3,2 s → 0,9 s). Accessibilité 100 sur toutes les pages sauf corrections d'ordre des titres et d'étiquette du logo (faites). Bonnes pratiques 100, SEO 100.
+- Rejouer : `npx lighthouse <url> --only-categories=performance,accessibility`.
+
 ## Reste à faire
 1. Test d'un don PayDunya en mode test, puis passage en live (clés live + `PAYDUNYA_MODE=live` + URL IPN).
 2. Nouveau domaine au nom de l'ONG → Vercel → Resend → `NEXT_PUBLIC_SITE_URL`.

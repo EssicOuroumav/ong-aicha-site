@@ -10,7 +10,8 @@ import { getSettings } from "@/lib/settings";
 
 const display = Inter_Tight({ subsets: ["latin"], style: ["normal", "italic"], variable: "--font-display", display: "swap" });
 const body = Inter({ subsets: ["latin"], variable: "--font-body", display: "swap" });
-const arabic = Cairo({ subsets: ["arabic", "latin"], variable: "--font-arabic", display: "swap" });
+// Cairo n'est préchargée que pour l'arabe (inutile sur les pages FR/EN : ~50 Ko en moins sur le chemin critique)
+const arabic = Cairo({ subsets: ["arabic", "latin"], variable: "--font-arabic", display: "swap", preload: false });
 
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));

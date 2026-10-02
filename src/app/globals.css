@@ -45,7 +45,7 @@ body {
     radial-gradient(900px 520px at 100% 18%, rgba(203, 167, 79, 0.12), transparent 58%),
     radial-gradient(900px 600px at 50% 105%, rgba(30, 123, 53, 0.12), transparent 60%),
     var(--cream);
-  background-attachment: fixed;
+  background-attachment: scroll;
   color: var(--ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
