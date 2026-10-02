@@ -215,7 +215,7 @@
     "otherWaysTitle": "Other ways to give",
     "otherWays": "In-kind donations: drop them off at our headquarters in Port-Bouët Abattoir or contact us and we will come to collect them. Bank transfer or cheque: contact us to get our bank details.",
     "successTitle": "Thank you for your generosity!",
-    "successText": "Your donation has been recorded. May Allah reward you a hundredfold. A receipt will be sent to you by email.",
+    "successText": "Your donation has been recorded. May Allah reward you a hundredfold.",
     "pendingTitle": "Payment being verified",
     "pendingText": "We are waiting for confirmation from your operator. This page will update automatically.",
     "failedTitle": "The payment did not go through",
@@ -224,7 +224,8 @@
     "reference": "Reference",
     "offlineTitle": "Give by Mobile Money",
     "offlineText": "Online payment is coming soon. In the meantime, you can give right now by Mobile Money (Orange, MTN, Moov, Wave) to the number below, then write to us to receive your receipt.",
-    "offlineCta": "Send us your donation reference"
+    "offlineCta": "Send us your donation reference",
+    "receiptNote": "A receipt will be sent to you by email."
   },
   "sponsor": {
     "title": "Sponsor a child",

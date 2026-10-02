@@ -215,7 +215,7 @@
     "otherWaysTitle": "Autres façons de donner",
     "otherWays": "Dons en nature : déposez-les à notre siège de Port-Bouët Abattoir ou contactez-nous pour que nous venions les récupérer. Virement ou chèque : contactez-nous pour obtenir nos coordonnées bancaires.",
     "successTitle": "Merci pour votre générosité !",
-    "successText": "Votre don a bien été enregistré. Qu'Allah vous le rende au centuple. Un reçu vous sera envoyé par e-mail.",
+    "successText": "Votre don a bien été enregistré. Qu'Allah vous le rende au centuple.",
     "pendingTitle": "Paiement en cours de vérification",
     "pendingText": "Nous attendons la confirmation de votre opérateur. Cette page se mettra à jour automatiquement.",
     "failedTitle": "Le paiement n'a pas abouti",
@@ -224,7 +224,8 @@
     "reference": "Référence",
     "offlineTitle": "Donnez par Mobile Money",
     "offlineText": "Le paiement en ligne arrive bientôt. En attendant, vous pouvez donner dès maintenant par Mobile Money (Orange, MTN, Moov, Wave) au numéro ci-dessous, puis nous écrire pour recevoir votre reçu.",
-    "offlineCta": "Nous envoyer la référence du don"
+    "offlineCta": "Nous envoyer la référence du don",
+    "receiptNote": "Un reçu vous sera envoyé par e-mail."
   },
   "sponsor": {
     "title": "Parrainer un enfant",
