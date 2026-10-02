@@ -19,7 +19,8 @@ export async function POST(request: Request) {
     const donation = await db.donation.findFirst({ where: { providerToken: token } });
     if (!donation) return NextResponse.json({ ok: false }, { status: 404 });
     await syncDonation(donation.reference);
-    return NextResponse.json({ ok: true });
+    // PayDunya exige la réponse texte « ROK » pour valider l'URL IPN avant le passage en production
+    return new NextResponse("ROK", { status: 200, headers: { "Content-Type": "text/plain; charset=utf-8" } });
   } catch (e) {
     console.error("[ipn]", e);
     return NextResponse.json({ ok: false }, { status: 500 });

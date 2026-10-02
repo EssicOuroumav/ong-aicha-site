@@ -3,7 +3,11 @@
     "slug": "paniers-du-ramadan",
     "order": 1,
     "coverImage": "/images/ramadan-paniers-2025-01.jpg",
-    "title": {"fr": "Les Paniers du Ramadan", "en": "The Ramadan Baskets", "ar": "سلال رمضان"},
+    "title": {
+      "fr": "Les Paniers du Ramadan",
+      "en": "The Ramadan Baskets",
+      "ar": "سلال رمضان"
+    },
     "summary": {
       "fr": "Une grande caravane de solidarité qui distribue chaque année des vivres aux familles démunies, aux veuves, aux orphelins et aux personnes en situation de handicap pendant le mois sacré.",
       "en": "A large solidarity caravan that distributes food every year to struggling families, widows, orphans and people with disabilities during the holy month.",
@@ -14,14 +18,22 @@
       "en": "The Ramadan Baskets are a large-scale social assistance caravan. ONG AICHA collects donations in kind and in cash from well-wishers, then distributes them as food kits (rice, oil, sugar, pasta and more) to struggling people in disadvantaged neighbourhoods identified in advance.\n\nThe 6th edition, in 2025, was launched on Saturday 15 March in Yopougon (Port-Bouët II). It helped 710 vulnerable families and individuals: 310 families in Yopougon, 150 in Attécoubé, 160 in Adjamé, as well as the 100 residents of the Foyer d'Accueil d'Abidjan orphanage, who received mattresses, food, medicine, toys, hygiene products, clothes and shoes.\n\nPeople who are sick and in need, widows, orphans, the blind and people with disabilities: every year, ONG AICHA responds to urgent needs identified beforehand, bringing dignity and comfort to the most fragile during the month of Ramadan. The 2025 edition was supported by the Porte O Foundation.",
       "ar": "سلال رمضان قافلة واسعة للمساعدة الاجتماعية. تجمع منظمة AICHA تبرعات عينية ونقدية من أهل الخير، ثم توزّعها على شكل حقائب غذائية (أرز وزيت وسكر ومعكرونة وغيرها) على المحتاجين في أحياء فقيرة تم تحديدها مسبقًا.\n\nانطلقت النسخة السادسة عام 2025 يوم السبت 15 مارس في يوبوغون (بورت بوي الثانية)، وشملت 710 أسر وأشخاص في وضع هشّ: 310 أسر في يوبوغون، و150 في أتيكوبي، و160 في أدجامي، إضافة إلى 100 نزيل في دار الأيتام «Foyer d'Accueil d'Abidjan» الذين تلقّوا فُرُشًا ومواد غذائية وأدوية وألعابًا ومستلزمات نظافة وملابس وأحذية.\n\nمن مرضى معوزين وأرامل وأيتام وكفيفين وأشخاص ذوي إعاقة، تستجيب المنظمة كل عام لاحتياجات عاجلة تم تحديدها مسبقًا، فتمنح الأكثر هشاشة الكرامة والطمأنينة في شهر رمضان. وقد حظيت نسخة 2025 بدعم مؤسسة «بورت أو»."
     },
-    "period": {"fr": "Chaque année, pendant le mois de Ramadan", "en": "Every year, during the month of Ramadan", "ar": "كل عام خلال شهر رمضان"},
+    "period": {
+      "fr": "Chaque année, pendant le mois de Ramadan",
+      "en": "Every year, during the month of Ramadan",
+      "ar": "كل عام خلال شهر رمضان"
+    },
     "location": "Abidjan (Yopougon, Attécoubé, Adjamé)"
   },
   {
     "slug": "habits-neufs-tabaski",
     "order": 2,
     "coverImage": "/images/tabaski-habits-neufs-2025-01.jpg",
-    "title": {"fr": "Des habits neufs pour la Tabaski", "en": "New Clothes for Tabaski", "ar": "ملابس جديدة للعيد (تاباسكي)"},
+    "title": {
+      "fr": "Des habits neufs pour la Tabaski",
+      "en": "New Clothes for Tabaski",
+      "ar": "ملابس جديدة للعيد (تاباسكي)"
+    },
     "summary": {
       "fr": "Chaque veille de Tabaski, des vivres et des vêtements neufs sont offerts aux orphelins et aux veuves pour qu'ils célèbrent la fête dans la dignité et la joie.",
       "en": "On the eve of Tabaski, food and brand-new clothes are given to orphans and widows so that they can celebrate the festival with dignity and joy.",
@@ -32,14 +44,22 @@
       "en": "\"New Clothes for Tabaski\" is one of ONG AICHA's flagship field activities. It offers food and brand-new clothes to orphans and widows on the eve of the festival, so that everyone can celebrate it with dignity and comfort despite everyday hardship.\n\nIn 2024, the campaign targeted 300 orphans and 50 widows in the Abidjan district. Beyond the distribution of food, particular attention is given to new clothes: seeing a child wear a festive outfit for the first time is a real moment of comfort for families.\n\nThis initiative embodies the values of ONG AICHA: solidarity, empathy and mutual support. It relies on the generosity of donors, and anyone can take part through a donation in kind or a contribution before the festival.",
       "ar": "«ملابس جديدة للعيد» من أبرز الأنشطة الميدانية لمنظمة AICHA. تقدّم مواد غذائية وملابس جديدة للأيتام والأرامل عشية العيد، حتى يحتفل الجميع به في كرامة وراحة رغم صعوبات الحياة.\n\nفي عام 2024 استهدفت الحملة 300 يتيم و50 أرملة في مقاطعة أبيدجان. وإلى جانب توزيع المواد الغذائية، نولي عناية خاصة بالملابس الجديدة، فرؤية طفل يرتدي ثياب العيد لأول مرة لحظة طمأنينة حقيقية للأسر.\n\nتجسّد هذه المبادرة قيم المنظمة: التضامن والتعاطف والتكافل. وهي تقوم على كرم المحسنين، ويمكن لكل شخص أن يشارك فيها بتبرع عيني أو مساهمة قبل العيد."
     },
-    "period": {"fr": "Veille de la Tabaski (juin 2024 pour la dernière édition planifiée)", "en": "Eve of Tabaski (June 2024 for the latest planned edition)", "ar": "عشية عيد الأضحى (يونيو 2024 في آخر نسخة مبرمجة)"},
+    "period": {
+      "fr": "Veille de la Tabaski (juin 2024 pour la dernière édition planifiée)",
+      "en": "Eve of Tabaski (June 2024 for the latest planned edition)",
+      "ar": "عشية عيد الأضحى (يونيو 2024 في آخر نسخة مبرمجة)"
+    },
     "location": "District d'Abidjan"
   },
   {
     "slug": "en-route-pour-l-ecole",
     "order": 3,
-    "coverImage": "/images/tabaski-habits-neufs-2025-01.jpg",
-    "title": {"fr": "En route pour l'école", "en": "On the Way to School", "ar": "في الطريق إلى المدرسة"},
+    "coverImage": "/images/route-ecole-2025-01.jpg",
+    "title": {
+      "fr": "En route pour l'école",
+      "en": "On the Way to School",
+      "ar": "في الطريق إلى المدرسة"
+    },
     "summary": {
       "fr": "Chaque rentrée, des kits scolaires sont offerts aux enfants vulnérables, et la scolarité complète de certains élèves est prise en charge, avec une attention particulière pour les jeunes filles.",
       "en": "Every back-to-school season, school kits are given to vulnerable children, and the full tuition of some pupils is covered, with special attention to girls.",
@@ -50,14 +70,22 @@
       "en": "\"On the Way to School\" puts into practice the conviction that education is the key to the future. The programme supports United Nations Sustainable Development Goal 4, which aims for quality education accessible to all, and focuses on vulnerable children, especially girls, for whom access to school is often a challenge.\n\nOn Saturday 27 September 2025, an official distribution ceremony brought together 160 children, from primary school to the final year of secondary school, from vulnerable families across several districts of Abidjan. Among them, 97 were primary pupils. They received their supplies to start the school year with peace of mind, thanks in particular to the generosity of Mr KONE Brahima Yves, Director General of the Coffee-Cocoa Council, who donated one hundred school kits.\n\nThe full annual tuition of 10 secondary school pupils, including seven girls, was also covered. The event, sponsored by El Hadj Saïd Savadogo, took place in the presence of several dignitaries, including the representative of the Ministry of Women, Family and Children.",
       "ar": "يجسّد برنامج «في الطريق إلى المدرسة» قناعة المنظمة بأن التعليم مفتاح المستقبل. وهو ينسجم مع الهدف الرابع من أهداف التنمية المستدامة للأمم المتحدة الداعي إلى تعليم جيد متاح للجميع، ويركّز على الأطفال في وضع هشّ، ولا سيما الفتيات اللواتي كثيرًا ما يشكّل الالتحاق بالمدرسة تحديًا بالنسبة لهنّ.\n\nفي يوم السبت 27 سبتمبر 2025 جمع حفل رسمي للتوزيع 160 طفلًا، من المرحلة الابتدائية حتى السنة النهائية، ينتمون إلى أسر هشّة في عدة بلديات من أبيدجان، منهم 97 تلميذًا في الابتدائي. وتسلّموا أدواتهم المدرسية لبدء العام الدراسي بطمأنينة، بفضل كرم السيد كوني إبراهيما إيف، المدير العام لمجلس البن والكاكاو، الذي تبرّع بمئة حقيبة مدرسية.\n\nكما تم التكفّل بالكامل بالرسوم الدراسية السنوية لعشرة تلاميذ في المرحلة الثانوية، بينهم سبع فتيات. وجرى الحفل برعاية الحاج سعيد سافادوغو، بحضور عدة شخصيات منها ممثلة وزارة المرأة والأسرة والطفل."
     },
-    "period": {"fr": "Chaque rentrée scolaire (septembre)", "en": "Every back-to-school season (September)", "ar": "عند كل دخول مدرسي (سبتمبر)"},
+    "period": {
+      "fr": "Chaque rentrée scolaire (septembre)",
+      "en": "Every back-to-school season (September)",
+      "ar": "عند كل دخول مدرسي (سبتمبر)"
+    },
     "location": "Abidjan"
   },
   {
     "slug": "vague-rose-et-rouge",
     "order": 4,
     "coverImage": "/images/vague-rose-port-bouet-2025-06.jpg",
-    "title": {"fr": "La Vague Rose et Rouge", "en": "The Pink and Red Wave", "ar": "الموجة الوردية والحمراء"},
+    "title": {
+      "fr": "La Vague Rose et Rouge",
+      "en": "The Pink and Red Wave",
+      "ar": "الموجة الوردية والحمراء"
+    },
     "summary": {
       "fr": "Une campagne gratuite de dépistage des cancers du sein et du col de l'utérus, de l'hypertension et du diabète, avec don de sang bénévole, au plus près des populations.",
       "en": "A free screening campaign for breast and cervical cancer, hypertension and diabetes, with voluntary blood donation, brought close to the people.",
@@ -68,14 +96,22 @@
       "en": "The Pink and Red Wave is ONG AICHA's major health campaign against women's cancers. It combines community outreach, free screening for breast and cervical cancer, hypertension and diabetes screening with consultation, and voluntary blood donation, to help fight cancer in Côte d'Ivoire.\n\nAt the 4th edition, held on 21 October 2023 in Grand-Bassam, more than 500 women were screened and made aware of breast cancer, more than 600 people were consulted for diabetes and hypertension, and around one hundred blood bags were collected. In 2025 the campaign continued in Bouaké, then in Port-Bouët: on 4 October the caravan also offered HPV vaccination for girls aged 9 to 18, awareness-raising on the dangers of skin lightening, and free enrolment in universal health coverage (CMU).\n\nThe executive director's message is simple: \"Let us dare to leave our homes and get screened.\" A simple breast examination by specialists can save a life, and effective treatments exist when the disease is detected early.",
       "ar": "الموجة الوردية والحمراء هي حملة المنظمة الصحية الكبرى ضد سرطانات النساء. تجمع بين التوعية الميدانية والكشف المجاني عن سرطان الثدي وسرطان عنق الرحم، والكشف عن ارتفاع ضغط الدم والسكري مع الاستشارة الطبية، والتبرع الطوعي بالدم، إسهامًا في مكافحة السرطان في كوت ديفوار.\n\nففي النسخة الرابعة التي أُقيمت يوم 21 أكتوبر 2023 في غراند باسام، خضعت أكثر من 500 امرأة للفحص والتوعية بسرطان الثدي، واستُشير أكثر من 600 شخص بشأن السكري وارتفاع الضغط، وجُمع نحو مئة كيس دم. وفي عام 2025 تواصلت الحملة في بواكيه ثم في بور بوي، حيث قدّمت القافلة يوم 4 أكتوبر أيضًا لقاح فيروس الورم الحليمي البشري للفتيات من 9 إلى 18 عامًا، وتوعية بمخاطر تبييض البشرة، وتسجيلًا مجانيًا في نظام التغطية الصحية الشاملة.\n\nرسالة المديرة التنفيذية بسيطة: «لنتجرأ على الخروج من بيوتنا لإجراء الفحص». فمجرد فحص للثدي على يد مختصين قد ينقذ حياة، وهناك علاجات فعّالة حين يُكتشف المرض مبكرًا."
     },
-    "period": {"fr": "Chaque année, en octobre (Octobre Rose)", "en": "Every year in October (Pink October)", "ar": "كل عام في شهر أكتوبر (أكتوبر الوردي)"},
+    "period": {
+      "fr": "Chaque année, en octobre (Octobre Rose)",
+      "en": "Every year in October (Pink October)",
+      "ar": "كل عام في شهر أكتوبر (أكتوبر الوردي)"
+    },
     "location": "Grand-Bassam, Adzopé, Bouaké, Port-Bouët"
   },
   {
     "slug": "classe-rose",
     "order": 5,
     "coverImage": "/images/vague-rose-bouake-2025-24.jpg",
-    "title": {"fr": "La Classe Rose", "en": "The Pink Class", "ar": "الفصل الوردي"},
+    "title": {
+      "fr": "La Classe Rose",
+      "en": "The Pink Class",
+      "ar": "الفصل الوردي"
+    },
     "summary": {
       "fr": "Un programme de sensibilisation et de formation des responsables de groupes de femmes pour reconnaître les signes précoces des cancers les plus fréquents et en parler autour d'elles.",
       "en": "An awareness and training programme for women's group leaders, teaching them to recognise early signs of the most common cancers and to spread the word around them.",
@@ -86,14 +122,22 @@
       "en": "The Pink Class is ONG AICHA's commitment to actively fight the most widespread cancers, by focusing on awareness, information and training for women's group leaders in the most vulnerable communities.\n\nThrough interactive sessions, participants learn about the main cancers, their symptoms and preventive measures. They also receive practical training in early detection techniques, so they can spot the first signs of the disease in themselves and in those around them.\n\nBy training relays at the heart of communities, the Pink Class enables earlier diagnosis and better care. ONG AICHA invites individuals, organisations and partners to join this cause to save lives and promote health for all.",
       "ar": "الفصل الوردي التزام من منظمة AICHA بالإسهام الفعلي في مكافحة أكثر السرطانات انتشارًا، عبر التوعية والإعلام وتكوين قيادات المجموعات النسائية في أشدّ المجتمعات هشاشة.\n\nمن خلال جلسات تفاعلية، تتعرّف المشاركات على أهم أنواع السرطان وأعراضها وسبل الوقاية منها، وتتلقين تكوينًا عمليًا في تقنيات الكشف المبكر لتتمكّنّ من اكتشاف العلامات الأولى للمرض لدى أنفسهنّ ولدى المحيطين بهنّ.\n\nوبتكوين حلقات وصل في قلب المجتمعات، يتيح الفصل الوردي تشخيصًا أبكر ورعاية أفضل. وتدعو المنظمة الأفراد والمؤسسات والشركاء إلى الانضمام لهذه القضية من أجل إنقاذ الأرواح وتعزيز صحة الجميع."
     },
-    "period": {"fr": "À partir de septembre 2024", "en": "From September 2024", "ar": "ابتداءً من سبتمبر 2024"},
+    "period": {
+      "fr": "À partir de septembre 2024",
+      "en": "From September 2024",
+      "ar": "ابتداءً من سبتمبر 2024"
+    },
     "location": null
   },
   {
     "slug": "cliniques-mobiles",
     "order": 6,
     "coverImage": "/images/clinique-mobile-koumassi-2025-01.jpg",
-    "title": {"fr": "Les Cliniques Mobiles", "en": "Mobile Clinics", "ar": "العيادات المتنقلة"},
+    "title": {
+      "fr": "Les Cliniques Mobiles",
+      "en": "Mobile Clinics",
+      "ar": "العيادات المتنقلة"
+    },
     "summary": {
       "fr": "Des hôpitaux ambulants avec médecins généralistes et spécialistes offrent des consultations gratuites et des dépistages dans les quartiers et villes défavorisés.",
       "en": "Travelling clinics staffed by general practitioners and specialists offer free consultations and screenings in disadvantaged neighbourhoods and towns.",
@@ -104,14 +148,22 @@
       "en": "Mobile Clinics bring care where it is lacking. Each caravan brings together a multidisciplinary medical team (general practitioners, paediatricians, gynaecologists, ophthalmologists, a cardiologist, a diabetologist and more) and offers free consultations, screenings and prevention advice, with the aim of visiting different disadvantaged neighbourhoods and towns on a regular basis.\n\nOn a Sunday at the end of 2025, at the Cheick Ibrahim Niass Islamic Complex in Koumassi, ONG AICHA and its partner Nasrul-Ilm organised a free consultation day from 7:30 am to 1:00 pm. A cardiologist, a diabetologist, six general practitioners and five medical students welcomed 167 people (120 men and 47 women). Screenings revealed 8 cases of high blood sugar, 6 people at risk of diabetes and 32 cases of hypertension, all referred to health centres for follow-up.\n\nBeyond care, mobile clinics strengthen community self-reliance: disease prevention, therapeutic education on lifestyle, nutrition and physical activity, and blood donation to support the local health system.",
       "ar": "تحمل العيادات المتنقلة الرعاية إلى حيث تغيب. تضم كل قافلة فريقًا طبيًا متعدد التخصصات (أطباء عامون وأطباء أطفال ونساء وتوليد وعيون وطبيب قلب وطبيب سكري وغيرهم) وتقدّم استشارات وفحوصات ونصائح وقائية مجانية، بهدف التنقل بانتظام بين مختلف الأحياء والمدن المحرومة.\n\nوفي يوم أحد من أواخر عام 2025، بالمجمع الإسلامي الشيخ إبراهيم نياس في كوماسي، نظّمت المنظمة وشريكتها «نصر العلم» يومًا للاستشارات المجانية من السابعة والنصف صباحًا إلى الواحدة ظهرًا. استقبل فيه طبيب قلب وطبيب سكري وستة أطباء عامين وخمسة طلاب طب 167 شخصًا (120 رجلًا و47 امرأة). وكشفت الفحوصات عن 8 حالات ارتفاع في سكر الدم و6 أشخاص معرّضين لخطر السكري و32 حالة ارتفاع في ضغط الدم، وجرى توجيه جميعها إلى مراكز صحية للمتابعة.\n\nوإلى جانب العلاج، تعزّز العيادات المتنقلة استقلالية المجتمعات: الوقاية من الأمراض، والتثقيف العلاجي حول نمط الحياة والتغذية والنشاط البدني، والتبرع بالدم دعمًا للمنظومة الصحية المحلية."
     },
-    "period": {"fr": "Caravanes régulières tout au long de l'année", "en": "Regular caravans throughout the year", "ar": "قوافل منتظمة على مدار العام"},
+    "period": {
+      "fr": "Caravanes régulières tout au long de l'année",
+      "en": "Regular caravans throughout the year",
+      "ar": "قوافل منتظمة على مدار العام"
+    },
     "location": "Koumassi, Abidjan et autres quartiers"
   },
   {
     "slug": "clinique-du-diabete",
     "order": 7,
     "coverImage": "/images/vague-rose-bouake-2025-19.jpg",
-    "title": {"fr": "La Clinique du Diabète (Novembre Bleu)", "en": "The Diabetes Clinic (Blue November)", "ar": "عيادة السكري (نوفمبر الأزرق)"},
+    "title": {
+      "fr": "La Clinique du Diabète (Novembre Bleu)",
+      "en": "The Diabetes Clinic (Blue November)",
+      "ar": "عيادة السكري (نوفمبر الأزرق)"
+    },
     "summary": {
       "fr": "Chaque mois de novembre, dépistage massif et gratuit du diabète dans une localité ciblée, avec sensibilisation et don de médicaments aux malades démunis.",
       "en": "Each November, free mass screening for diabetes in a targeted locality, with awareness-raising and medicine donations to patients in need.",
@@ -122,14 +174,22 @@
       "en": "The Diabetes Clinic is part of the Blue November operation, dedicated to fighting and preventing diabetes. A free awareness and mass screening day is organised in a targeted locality, for anywhere from a hundred to several hundred people.\n\nParticipants receive a blood sugar test, advice on lifestyle and diet, and a consultation with doctors. People found to have high blood sugar are referred to a health centre for appropriate follow-up.\n\nPatients in need also receive a donation of medicines. This action extends the work done during mobile clinics, where diabetes and hypertension are systematically screened for, as these silent chronic diseases often go unnoticed until detected.",
       "ar": "تندرج عيادة السكري ضمن عملية «نوفمبر الأزرق» المخصّصة لمكافحة السكري والوقاية منه. ويُنظَّم يوم للتوعية والكشف الواسع المجاني في منطقة مستهدفة، يستفيد منه من مئة إلى عدة مئات من الأشخاص.\n\nيجري للمشاركين فحص سكر الدم، وتُقدَّم لهم نصائح حول نمط الحياة والتغذية، وتتاح لهم استشارة طبية. ويُوجَّه من ثبت ارتفاع سكر الدم لديهم إلى مركز صحي لمتابعة ملائمة.\n\nكما يتلقى المرضى المعوزون تبرعًا بالأدوية. ويمتد هذا العمل مع ما تقوم به العيادات المتنقلة التي يُبحث فيها بصورة منهجية عن السكري وارتفاع الضغط، فهذه الأمراض المزمنة الصامتة كثيرًا ما تمرّ دون أن يشعر بها أصحابها ما لم تُكتشف."
     },
-    "period": {"fr": "Chaque mois de novembre", "en": "Every November", "ar": "كل شهر نوفمبر"},
+    "period": {
+      "fr": "Chaque mois de novembre",
+      "en": "Every November",
+      "ar": "كل شهر نوفمبر"
+    },
     "location": null
   },
   {
     "slug": "journee-d-excellence",
     "order": 8,
     "coverImage": "/images/remise-attestation-01.jpg",
-    "title": {"fr": "La Journée d'Excellence", "en": "Excellence Day", "ar": "يوم التميّز"},
+    "title": {
+      "fr": "La Journée d'Excellence",
+      "en": "Excellence Day",
+      "ar": "يوم التميّز"
+    },
     "summary": {
       "fr": "Une célébration qui honore et récompense les meilleurs élèves des écoles confessionnelles, pour encourager l'effort, le dévouement et l'excellence académique.",
       "en": "A celebration that honours and rewards the best pupils of faith-based schools, to encourage effort, dedication and academic excellence.",
@@ -140,14 +200,22 @@
       "en": "Excellence Day is a celebration dedicated to the best pupils of faith-based schools. It aims to recognise the effort, dedication and outstanding achievements of pupils, and to encourage academic excellence in communities where these schools play an essential role in education.\n\nDuring the event, the most deserving pupils are honoured with symbolic awards. These distinctions reward their efforts and encourage them to keep going with determination and ambition.\n\nPupils, teachers, parents and community members come together to celebrate the successes of these young talents. ONG AICHA invites education partners and supporters to back this initiative, so that deserving pupils receive the encouragement they need to reach their full potential.",
       "ar": "يوم التميّز احتفال مخصّص لأفضل تلاميذ المدارس الدينية. يهدف إلى تقدير جهد التلاميذ واجتهادهم وإنجازاتهم المتميّزة، وتشجيع التفوّق الدراسي في المجتمعات التي تؤدي فيها هذه المدارس دورًا أساسيًا في التعليم.\n\nخلال الحفل يُكرَّم التلاميذ الأكثر استحقاقًا بجوائز رمزية، تكافئ جهدهم وتحفّزهم على مواصلة المسيرة بعزيمة وطموح.\n\nيجتمع التلاميذ والمعلمون والأولياء وأفراد المجتمع للاحتفاء بنجاحات هذه المواهب الشابة. وتدعو المنظمة الشركاء التربويين والمتعاطفين إلى دعم هذه المبادرة، ليحصل التلاميذ المتفوقون على التشجيع الذي يحتاجونه لتحقيق كامل إمكاناتهم."
     },
-    "period": {"fr": "Novembre 2024", "en": "November 2024", "ar": "نوفمبر 2024"},
+    "period": {
+      "fr": "Novembre 2024",
+      "en": "November 2024",
+      "ar": "نوفمبر 2024"
+    },
     "location": null
   },
   {
     "slug": "nuit-de-la-solidarite",
     "order": 9,
     "coverImage": "/images/nuit-solidarite-2024-01.jpg",
-    "title": {"fr": "La Nuit de la Solidarité", "en": "The Solidarity Night", "ar": "ليلة التضامن"},
+    "title": {
+      "fr": "La Nuit de la Solidarité",
+      "en": "The Solidarity Night",
+      "ar": "ليلة التضامن"
+    },
     "summary": {
       "fr": "Un dîner gala de charité qui rassemble amis et partenaires de l'ONG AICHA pour mobiliser les ressources du programme annuel d'actions sociales en faveur des plus vulnérables.",
       "en": "A charity gala dinner that brings together friends and partners of ONG AICHA to mobilise resources for the annual social programme for the most vulnerable.",
@@ -158,7 +226,11 @@
       "en": "The Solidarity Night is ONG AICHA's major yearly gathering with its friends, partners and donors. It is a charity gala dinner, held at the start of the year, bringing together public figures and supporters around the cause of the most vulnerable.\n\nThe aim is to rally the support needed to carry out the year's social activities: Ramadan Baskets, new clothes for Tabaski, On the Way to School, screening campaigns, mobile clinics and many other field actions.\n\nThe 2024 edition took place on Saturday 24 February: an evening of sharing and generosity, where everyone is invited to commit according to their means, so that ONG AICHA's actions can reach more and more families.",
       "ar": "ليلة التضامن هي الموعد السنوي الكبير للمنظمة مع أصدقائها وشركائها ومحسنيها. إنها عشاء خيري يُقام مطلع العام ويجمع شخصيات ومتعاطفين حول قضية الفئات الأكثر هشاشة.\n\nوالهدف تعبئة الدعم اللازم لإنجاز برنامج الأنشطة الاجتماعية للعام: سلال رمضان، وملابس العيد، والطريق إلى المدرسة، وحملات الكشف، والعيادات المتنقلة، وغيرها من الأعمال الميدانية.\n\nأُقيمت نسخة 2024 يوم السبت 24 فبراير: أمسية عطاء ومشاركة، يُدعى فيها كل شخص إلى الإسهام بحسب استطاعته، حتى تصل أعمال المنظمة إلى مزيد من الأسر."
     },
-    "period": {"fr": "Début d'année (24 février 2024 pour la dernière édition)", "en": "Early in the year (24 February 2024 for the latest edition)", "ar": "مطلع العام (24 فبراير 2024 في آخر نسخة)"},
+    "period": {
+      "fr": "Début d'année (24 février 2024 pour la dernière édition)",
+      "en": "Early in the year (24 February 2024 for the latest edition)",
+      "ar": "مطلع العام (24 فبراير 2024 في آخر نسخة)"
+    },
     "location": "Abidjan"
   }
 ]

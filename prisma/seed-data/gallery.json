@@ -628,5 +628,45 @@
       "ar": "فيديو منظمة AICHA (3)"
     },
     "kind": "VIDEO"
+  },
+  {
+    "url": "/images/route-ecole-2025-01.jpg",
+    "album": "ecole",
+    "caption": {
+      "fr": "Cérémonie de remise des kits scolaires – En route pour l'école 2025",
+      "en": "Distribution of school kits – On the Way to School 2025",
+      "ar": "حفل توزيع الأدوات المدرسية – في الطريق إلى المدرسة 2025"
+    },
+    "kind": "PHOTO"
+  },
+  {
+    "url": "/images/route-ecole-2025-02.jpg",
+    "album": "ecole",
+    "caption": {
+      "fr": "Des élèves avec leurs sacs à dos, aux côtés de l'équipe de l'ONG AICHA",
+      "en": "Pupils with their new backpacks alongside the ONG AICHA team",
+      "ar": "تلاميذ مع حقائبهم الجديدة إلى جانب فريق ONG AICHA"
+    },
+    "kind": "PHOTO"
+  },
+  {
+    "url": "/images/route-ecole-2025-03.jpg",
+    "album": "ecole",
+    "caption": {
+      "fr": "Les sacs à dos de la rentrée, aux couleurs de l'ONG AICHA et de la Fondation Porteo",
+      "en": "Back-to-school backpacks in the colours of ONG AICHA and the Porteo Foundation",
+      "ar": "حقائب العودة إلى المدرسة بألوان ONG AICHA ومؤسسة Porteo"
+    },
+    "kind": "PHOTO"
+  },
+  {
+    "url": "/images/route-ecole-2025-04.jpg",
+    "album": "ecole",
+    "caption": {
+      "fr": "Sacs à dos offerts par le Conseil du Café-Cacao",
+      "en": "Backpacks donated by the Coffee and Cocoa Council",
+      "ar": "حقائب مقدَّمة من مجلس البن والكاكاو"
+    },
+    "kind": "PHOTO"
   }
 ]

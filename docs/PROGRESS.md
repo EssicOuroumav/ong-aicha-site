@@ -31,6 +31,11 @@
 ## Garde-fou paiement
 - En production Vercel, le formulaire de don en ligne n'apparaît que si PAYDUNYA_MODE=live (clés de production). Avec des clés de test, la page affiche le Mobile Money de l'ONG : un visiteur ne peut pas « donner » pour de faux. Pour tester en production : ALLOW_TEST_PAYMENTS=1 (à retirer ensuite).
 
+## Mise à jour du 2 octobre (soir)
+- Photos « En route pour l'école » ajoutées (4 sur 6 ; deux écartées car elles montrent des noms d'enfants et d'écoles lisibles). Originaux dans ~/Desktop/ONG AICHA/photos-a-ajouter/.
+- URL IPN PayDunya : répond « ROK » (exigé pour le passage en production). À renseigner dans PayDunya : <domaine>/api/paydunya/ipn.
+- Alertes e-mail sur nouvelle erreur (journal d'erreurs), 10 par heure maximum.
+
 ## Reste à faire
 1. Test d'un don PayDunya en mode test, puis passage en live (clés live + `PAYDUNYA_MODE=live` + URL IPN).
 2. Nouveau domaine au nom de l'ONG → Vercel → Resend → `NEXT_PUBLIC_SITE_URL`.
