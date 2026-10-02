@@ -9,14 +9,15 @@ export async function syncDonation(reference: string) {
   if (donation.status !== "PENDING" || !donation.providerToken) return donation;
 
   const result = await confirmInvoice(donation.providerToken);
-  const status = result.status === "completed" ? "COMPLETED" : result.status === "cancelled" ? "CANCELLED" : "PENDING";
+  const status = result.status === "completed" ? "COMPLETED" : result.status === "cancelled" ? "CANCELLED" : result.status === "failed" ? "FAILED" : "PENDING";
   if (status === "COMPLETED" && result.amount !== undefined && result.amount !== donation.amount) {
     console.error("[donation] montant incohérent", reference, result.amount, donation.amount);
     return db.donation.update({ where: { reference }, data: { status: "FAILED" } });
   }
-  const updated = await db.donation.update({ where: { reference }, data: { status } });
-  if (status === "COMPLETED") await sendReceipt(updated.reference);
-  return updated;
+  // Transition atomique : seul le premier appel (retour navigateur ou IPN) fait passer le don de PENDING à son statut final
+  await db.donation.updateMany({ where: { reference, status: "PENDING" }, data: { status } });
+  if (status === "COMPLETED") await sendReceipt(reference);
+  return db.donation.findUnique({ where: { reference } });
 }
 
 export async function sendReceipt(reference: string) {

@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { db } from "@/lib/db";
 import { requireArea } from "@/lib/guard";
 import { deleteActivity, saveActivity } from "@/actions/admin";
+import { ConfirmButton } from "@/components/admin/ConfirmButton";
 import { Card, Title, TrilingualField } from "@/components/admin/ui";
 import { ImageField } from "@/components/admin/ImageField";
 
@@ -33,7 +34,7 @@ export default async function EditActivity({ params }: PageProps<"/admin/activit
         </Card>
         <button className="btn btn-primary">Enregistrer</button>
       </form>
-      {a && <form action={deleteActivity} className="mt-6"><input type="hidden" name="id" value={a.id} /><button className="text-sm text-red-700 underline">Supprimer cette action</button></form>}
+      {a && <form action={deleteActivity} className="mt-6"><input type="hidden" name="id" value={a.id} /><ConfirmButton message="Supprimer définitivement cette action ?" className="text-sm text-red-700 underline">Supprimer cette action</ConfirmButton></form>}
     </>
   );
 }

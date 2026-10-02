@@ -33,6 +33,7 @@ export async function createInvoice(opts: {
       custom_data: { reference: opts.reference },
     }),
     cache: "no-store",
+    signal: AbortSignal.timeout(20_000),
   });
   const data = await res.json().catch(() => null);
   if (!data || data.response_code !== "00") {
@@ -46,6 +47,7 @@ export async function confirmInvoice(token: string): Promise<{ status: string; r
   const res = await fetch(`${base()}/checkout-invoice/confirm/${encodeURIComponent(token)}`, {
     headers: authHeaders(),
     cache: "no-store",
+    signal: AbortSignal.timeout(20_000),
   });
   const data = await res.json().catch(() => null);
   if (!data || data.response_code !== "00") throw new Error("PayDunya: confirmation impossible");

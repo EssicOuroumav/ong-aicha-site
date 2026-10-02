@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { db } from "@/lib/db";
 import { requireArea } from "@/lib/guard";
 import { deletePost, savePost } from "@/actions/admin";
+import { ConfirmButton } from "@/components/admin/ConfirmButton";
 import { Card, Title, TrilingualField } from "@/components/admin/ui";
 import { ImageField } from "@/components/admin/ImageField";
 
@@ -30,7 +31,7 @@ export default async function EditPost({ params }: PageProps<"/admin/posts/[id]"
         <div className="flex flex-wrap gap-3"><button className="btn btn-primary">Enregistrer</button></div>
       </form>
       {post && (
-        <form action={deletePost} className="mt-6"><input type="hidden" name="id" value={post.id} /><button className="text-sm text-red-700 underline">Supprimer cet article</button></form>
+        <form action={deletePost} className="mt-6"><input type="hidden" name="id" value={post.id} /><ConfirmButton message="Supprimer définitivement cet article ?" className="text-sm text-red-700 underline">Supprimer cet article</ConfirmButton></form>
       )}
     </>
   );

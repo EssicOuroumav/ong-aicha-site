@@ -2,6 +2,7 @@ import Image from "next/image";
 import { db } from "@/lib/db";
 import { requireArea } from "@/lib/guard";
 import { addMedia, deleteMedia } from "@/actions/admin";
+import { ConfirmButton } from "@/components/admin/ConfirmButton";
 import { Card, Title, TrilingualField } from "@/components/admin/ui";
 import { ImageField } from "@/components/admin/ImageField";
 import { pick } from "@/i18n/config";
@@ -32,7 +33,7 @@ export default async function MediaAdmin() {
           <Card key={m.id} className="!p-2">
             {m.kind === "PHOTO" ? <div className="relative aspect-square overflow-hidden rounded-lg"><Image src={m.url} alt={pick(m.caption, "fr")} fill sizes="200px" className="object-cover" /></div> : <p className="p-4 text-sm">▶ {m.url}</p>}
             <p className="mt-1 truncate px-1 text-xs text-muted">{m.album} · {pick(m.caption, "fr")}</p>
-            <form action={deleteMedia} className="px-1 pb-1"><input type="hidden" name="id" value={m.id} /><button className="text-xs text-red-700 underline">Supprimer</button></form>
+            <form action={deleteMedia} className="px-1 pb-1"><input type="hidden" name="id" value={m.id} /><ConfirmButton message="Supprimer cette photo/vidéo de la galerie ?" className="text-xs text-red-700 underline">Supprimer</ConfirmButton></form>
           </Card>
         ))}
       </div>
