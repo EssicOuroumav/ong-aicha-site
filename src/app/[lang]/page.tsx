@@ -76,14 +76,14 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         </Section>
       </section>
 
-      <section className="bg-green-950 text-white">
+      <section className="bg-gradient-to-br from-green-800 via-green-700 to-green-800 text-white">
         <Section>
           <SectionTitle eyebrow={h.eyebrows.stats} title={h.statsTitle} light />
           <dl className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {h.stats.map((s) => (
-              <div key={s.label} className="glass-green rounded-3xl p-7">
-                <dd className="font-display text-6xl font-extrabold tracking-tight text-gold">{s.value}</dd>
-                <dt className="mt-3 text-green-50/85">{s.label}</dt>
+              <div key={s.label} className="rounded-3xl bg-white p-7 shadow-xl">
+                <dd className="font-display text-6xl font-extrabold tracking-tight text-green-700">{s.value}</dd>
+                <dt className="mt-3 text-muted">{s.label}</dt>
               </div>
             ))}
           </dl>
