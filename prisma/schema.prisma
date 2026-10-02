@@ -187,3 +187,20 @@ model HelpRequest {
   createdAt DateTime      @default(now())
   updatedAt DateTime      @updatedAt
 }
+
+// Textes fixes du site modifiables depuis l'admin (une ligne = un texte dans une langue)
+model TextOverride {
+  key       String
+  lang      String
+  value     String
+  updatedAt DateTime @updatedAt
+
+  @@id([key, lang])
+}
+
+// Listes modifiables (partenaires, FAQ, frise, chiffres de l'accueil) : tableau JSON trilingue
+model ContentList {
+  key       String   @id
+  data      Json
+  updatedAt DateTime @updatedAt
+}

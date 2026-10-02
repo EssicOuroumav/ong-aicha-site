@@ -9,6 +9,8 @@ import { signOut } from "@/auth";
 import { requireArea, requireUser } from "@/lib/guard";
 import { siteUrl } from "@/lib/request";
 import { addPeriod, sendSponsorshipReminder } from "@/lib/sponsorship";
+import { flatten, LIST_KEYS, LIST_PATHS } from "@/lib/overrides";
+import { getBaseDictionaries } from "@/i18n/dictionaries";
 
 const L = z.object({ fr: z.string().default(""), en: z.string().default(""), ar: z.string().default("") });
 const loc = (form: FormData, name: string) => ({
@@ -76,8 +78,13 @@ export async function saveActivity(form: FormData) {
   const id = String(form.get("id") ?? "");
   const title = loc(form, "title");
   if (!title.fr) throw new Error("Titre français requis");
+  const impact = [1, 2, 3, 4]
+    .map((i) => ({ value: String(form.get(`impact_value_${i}`) ?? "").trim().slice(0, 20), label: loc(form, `impact_label_${i}`) }))
+    .filter((x) => x.value && x.label.fr);
   const data = {
     title, summary: loc(form, "summary"), description: loc(form, "description"), period: loc(form, "period"),
+    impact,
+    category: ["health", "education", "social"].includes(String(form.get("category"))) ? String(form.get("category")) : null,
     coverImage: String(form.get("coverImage") ?? "").trim() || null,
     location: String(form.get("location") ?? "").trim() || null,
     order: Number(form.get("order") ?? 0) || 0,
@@ -234,4 +241,76 @@ export async function resetUserPassword(_: unknown, form: FormData): Promise<{ e
   const password = randomBytes(9).toString("base64url");
   await db.user.update({ where: { id: String(form.get("id")) }, data: { passwordHash: await bcrypt.hash(password, 12), mustChangePw: true } });
   return { password };
+}
+
+// ───────── Textes fixes et listes modifiables ─────────
+const LANGS = ["fr", "en", "ar"] as const;
+
+/** Clés de texte éditables d'une section (hors listes structurées, qui ont leur propre éditeur) */
+export async function editableKeys(section: string) {
+  const base = await getBaseDictionaries();
+  const listPaths = Object.values(LIST_PATHS);
+  return Object.keys(flatten(base.fr))
+    .filter((k) => k.split(/[.[]/)[0] === section)
+    .filter((k) => !listPaths.some((lp) => k === lp || k.startsWith(lp + "[")))
+    .filter((k) => k !== "meta.siteName");
+}
+
+export async function saveTexts(form: FormData) {
+  await requireArea("content");
+  const section = String(form.get("section") ?? "");
+  const base = await getBaseDictionaries();
+  const flat = { fr: flatten(base.fr), en: flatten(base.en), ar: flatten(base.ar) };
+  const keys = await editableKeys(section);
+  if (!keys.length) return;
+  for (const key of keys) {
+    for (const lang of LANGS) {
+      const raw = form.get(`${key}||${lang}`);
+      if (raw === null) continue;
+      const value = String(raw).trim().slice(0, 4000);
+      const original = flat[lang][key] ?? "";
+      if (!value || value === original) await db.textOverride.deleteMany({ where: { key, lang } });
+      else await db.textOverride.upsert({ where: { key_lang: { key, lang } }, update: { value }, create: { key, lang, value } });
+    }
+  }
+  refresh();
+  revalidatePath("/admin/texts");
+}
+
+export async function resetTexts(form: FormData) {
+  await requireArea("content");
+  const keys = await editableKeys(String(form.get("section") ?? ""));
+  if (keys.length) await db.textOverride.deleteMany({ where: { key: { in: keys } } });
+  refresh();
+  revalidatePath("/admin/texts");
+}
+
+const loc3 = z.object({ fr: z.string().max(2000).default(""), en: z.string().max(2000).default(""), ar: z.string().max(2000).default("") });
+const listSchemas = {
+  partners: z.array(z.object({ name: loc3 })).max(40),
+  faq: z.array(z.object({ q: loc3, a: loc3 })).max(40),
+  timeline: z.array(z.object({ year: z.string().max(12), title: loc3, text: loc3 })).max(40),
+  stats: z.array(z.object({ value: z.string().max(20), label: loc3 })).max(8),
+};
+
+export async function saveList(form: FormData) {
+  await requireArea("content");
+  const key = z.enum(LIST_KEYS).parse(form.get("key"));
+  const data = listSchemas[key].parse(JSON.parse(String(form.get("data") ?? "[]")));
+  const clean = (data as { [k: string]: unknown }[]).filter((item) => {
+    const first = Object.values(item)[0];
+    return typeof first === "string" ? first.trim() : Object.values(first as Record<string, string>).some((v) => v.trim());
+  });
+  const json = JSON.parse(JSON.stringify(clean));
+  await db.contentList.upsert({ where: { key }, update: { data: json }, create: { key, data: json } });
+  refresh();
+  revalidatePath("/admin/lists");
+}
+
+export async function resetList(form: FormData) {
+  await requireArea("content");
+  const key = z.enum(LIST_KEYS).parse(form.get("key"));
+  await db.contentList.deleteMany({ where: { key } });
+  refresh();
+  revalidatePath("/admin/lists");
 }

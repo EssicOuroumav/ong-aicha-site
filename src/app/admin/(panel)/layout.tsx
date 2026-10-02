@@ -17,6 +17,8 @@ export default async function PanelLayout({ children }: { children: React.ReactN
     { href: "/admin/posts", label: "Blog", show: can(user.role, "content") },
     { href: "/admin/activities", label: "Actions", show: can(user.role, "content") },
     { href: "/admin/media", label: "Galerie", show: can(user.role, "content") },
+    { href: "/admin/texts", label: "Textes du site", show: can(user.role, "content") },
+    { href: "/admin/lists", label: "Listes", show: can(user.role, "content") },
     { href: "/admin/settings", label: "Réglages", show: can(user.role, "settings") },
     { href: "/admin/users", label: "Utilisateurs", show: can(user.role, "users") },
     { href: "/admin/password", label: "Mon mot de passe", show: true },

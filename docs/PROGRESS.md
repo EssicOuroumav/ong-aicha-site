@@ -10,6 +10,8 @@
 - Contenu repris de l'ancien site : programmes « Une enveloppe pour maman », « Ma famille solidaire AICHA », « Fonds d'aide sociale urgente » ; causes de don réelles (dont Zakat) ; partenaires (à valider) ; conditions du don de sang ; page « Demander de l'aide » + admin ; frise des temps forts ; FAQ ; WhatsApp ; vidéo.
 - Formulaires : consentement obligatoire, saisie conservée en cas d'erreur.
 
+- Admin : « Textes du site » (tous les textes fixes FR/EN/AR modifiables, retour à l'original possible) et « Listes » (partenaires, FAQ, frise, chiffres de l'accueil) ; chiffres d'impact et catégorie dans le formulaire des actions. Tables TextOverride et ContentList ; le dictionnaire de base reste dans src/messages/*.json.
+
 ## Reste à faire
 1. Test d'un don PayDunya en mode test, puis passage en live (clés live + `PAYDUNYA_MODE=live` + URL IPN).
 2. Nouveau domaine au nom de l'ONG → Vercel → Resend → `NEXT_PUBLIC_SITE_URL`.
