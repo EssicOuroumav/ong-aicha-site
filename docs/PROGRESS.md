@@ -36,6 +36,8 @@
 - URL IPN PayDunya : répond « ROK » (exigé pour le passage en production). À renseigner dans PayDunya : <domaine>/api/paydunya/ipn.
 - Alertes e-mail sur nouvelle erreur (journal d'erreurs), 10 par heure maximum.
 
+- Page « Faire un don » : sans paiement en ligne actif, le formulaire complet reste affiché ; il enregistre une intention de don (provider « manual », statut En attente) et la page suivante donne le numéro Mobile Money + la référence. L'ONG est notifiée par e-mail et confirme le don dans l'admin (Dons → statut Réussi).
+
 ## Reste à faire
 1. Test d'un don PayDunya en mode test, puis passage en live (clés live + `PAYDUNYA_MODE=live` + URL IPN).
 2. Nouveau domaine au nom de l'ONG → Vercel → Resend → `NEXT_PUBLIC_SITE_URL`.

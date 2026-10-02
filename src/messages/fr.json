@@ -330,9 +330,6 @@
     "failedText": "Aucun montant n'a été débité. Vous pouvez réessayer.",
     "retry": "Réessayer",
     "reference": "Référence",
-    "offlineTitle": "Donnez par Mobile Money",
-    "offlineText": "Le paiement en ligne arrive bientôt. En attendant, vous pouvez donner dès maintenant par Mobile Money (Orange, MTN, Moov, Wave) au numéro ci-dessous, puis nous écrire pour recevoir votre reçu.",
-    "offlineCta": "Nous envoyer la référence du don",
     "receiptNote": "Un reçu vous sera envoyé par e-mail.",
     "faqTitle": "Questions fréquentes",
     "faq": [
@@ -356,7 +353,13 @@
         "q": "Mon paiement est-il sécurisé ?",
         "a": "Le paiement est traité par PayDunya (Orange Money, MTN, Moov, Wave, cartes bancaires). L'ONG AICHA ne conserve aucune donnée bancaire."
       }
-    ]
+    ],
+    "manualSecure": "À l'étape suivante, vous recevrez le numéro Mobile Money et la référence à indiquer pour finaliser votre don.",
+    "manualTitle": "Dernière étape : envoyez votre don",
+    "manualText": "Votre intention de don est enregistrée. Pour la finaliser, envoyez {amount} FCFA par Mobile Money (Orange, MTN, Moov ou Wave) au numéro ci-dessous, en indiquant la référence. Votre don sera confirmé dès réception.",
+    "manualPhone": "Numéro Mobile Money",
+    "manualRefLabel": "Référence à indiquer",
+    "manualWait": "En attente de réception"
   },
   "sponsor": {
     "title": "Parrainer un enfant",

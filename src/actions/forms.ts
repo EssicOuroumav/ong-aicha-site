@@ -151,17 +151,27 @@ export async function submitDonation(_: FormState | null, form: FormData): Promi
 
   const reference = `AICHA-${Date.now().toString(36).toUpperCase()}-${randomBytes(3).toString("hex").toUpperCase()}`;
   const origin = await siteUrl();
+  // Sans paiement en ligne actif en production : intention de don + instructions Mobile Money (confirmée à la main par l'ONG)
+  const manual = !paymentsEnabled() && process.env.NODE_ENV === "production";
   let target: string;
   try {
     await db.donation.create({
       data: {
         reference, donorName: d.donorName, email: d.email, phone: d.phone || null, country: d.country || null,
         amount: d.amount, cause: d.cause, message: d.message || null, anonymous: d.anonymous === "on",
+        provider: manual ? "manual" : "paydunya",
       },
     });
     const returnUrl = `${origin}/${d.lang}/donate/result?ref=${reference}`;
 
-    if (paymentsEnabled()) {
+    if (manual) {
+      await sendEmail({
+        to: notifyAddress(),
+        subject: `Intention de don (Mobile Money) : ${d.amount.toLocaleString("fr-FR")} FCFA`,
+        html: layout("Nouvelle intention de don", `<p><b>${escapeHtml(d.donorName)}</b> – ${escapeHtml(d.email)}${d.phone ? " – " + escapeHtml(d.phone) : ""}</p><p>Montant annoncé : <b>${d.amount.toLocaleString("fr-FR")} FCFA</b> – cause : ${escapeHtml(d.cause)}</p><p>Référence : <b>${reference}</b></p><p>À confirmer dans l'admin (section Dons) dès réception du Mobile Money.</p>`),
+      });
+      target = returnUrl;
+    } else if (paymentsEnabled()) {
       const invoice = await createInvoice({
         amount: d.amount,
         description: `Don ONG AICHA – ${reference}`,
@@ -172,12 +182,9 @@ export async function submitDonation(_: FormState | null, form: FormData): Promi
       });
       await db.donation.update({ where: { reference }, data: { providerToken: invoice.token } });
       target = invoice.url;
-    } else if (process.env.NODE_ENV !== "production") {
-      // Simulation locale uniquement quand PayDunya n'est pas configuré
-      target = `${origin}/api/dev-pay?ref=${reference}&lang=${d.lang}`;
     } else {
-      await db.donation.update({ where: { reference }, data: { status: "FAILED" } });
-      return { ok: false, error: "server" };
+      // Développement sans clés : simulateur local
+      target = `${origin}/api/dev-pay?ref=${reference}&lang=${d.lang}`;
     }
   } catch (e) {
     console.error(e);

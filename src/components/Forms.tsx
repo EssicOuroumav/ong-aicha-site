@@ -121,7 +121,7 @@ export function SponsorForm({ t }: { t: Dictionary }) {
 
 const presets = [2000, 5000, 10000, 25000, 50000];
 
-export function DonateForm({ t, lang, initialCause = "general" }: { t: Dictionary; lang: Locale; initialCause?: string }) {
+export function DonateForm({ t, lang, initialCause = "general", manual = false }: { t: Dictionary; lang: Locale; initialCause?: string; manual?: boolean }) {
   const { state, pending, formProps } = useServerForm(submitDonation);
   const [amount, setAmount] = useState<number>(10000);
   const bad = (n: string) => state?.fields?.includes(n);
@@ -163,7 +163,7 @@ export function DonateForm({ t, lang, initialCause = "general" }: { t: Dictionar
       <button type="submit" disabled={pending || amount < 500} className="btn btn-gold w-full text-lg !py-4">
         {pending ? t.common.sending : `${t.donate.submit} · ${fmt(amount || 0)} FCFA`}
       </button>
-      <p className="text-center text-sm text-muted">🔒 {t.donate.secure}</p>
+      <p className="text-center text-sm text-muted">{manual ? t.donate.manualSecure : `🔒 ${t.donate.secure}`}</p>
       <FormMessage state={state} success="" errors={errorsOf(t)} />
     </form>
   );

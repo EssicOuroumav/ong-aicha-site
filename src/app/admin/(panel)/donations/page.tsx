@@ -31,7 +31,7 @@ export default async function DonationsPage() {
             <td className="px-4 py-3">{d.anonymous ? <i>Anonyme</i> : d.donorName}<br /><span className="text-xs text-muted">{d.email}</span></td>
             <td className="px-4 py-3 font-semibold">{fcfa(d.amount)}</td>
             <td className="px-4 py-3">{d.cause}</td>
-            <td className="px-4 py-3 text-xs">{d.reference}</td>
+            <td className="px-4 py-3 text-xs">{d.reference}<br /><span className="text-muted">{d.provider === "manual" ? "Mobile Money (à confirmer)" : d.provider === "paydunya" ? "PayDunya" : d.provider}</span></td>
             <td className="px-4 py-3"><Badge status={d.status} /></td>
             <td className="px-4 py-3">
               <form action={setDonationStatus} className="flex gap-1">

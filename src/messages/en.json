@@ -330,9 +330,6 @@
     "failedText": "No amount has been charged. You can try again.",
     "retry": "Try again",
     "reference": "Reference",
-    "offlineTitle": "Give by Mobile Money",
-    "offlineText": "Online payment is coming soon. In the meantime, you can give right now by Mobile Money (Orange, MTN, Moov, Wave) to the number below, then write to us to receive your receipt.",
-    "offlineCta": "Send us your donation reference",
     "receiptNote": "A receipt will be sent to you by email.",
     "faqTitle": "Frequently asked questions",
     "faq": [
@@ -356,7 +353,13 @@
         "q": "Is my payment secure?",
         "a": "Payment is processed by PayDunya (Orange Money, MTN, Moov, Wave, bank cards). ONG AICHA does not store any banking data."
       }
-    ]
+    ],
+    "manualSecure": "On the next step you will receive the Mobile Money number and the reference to quote to complete your donation.",
+    "manualTitle": "Last step: send your donation",
+    "manualText": "Your donation intention is recorded. To complete it, send {amount} FCFA by Mobile Money (Orange, MTN, Moov or Wave) to the number below, quoting the reference. Your donation will be confirmed once received.",
+    "manualPhone": "Mobile Money number",
+    "manualRefLabel": "Reference to quote",
+    "manualWait": "Awaiting receipt"
   },
   "sponsor": {
     "title": "Sponsor a child",

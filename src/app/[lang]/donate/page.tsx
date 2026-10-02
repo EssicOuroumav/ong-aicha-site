@@ -4,7 +4,6 @@ import { isLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getSettings } from "@/lib/settings";
 import { PageHero, Section, SectionTitle } from "@/components/ui";
-import Link from "next/link";
 import { DonateForm } from "@/components/Forms";
 import { paymentsEnabled } from "@/lib/paydunya";
 
@@ -28,14 +27,7 @@ export default async function DonatePage({ params, searchParams }: PageProps<"/[
       <Section>
         <div className="grid gap-10 lg:grid-cols-5">
           <div className="lg:col-span-3 glass rounded-3xl p-6 sm:p-10">
-            {online ? <DonateForm t={t} lang={lang} initialCause={typeof cause === "string" && cause in t.donate.causes ? cause : "general"} /> : (
-              <div className="text-center">
-                <h2 className="text-2xl font-bold text-green-800">{t.donate.offlineTitle}</h2>
-                <p className="mt-4 text-muted">{t.donate.offlineText}</p>
-                <p className="my-6 font-display text-4xl font-bold text-green-700" dir="ltr">{s.donationPhone}</p>
-                <Link href={`/${lang}/contact`} className="btn btn-gold">{t.donate.offlineCta}</Link>
-              </div>
-            )}
+            <DonateForm t={t} lang={lang} manual={!online} initialCause={typeof cause === "string" && cause in t.donate.causes ? cause : "general"} />
           </div>
           <aside className="lg:col-span-2 glass rounded-3xl p-6 sm:p-8 h-fit">
             <h2 className="text-2xl font-bold text-green-800">{t.donate.otherWaysTitle}</h2>
