@@ -24,7 +24,7 @@ export function Header({ lang, t }: { lang: Locale; t: Dictionary }) {
   const isActive = (href: string) => (href === "" ? rest === "" : rest.startsWith(href));
 
   return (
-    <header className="sticky top-0 z-40 px-2 pt-2 sm:px-4">
+    <header className="sticky top-0 z-40 bg-white px-2 pb-2 pt-2 sm:px-4">
       <div className="glass-header mx-auto max-w-7xl rounded-2xl text-white">
         <div className="flex items-center justify-between gap-4 px-4 py-2.5 sm:px-6">
           <Link href={`/${lang}`} className="flex shrink-0 items-center gap-3" aria-label={t.meta.siteName}>
