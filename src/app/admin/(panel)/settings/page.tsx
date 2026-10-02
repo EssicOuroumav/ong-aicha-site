@@ -23,6 +23,11 @@ export default async function SettingsPage() {
           <button className="btn btn-primary">Enregistrer</button>
         </form>
       </Card>
+      <Card className="mt-6">
+        <h2 className="font-bold text-green-800">Sauvegarde des données</h2>
+        <p className="mt-2 max-w-2xl text-sm text-muted">Téléchargez une copie complète des données du site (dons, demandes, contenus, comptes sans mots de passe) au format JSON. Le fichier contient des données personnelles : conservez-le en lieu sûr, jamais dans un dossier partagé. Faites-le au moins une fois par mois et avant toute grosse modification.</p>
+        <a href="/admin/backup/export" className="btn btn-primary mt-4">Télécharger une sauvegarde</a>
+      </Card>
     </>
   );
 }

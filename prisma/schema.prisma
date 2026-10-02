@@ -205,3 +205,20 @@ model ContentList {
   data      Json
   updatedAt DateTime @updatedAt
 }
+
+// Journal d'erreurs du site (sans données personnelles : messages nettoyés, pas de corps de requête)
+model ErrorLog {
+  id          String   @id @default(cuid())
+  fingerprint String   @unique
+  source      String
+  path        String
+  message     String
+  stack       String?
+  digest      String?
+  count       Int      @default(1)
+  resolved    Boolean  @default(false)
+  firstSeen   DateTime @default(now())
+  lastSeen    DateTime @default(now())
+
+  @@index([resolved, lastSeen])
+}

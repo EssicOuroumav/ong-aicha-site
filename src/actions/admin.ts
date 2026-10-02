@@ -315,3 +315,16 @@ export async function resetList(form: FormData) {
   refresh();
   revalidatePath("/admin/lists");
 }
+
+// ───────── Journal d'erreurs ─────────
+export async function setErrorResolved(form: FormData) {
+  await requireArea("settings");
+  await db.errorLog.update({ where: { id: String(form.get("id")) }, data: { resolved: form.get("resolved") === "1" } });
+  revalidatePath("/admin/errors");
+}
+
+export async function deleteResolvedErrors() {
+  await requireArea("settings");
+  await db.errorLog.deleteMany({ where: { resolved: true } });
+  revalidatePath("/admin/errors");
+}

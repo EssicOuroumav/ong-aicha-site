@@ -11,7 +11,7 @@ export default async function Dashboard({ searchParams }: PageProps<"/admin">) {
   if (user.mustChangePw) redirect("/admin/password");
   const { denied } = await searchParams;
   const showMoney = can(user.role, "donations");
-  const [sum, count, spons, members, msgs, posts, helps] = await Promise.all([
+  const [sum, count, spons, members, msgs, posts, helps, errors] = await Promise.all([
     showMoney ? db.donation.aggregate({ where: { status: "COMPLETED" }, _sum: { amount: true } }) : null,
     showMoney ? db.donation.count({ where: { status: "COMPLETED" } }) : 0,
     can(user.role, "requests") ? db.sponsorship.count({ where: { status: "NEW" } }) : 0,
@@ -19,6 +19,7 @@ export default async function Dashboard({ searchParams }: PageProps<"/admin">) {
     can(user.role, "requests") ? db.contactMessage.count({ where: { read: false } }) : 0,
     can(user.role, "content") ? db.post.count({ where: { published: true } }) : 0,
     can(user.role, "requests") ? db.helpRequest.count({ where: { status: "NEW" } }) : 0,
+    can(user.role, "settings") ? db.errorLog.count({ where: { resolved: false } }) : 0,
   ]);
   const tiles = [
     showMoney && { label: "Dons reçus", value: fcfa(sum?._sum.amount ?? 0), href: "/admin/donations" },
@@ -27,6 +28,7 @@ export default async function Dashboard({ searchParams }: PageProps<"/admin">) {
     can(user.role, "requests") && { label: "Adhésions à traiter", value: String(members), href: "/admin/memberships" },
     can(user.role, "requests") && { label: "Demandes d'aide à traiter", value: String(helps), href: "/admin/help" },
     can(user.role, "requests") && { label: "Messages non lus", value: String(msgs), href: "/admin/messages" },
+    can(user.role, "settings") && { label: "Erreurs non résolues", value: String(errors), href: "/admin/errors" },
     can(user.role, "content") && { label: "Articles publiés", value: String(posts), href: "/admin/posts" },
   ].filter(Boolean) as { label: string; value: string; href: string }[];
   return (

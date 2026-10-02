@@ -14,7 +14,9 @@
     "db:migrate:dev": "prisma migrate dev",
     "db:deploy:test": "prisma migrate deploy",
     "db:deploy:prod": "PRISMA_TARGET=production prisma migrate deploy",
-    "db:seed:test": "prisma db seed"
+    "db:seed:test": "prisma db seed",
+    "db:backup": "tsx scripts/backup.ts",
+    "db:backup:prod": "PRISMA_TARGET=production tsx scripts/backup.ts"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.10.0",

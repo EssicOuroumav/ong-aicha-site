@@ -21,6 +21,9 @@
 - Commandes : `npm run db:migrate:dev` (créer une migration, base de test), `npm run db:deploy:test`, `npm run db:seed:test` ; production : `npm run db:deploy:prod` (explicite, PRISMA_TARGET=production). Le build Vercel ne migre pas : appliquer `db:deploy:prod` à la main après chaque nouvelle migration, AVANT de publier le code qui en dépend.
 - Récupérer les variables de test en local : `vercel env pull` puis garder DEV_DATABASE_URL dans .env.local.
 
+## Sauvegardes et erreurs (2 octobre 2026)
+- Journal d'erreurs dans l'admin, sauvegarde JSON (admin + `npm run db:backup[:prod]`), voir docs/SAUVEGARDES.md.
+
 ## Reste à faire
 1. Test d'un don PayDunya en mode test, puis passage en live (clés live + `PAYDUNYA_MODE=live` + URL IPN).
 2. Nouveau domaine au nom de l'ONG → Vercel → Resend → `NEXT_PUBLIC_SITE_URL`.
