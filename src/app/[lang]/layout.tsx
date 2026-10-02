@@ -8,7 +8,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { getSettings } from "@/lib/settings";
 
-const display = Inter_Tight({ subsets: ["latin"], weight: ["300", "700", "800"], style: ["normal", "italic"], variable: "--font-display", display: "swap" });
+const display = Inter_Tight({ subsets: ["latin"], style: ["normal", "italic"], variable: "--font-display", display: "swap" });
 const body = Inter({ subsets: ["latin"], variable: "--font-body", display: "swap" });
 const arabic = Cairo({ subsets: ["arabic", "latin"], variable: "--font-arabic", display: "swap" });
 
