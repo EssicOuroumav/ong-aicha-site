@@ -13,9 +13,9 @@ export function PageHero({ title, lead, eyebrow }: { title: string; lead?: strin
   );
 }
 
-export function Section({ children, className = "", id }: { children: ReactNode; className?: string; id?: string }) {
+export function Section({ children, className = "", id, wide = false }: { children: ReactNode; className?: string; id?: string; wide?: boolean }) {
   return (
-    <section id={id} className={`mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 ${className}`}>
+    <section id={id} className={`mx-auto px-4 py-14 sm:px-6 sm:py-20 ${wide ? "max-w-[96rem] lg:px-10" : "max-w-7xl"} ${className}`}>
       {children}
     </section>
   );

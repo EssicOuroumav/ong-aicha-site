@@ -19,7 +19,7 @@ export function ActivityFilter({ items, lang, filters, readMore }: { items: Item
           </button>
         ))}
       </div>
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-8 sm:grid-cols-2 xl:grid-cols-3">
         {shown.map((a) => <ActivityCard key={a.id} a={a} lang={lang} label={readMore} />)}
       </div>
     </div>

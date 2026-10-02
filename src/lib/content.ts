@@ -12,6 +12,9 @@ async function safe<T>(fn: () => Promise<T>, fallback: T): Promise<T> {
 export const getActivities = () =>
   safe(() => db.activity.findMany({ where: { published: true }, orderBy: { order: "asc" } }), []);
 
+export const getFeaturedActivities = () =>
+  safe(() => db.activity.findMany({ where: { published: true, featured: true }, orderBy: { order: "asc" } }), []);
+
 export const getActivity = (slug: string) =>
   safe(() => db.activity.findFirst({ where: { slug, published: true } }), null);
 

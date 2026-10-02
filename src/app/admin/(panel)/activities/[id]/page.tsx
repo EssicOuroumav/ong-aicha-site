@@ -55,6 +55,7 @@ export default async function EditActivity({ params }: PageProps<"/admin/activit
             <div><label htmlFor="order" className="mb-1 block text-sm font-semibold">Ordre d'affichage</label><input id="order" name="order" type="number" defaultValue={a?.order ?? 0} className="field" /></div>
           </div>
           <label className="flex items-center gap-2"><input type="checkbox" name="published" defaultChecked={a?.published ?? true} className="h-5 w-5 accent-green-700" /> Publié</label>
+          <label className="flex items-center gap-2"><input type="checkbox" name="featured" defaultChecked={a?.featured ?? false} className="h-5 w-5 accent-green-700" /> Afficher dans le bandeau défilant de l'accueil (avec sa photo)</label>
         </Card>
         <button className="btn btn-primary">Enregistrer</button>
       </form>

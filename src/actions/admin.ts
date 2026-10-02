@@ -84,6 +84,7 @@ export async function saveActivity(form: FormData) {
   const data = {
     title, summary: loc(form, "summary"), description: loc(form, "description"), period: loc(form, "period"),
     impact,
+    featured: form.get("featured") === "on",
     category: ["health", "education", "social"].includes(String(form.get("category"))) ? String(form.get("category")) : null,
     coverImage: String(form.get("coverImage") ?? "").trim() || null,
     location: String(form.get("location") ?? "").trim() || null,

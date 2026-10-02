@@ -12,6 +12,7 @@
 
 - Admin : « Textes du site » (tous les textes fixes FR/EN/AR modifiables, retour à l'original possible) et « Listes » (partenaires, FAQ, frise, chiffres de l'accueil) ; chiffres d'impact et catégorie dans le formulaire des actions. Tables TextOverride et ContentList ; le dictionnaire de base reste dans src/messages/*.json.
 
+- Bandeau d accueil : activités « mises en avant » (case dans l admin des actions), autoplay continu avec bouton pause.
 - Refonte visuelle d'après les maquettes fournies : en-tête vert flottant en verre (#1E7B35), titres Inter Tight en deux tons, surtitres dorés à filet, cartes « photo plein cadre » (dégradé vert, pastille dorée), bandeau d'accueil qui défile par activité, partenaires avec logos (public/partners). OIEDEAH retiré faute de logo ni de nom complet.
 
 ## Reste à faire

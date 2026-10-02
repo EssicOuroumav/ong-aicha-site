@@ -83,6 +83,7 @@ model Activity {
   slug        String   @unique
   category    String?
   impact      Json?
+  featured    Boolean  @default(false)
   title       Json
   summary     Json
   description Json

@@ -22,7 +22,7 @@ export default async function ActivitiesPage({ params }: PageProps<"/[lang]/acti
   return (
     <>
       <PageHero title={t.activities.title} lead={t.activities.lead} />
-      <Section>
+      <Section wide>
         {items.length === 0 ? <p className="text-center text-muted">{t.common.noResults}</p> : (
           <ActivityFilter lang={lang} filters={t.activities.filters} readMore={t.common.readMore}
             items={items.map((a) => ({ id: a.id, slug: a.slug, coverImage: a.coverImage, title: a.title, summary: a.summary, category: a.category }))} />

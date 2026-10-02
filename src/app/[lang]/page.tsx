@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { ArrowRight, HandHeart, HeartHandshake, Stethoscope, UsersRound } from "lucide-react";
 import { isLocale, pick } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
-import { getActivities, getPosts } from "@/lib/content";
+import { getActivities, getFeaturedActivities, getPosts } from "@/lib/content";
 import { Section, SectionTitle } from "@/components/ui";
 import { ActivityCard, PhotoCard, PostCard } from "@/components/Cards";
 import { HeroCarousel, type Slide } from "@/components/HeroCarousel";
@@ -19,23 +19,20 @@ const pillarLinks = ["/sponsor", "/activities", "/activities", "/help"];
 export default async function Home({ params }: PageProps<"/[lang]">) {
   const { lang } = await params;
   if (!isLocale(lang)) notFound();
-  const [t, activities, posts] = await Promise.all([getDictionary(lang), getActivities(), getPosts(3)]);
+  const [t, activities, featured, posts] = await Promise.all([getDictionary(lang), getActivities(), getFeaturedActivities(), getPosts(3)]);
   const h = t.home;
 
-  // Bandeau : une diapositive de présentation, puis une par activité (photos distinctes)
-  const seen = new Set<string>();
-  const activitySlides: Slide[] = activities
-    .filter((a) => a.coverImage && !seen.has(a.coverImage) && !!seen.add(a.coverImage))
-    .slice(0, 5)
-    .map((a) => ({
-      id: a.id,
-      image: a.coverImage as string,
-      eyebrow: (a.category && (t.activities.filters as Record<string, string>)[a.category]) || t.nav.activities,
-      title: pick(a.title, lang),
-      text: pick(a.summary, lang),
-      primary: { href: `/${lang}/activities/${a.slug}`, label: t.common.discover },
-      secondary: { href: `/${lang}/donate`, label: t.nav.donate },
-    }));
+  // Bandeau : une diapositive de présentation, puis une par activité mise en avant (avec sa propre photo)
+  const hero = (featured.length ? featured : activities).filter((a) => a.coverImage).slice(0, 8);
+  const activitySlides: Slide[] = hero.map((a) => ({
+    id: a.id,
+    image: a.coverImage as string,
+    eyebrow: (a.category && (t.activities.filters as Record<string, string>)[a.category]) || t.nav.activities,
+    title: pick(a.title, lang),
+    text: pick(a.summary, lang),
+    primary: { href: `/${lang}/activities/${a.slug}`, label: t.common.discover },
+    secondary: { href: `/${lang}/donate`, label: t.nav.donate },
+  }));
   const slides: Slide[] = [
     { id: "intro", image: "/images/vague-rose-port-bouet-2025-05.jpg", eyebrow: h.heroEyebrow, title: h.heroTitle, text: h.heroText,
       primary: { href: `/${lang}/donate`, label: h.ctaDonate }, secondary: { href: `/${lang}/join`, label: h.ctaJoin } },
@@ -54,7 +51,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
       <HeroCarousel slides={slides} labels={{ previous: t.gallery.previous, next: t.gallery.next, slide: h.hero.slideLabel, pause: h.hero.pause, play: h.hero.play }} />
 
-      <Section>
+      <Section wide>
         <SectionTitle eyebrow={h.eyebrows.mission} title={h.pillarsTitle} />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {h.pillars.map((p, i) => (
@@ -94,9 +91,9 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       </section>
 
       {activities.length > 0 && (
-        <Section>
+        <Section wide>
           <SectionTitle eyebrow={h.eyebrows.actions} title={h.activitiesTitle} lead={h.activitiesLead} />
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-8 sm:grid-cols-2 xl:grid-cols-3">
             {activities.slice(0, 6).map((a) => <ActivityCard key={a.id} a={a} lang={lang} />)}
           </div>
           <div className="mt-12 text-center">

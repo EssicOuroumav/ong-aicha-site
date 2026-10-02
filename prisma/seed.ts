@@ -32,6 +32,13 @@ async function main() {
   type Extra = { newActivities: (A & { category: string })[]; categories: Record<string, string>; impact: Record<string, object[]> };
   const extra: Extra | null = existsSync("prisma/seed-data/activities.additions.json") ? JSON.parse(readFileSync("prisma/seed-data/activities.additions.json", "utf8")) : null;
   if (extra) {
+    // Première installation seulement : on ne ré-active pas ce que l'admin a retiré du bandeau
+    if ((await db.activity.count({ where: { featured: true } })) === 0) {
+      await db.activity.updateMany({
+        where: { slug: { in: ["paniers-du-ramadan", "habits-neufs-tabaski", "en-route-pour-l-ecole", "vague-rose-et-rouge", "classe-rose", "cliniques-mobiles", "journee-d-excellence"] } },
+        data: { featured: true },
+      });
+    }
     for (const [slug, category] of Object.entries(extra.categories)) await db.activity.updateMany({ where: { slug }, data: { category } });
     for (const [slug, impact] of Object.entries(extra.impact)) await db.activity.updateMany({ where: { slug }, data: { impact } });
     for (const a of extra.newActivities) {

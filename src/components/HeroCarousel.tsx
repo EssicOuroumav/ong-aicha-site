@@ -19,7 +19,8 @@ export function HeroCarousel({ slides, labels }: { slides: Slide[]; labels: Labe
 
   useEffect(() => { setReduced(window.matchMedia("(prefers-reduced-motion: reduce)").matches); }, []);
   const go = useCallback((d: number) => setI((v) => (v + d + n) % n), [n]);
-  const running = playing && !hover && !reduced && n > 1;
+  // Le défilement reste actif (bouton pause disponible) ; « réduire les animations » supprime seulement les fondus.
+  const running = playing && !hover && n > 1;
   useEffect(() => {
     if (!running) return;
     const id = setTimeout(() => go(1), DELAY);
@@ -33,15 +34,13 @@ export function HeroCarousel({ slides, labels }: { slides: Slide[]; labels: Labe
     <section
       aria-roledescription="carousel"
       className="relative isolate flex min-h-[84vh] items-end overflow-hidden text-white"
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-      onFocus={() => setHover(true)}
-      onBlur={() => setHover(false)}
+      onPointerEnter={(e) => { if (e.pointerType === "mouse") setHover(true); }}
+      onPointerLeave={() => setHover(false)}
     >
       <div aria-hidden className="absolute inset-0 -z-10">
         {slides.map((s, idx) => wanted(idx) && (
           <Image key={s.id} src={s.image} alt="" fill priority={idx === 0} sizes="100vw"
-            className={`object-cover transition-opacity duration-1000 ${idx === i ? "opacity-100" : "opacity-0"}`} />
+            className={`object-cover ${reduced ? "" : "transition-opacity duration-1000"} ${idx === i ? "opacity-100" : "opacity-0"}`} />
         ))}
         <div className="absolute inset-0 bg-gradient-to-t from-green-950/90 via-green-950/45 to-green-950/20" />
       </div>
@@ -49,7 +48,7 @@ export function HeroCarousel({ slides, labels }: { slides: Slide[]; labels: Labe
       <div className="mx-auto w-full max-w-7xl px-4 pb-10 pt-36 sm:px-6 sm:pb-14">
         <div className="glass-green max-w-3xl rounded-3xl p-6 sm:p-10" aria-live={running ? "off" : "polite"}>
           {slides.map((s, idx) => (
-            <div key={s.id} role="group" aria-roledescription="slide" aria-label={`${labels.slide} ${idx + 1} / ${n}`} hidden={idx !== i} className={idx === i ? "reveal" : ""}>
+            <div key={s.id} role="group" aria-roledescription="slide" aria-label={`${labels.slide} ${idx + 1} / ${n}`} hidden={idx !== i} className={idx === i && !reduced ? "reveal" : ""}>
               <p className="eyebrow eyebrow-light">{s.eyebrow}</p>
               <h1 className="mt-4 text-4xl sm:text-6xl lg:text-[4.25rem]">{s.title}</h1>
               <p className="mt-5 max-w-2xl text-lg text-green-50/95 sm:text-xl">{s.text}</p>
