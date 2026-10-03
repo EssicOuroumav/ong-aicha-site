@@ -1,6 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
+import { AlertCircle } from "lucide-react";
 import type { FormState } from "@/actions/forms";
 
 export function Field({ label, name, required, optional, children, error, errorText }: { label: string; name: string; required?: boolean; optional?: string; children: ReactNode; error?: boolean; errorText?: string }) {
@@ -10,7 +11,7 @@ export function Field({ label, name, required, optional, children, error, errorT
         {label} {required ? <span aria-hidden className="text-red-600">*</span> : optional ? <span className="font-normal text-muted">({optional})</span> : null}
       </label>
       {children}
-      {error && <p role="alert" className="mt-1 text-sm text-red-700">⚠ {errorText}</p>}
+      {error && <p role="alert" className="mt-1 flex items-center gap-1 text-sm text-red-700"><AlertCircle size={14} aria-hidden /> {errorText}</p>}
     </div>
   );
 }

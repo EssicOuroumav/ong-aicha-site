@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { isLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
+import { alternatesFor } from "@/lib/seo";
 import { getPosts } from "@/lib/content";
 import { PageHero, Section } from "@/components/ui";
 import { PostCard } from "@/components/Cards";
@@ -11,7 +12,7 @@ export const revalidate = 60;
 export async function generateMetadata({ params }: PageProps<"/[lang]/blog">): Promise<Metadata> {
   const { lang } = await params;
   if (!isLocale(lang)) return {};
-  return { title: (await getDictionary(lang)).blog.title };
+  return { title: (await getDictionary(lang)).blog.title, alternates: alternatesFor(lang, "/blog") };
 }
 
 export default async function BlogPage({ params }: PageProps<"/[lang]/blog">) {

@@ -14,6 +14,7 @@ export function ErrorView({ error, reset }: { error: Error & { digest?: string }
   const lang = (["fr", "en", "ar"] as const).find((l) => pathname.startsWith(`/${l}`)) ?? "fr";
   const t = texts[lang];
   useEffect(() => {
+    import("@sentry/nextjs").then((Sentry) => Sentry.captureException(error)).catch(() => {});
     fetch("/api/log-error", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ message: error.message, digest: error.digest, path: pathname }) }).catch(() => {});
   }, [error, pathname]);
   return (

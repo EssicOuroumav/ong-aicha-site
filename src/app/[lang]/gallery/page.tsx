@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { isLocale, pick } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
+import { alternatesFor } from "@/lib/seo";
 import { getMedia } from "@/lib/content";
 import { PageHero, Section } from "@/components/ui";
 import { GalleryGrid } from "@/components/GalleryGrid";
@@ -11,7 +12,7 @@ export const revalidate = 60;
 export async function generateMetadata({ params }: PageProps<"/[lang]/gallery">): Promise<Metadata> {
   const { lang } = await params;
   if (!isLocale(lang)) return {};
-  return { title: (await getDictionary(lang)).gallery.title };
+  return { title: (await getDictionary(lang)).gallery.title, alternates: alternatesFor(lang, "/gallery") };
 }
 
 export default async function GalleryPage({ params }: PageProps<"/[lang]/gallery">) {

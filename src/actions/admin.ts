@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 import { db } from "@/lib/db";
 import { signOut } from "@/auth";
+import * as Sentry from "@sentry/nextjs";
 import { requireArea, requireUser } from "@/lib/guard";
 import { siteUrl } from "@/lib/request";
 import { addPeriod, sendSponsorshipReminder } from "@/lib/sponsorship";
@@ -208,7 +209,7 @@ export async function saveSettings(_: SaveState | null, form: FormData): Promise
   }
   refresh();
   revalidatePath("/admin/settings");
-  return done("Enregistré ✓ — visible sur le site dans la minute.");
+  return done("Enregistré — visible sur le site dans la minute.");
 }
 
 // ───────── Utilisateurs ─────────
@@ -289,7 +290,7 @@ export async function saveTexts(_: SaveState | null, form: FormData): Promise<Sa
   refresh();
   revalidatePath("/admin/texts");
   const changes = upserts.length;
-  return done(changes ? `Enregistré ✓ (${changes} texte${changes > 1 ? "s" : ""} modifié${changes > 1 ? "s" : ""} en ligne)` : "Enregistré ✓ (aucune différence avec les textes d'origine)");
+  return done(changes ? `Enregistré (${changes} texte${changes > 1 ? "s" : ""} modifié${changes > 1 ? "s" : ""} en ligne)` : "Enregistré (aucune différence avec les textes d'origine)");
 }
 
 export async function resetTexts(form: FormData) {
@@ -325,7 +326,7 @@ export async function saveList(_: SaveState | null, form: FormData): Promise<Sav
   await db.contentList.upsert({ where: { key }, update: { data: json }, create: { key, data: json } });
   refresh();
   revalidatePath("/admin/lists");
-  return done(`Enregistré ✓ — ${clean.length} élément${clean.length > 1 ? "s" : ""}, visible${clean.length > 1 ? "s" : ""} sur le site dans la minute.`);
+  return done(`Enregistré — ${clean.length} élément${clean.length > 1 ? "s" : ""}, visible${clean.length > 1 ? "s" : ""} sur le site dans la minute.`);
 }
 
 export async function resetList(form: FormData) {
@@ -347,4 +348,13 @@ export async function deleteResolvedErrors() {
   await requireArea("settings");
   await db.errorLog.deleteMany({ where: { resolved: true } });
   revalidatePath("/admin/errors");
+}
+
+export async function sendSentryTest(): Promise<SaveState> {
+  await requireArea("settings");
+  const dsn = process.env.SENTRY_DSN || process.env.NEXT_PUBLIC_SENTRY_DSN;
+  if (!dsn) return failed("Sentry n'est pas configuré : ajoutez NEXT_PUBLIC_SENTRY_DSN dans Vercel puis redéployez.");
+  Sentry.captureMessage("Test Sentry envoyé depuis l'espace administrateur de l'ONG AICHA", "info");
+  const flushed = await Sentry.flush(3000);
+  return flushed ? done("Message de test envoyé à Sentry — il apparaît dans Sentry sous quelques secondes.") : failed("Envoi non confirmé : vérifiez le DSN et la connexion.");
 }

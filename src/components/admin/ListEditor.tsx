@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import type { SaveState } from "@/actions/admin";
 import { SaveForm } from "./SaveForm";
 
@@ -58,8 +59,8 @@ export function ListEditor({ listKey, fields, initial, saveAction, resetAction, 
         <fieldset key={i} className="space-y-3 rounded-xl border border-line bg-green-50/40 p-4">
           <legend className="flex items-center gap-2 px-1 text-sm font-semibold text-green-900">
             {itemLabel} {i + 1}
-            <button type="button" onClick={() => move(i, -1)} disabled={i === 0} aria-label="Monter" className="rounded border border-line px-1.5 disabled:opacity-30">↑</button>
-            <button type="button" onClick={() => move(i, 1)} disabled={i === items.length - 1} aria-label="Descendre" className="rounded border border-line px-1.5 disabled:opacity-30">↓</button>
+            <button type="button" onClick={() => move(i, -1)} disabled={i === 0} aria-label="Monter" className="rounded border border-line p-1 disabled:opacity-30"><ChevronUp size={14} /></button>
+            <button type="button" onClick={() => move(i, 1)} disabled={i === items.length - 1} aria-label="Descendre" className="rounded border border-line p-1 disabled:opacity-30"><ChevronDown size={14} /></button>
             <button type="button" onClick={() => { if (window.confirm("Supprimer cet élément ?")) setItems((arr) => arr.filter((_, idx) => idx !== i)); }} className="rounded border border-red-200 px-2 text-xs text-red-700">Supprimer</button>
           </legend>
           {fields.map((f) =>

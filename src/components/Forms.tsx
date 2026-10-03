@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState, useEffect, useRef, useState, startTransition } from "react";
+import { Lock } from "lucide-react";
 import { Field, FormMessage, Honeypot } from "./FormKit";
 import { submitContact, submitDonation, submitHelp, submitJoin, submitSponsorship, type FormState } from "@/actions/forms";
 import type { Dictionary } from "@/i18n/dictionaries";
@@ -27,7 +28,7 @@ function useServerForm(serverAction: (prev: FormState | null, form: FormData) =>
 
 type Errors = { validation: string; rate: string; server: string };
 const errorsOf = (t: Dictionary): Errors => ({
-  validation: t.common.required + " ✱",
+  validation: t.common.required,
   rate: t.common.error,
   server: t.common.error,
 });
@@ -163,7 +164,7 @@ export function DonateForm({ t, lang, initialCause = "general", manual = false }
       <button type="submit" disabled={pending || amount < 500} className="btn btn-gold w-full text-lg !py-4">
         {pending ? t.common.sending : `${t.donate.submit} · ${fmt(amount || 0)} FCFA`}
       </button>
-      <p className="text-center text-sm text-muted">{manual ? t.donate.manualSecure : `🔒 ${t.donate.secure}`}</p>
+      <p className="flex items-center justify-center gap-2 text-center text-sm text-muted">{!manual && <Lock size={14} aria-hidden className="shrink-0" />}{manual ? t.donate.manualSecure : t.donate.secure}</p>
       <FormMessage state={state} success="" errors={errorsOf(t)} />
     </form>
   );

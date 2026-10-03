@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { isLocale, pick } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
+import { alternatesFor } from "@/lib/seo";
 import { getPost, getPosts } from "@/lib/content";
 import { PageHero, RichText, Section, formatDate } from "@/components/ui";
 import { PostCard } from "@/components/Cards";
@@ -18,6 +19,7 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/blog/[slug
   return {
     title: pick(p.title, lang),
     description: pick(p.excerpt, lang),
+    alternates: alternatesFor(lang, `/blog/${slug}`),
     openGraph: { type: "article", images: p.coverImage ? [p.coverImage] : undefined, publishedTime: p.publishedAt?.toISOString() },
   };
 }

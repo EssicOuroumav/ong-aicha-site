@@ -26,11 +26,8 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
     metadataBase: new URL(base),
     title: { default: `${t.meta.siteName} – ${t.meta.tagline}`, template: `%s | ${t.meta.siteName}` },
     description: t.meta.description,
-    alternates: {
-      languages: Object.fromEntries(locales.map((l) => [l, `/${l}`])),
-    },
+    verification: { google: process.env.GOOGLE_SITE_VERIFICATION, other: process.env.BING_SITE_VERIFICATION ? { "msvalidate.01": process.env.BING_SITE_VERIFICATION } : undefined },
     openGraph: { siteName: t.meta.siteName, locale: lang, type: "website", images: ["/images/og.jpg"] },
-    icons: { icon: "/logo.png" },
   };
 }
 

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { isLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
+import { alternatesFor } from "@/lib/seo";
 import { getSettings } from "@/lib/settings";
 import { PageHero, Section, SectionTitle } from "@/components/ui";
 import { DonateForm } from "@/components/Forms";
@@ -12,7 +13,7 @@ export const dynamic = "force-dynamic";
 export async function generateMetadata({ params }: PageProps<"/[lang]/donate">): Promise<Metadata> {
   const { lang } = await params;
   if (!isLocale(lang)) return {};
-  return { title: (await getDictionary(lang)).donate.title };
+  return { title: (await getDictionary(lang)).donate.title, alternates: alternatesFor(lang, "/donate") };
 }
 
 export default async function DonatePage({ params, searchParams }: PageProps<"/[lang]/donate">) {

@@ -1,9 +1,10 @@
 "use client";
 
 import { useActionState, type ReactNode } from "react";
+import { AlertCircle, CheckCircle2 } from "lucide-react";
 import type { SaveState } from "@/actions/admin";
 
-/** Formulaire d'admin avec confirmation visible (✓ vert) ou erreur (rouge) à côté du bouton. */
+/** Formulaire d'admin avec confirmation visible (icône verte) ou erreur (rouge) à côté du bouton. */
 export function SaveForm({ action, children, className = "space-y-4", label = "Enregistrer", resetAction, resetLabel, resetConfirm }: {
   action: (prev: SaveState | null, form: FormData) => Promise<SaveState>;
   children: ReactNode; className?: string; label?: string;
@@ -18,7 +19,7 @@ export function SaveForm({ action, children, className = "space-y-4", label = "E
         {resetAction && (
           <button formAction={resetAction} formNoValidate onClick={(e) => { if (resetConfirm && !window.confirm(resetConfirm)) e.preventDefault(); }} className="btn btn-outline text-red-700">{resetLabel}</button>
         )}
-        <span role="status" aria-live="polite" className={`text-sm font-semibold ${state?.ok ? "text-green-700" : "text-red-700"}`}>{pending ? "" : state?.message}</span>
+        <span role="status" aria-live="polite" className={`inline-flex items-center gap-1.5 text-sm font-semibold ${state?.ok ? "text-green-700" : "text-red-700"}`}>{!pending && state && (state.ok ? <CheckCircle2 size={16} aria-hidden /> : <AlertCircle size={16} aria-hidden />)}{pending ? "" : state?.message}</span>
       </div>
     </form>
   );

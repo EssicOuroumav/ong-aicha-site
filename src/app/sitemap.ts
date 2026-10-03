@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [activities, posts] = await Promise.all([getActivities(), getPosts()]);
-  const pages = ["", "/about", "/activities", "/blog", "/gallery", "/contact", "/donate", "/sponsor", "/join", "/help", "/legal"];
+  const pages = ["", "/about", "/activities", "/blog", "/gallery", "/contact", "/donate", "/sponsor", "/join", "/help", "/legal", "/privacy", "/terms"];
   const entry = (path: string, lastModified?: Date) =>
     locales.map((l) => ({
       url: `${base}/${l}${path}`,

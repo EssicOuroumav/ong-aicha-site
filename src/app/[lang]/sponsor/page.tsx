@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { isLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
+import { alternatesFor } from "@/lib/seo";
 import { PageHero, Section } from "@/components/ui";
 import { SponsorForm } from "@/components/Forms";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/sponsor">): Promise<Metadata> {
   const { lang } = await params;
   if (!isLocale(lang)) return {};
-  return { title: (await getDictionary(lang)).sponsor.title };
+  return { title: (await getDictionary(lang)).sponsor.title, alternates: alternatesFor(lang, "/sponsor") };
 }
 
 export default async function SponsorPage({ params }: PageProps<"/[lang]/sponsor">) {

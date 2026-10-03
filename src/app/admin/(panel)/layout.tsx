@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 import { signOut } from "@/auth";
 import { can, requireUser } from "@/lib/guard";
 
@@ -36,7 +37,7 @@ export default async function PanelLayout({ children }: { children: React.ReactN
           {nav.map((n) => (
             <Link key={n.href} href={n.href} className="whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium hover:bg-white/10">{n.label}</Link>
           ))}
-          <Link href="/fr" target="_blank" className="whitespace-nowrap rounded-lg px-3 py-2 text-sm text-gold hover:bg-white/10">Voir le site ↗</Link>
+          <Link href="/fr" target="_blank" className="inline-flex items-center gap-1 whitespace-nowrap rounded-lg px-3 py-2 text-sm text-gold hover:bg-white/10">Voir le site <ArrowUpRight size={14} /></Link>
           <form action={async () => { "use server"; await signOut({ redirectTo: "/admin/login" }); }}>
             <button className="w-full whitespace-nowrap rounded-lg px-3 py-2 text-start text-sm hover:bg-white/10">Se déconnecter</button>
           </form>

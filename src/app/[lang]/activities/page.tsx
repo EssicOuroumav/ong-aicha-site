@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { isLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
+import { alternatesFor } from "@/lib/seo";
 import { getActivities } from "@/lib/content";
 import { PageHero, Section } from "@/components/ui";
 import { ActivityFilter } from "@/components/ActivityFilter";
@@ -11,7 +12,7 @@ export const revalidate = 60;
 export async function generateMetadata({ params }: PageProps<"/[lang]/activities">): Promise<Metadata> {
   const { lang } = await params;
   if (!isLocale(lang)) return {};
-  return { title: (await getDictionary(lang)).activities.title };
+  return { title: (await getDictionary(lang)).activities.title, alternates: alternatesFor(lang, "/activities") };
 }
 
 export default async function ActivitiesPage({ params }: PageProps<"/[lang]/activities">) {

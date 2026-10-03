@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ArrowRight, HandHeart, HeartHandshake, Stethoscope, UsersRound } from "lucide-react";
 import { isLocale, pick } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
+import { alternatesFor } from "@/lib/seo";
 import { getActivities, getFeaturedActivities, getPosts } from "@/lib/content";
 import { Section, SectionTitle } from "@/components/ui";
 import { ActivityCard, PhotoCard, PostCard } from "@/components/Cards";
@@ -15,6 +16,12 @@ export const revalidate = 60;
 const pillarIcons = [HeartHandshake, HandHeart, Stethoscope, UsersRound];
 const pillarImages = ["/images/ramadan-paniers-2025-01.jpg", "/images/tabaski-habits-neufs-2025-01.jpg", "/images/vague-rose-bouake-2025-04.jpg", "/images/vague-rose-port-bouet-2025-06.jpg"];
 const pillarLinks = ["/sponsor", "/activities", "/activities", "/help"];
+
+export async function generateMetadata({ params }: PageProps<"/[lang]">) {
+  const { lang } = await params;
+  if (!isLocale(lang)) return {};
+  return { alternates: alternatesFor(lang, "") };
+}
 
 export default async function Home({ params }: PageProps<"/[lang]">) {
   const { lang } = await params;

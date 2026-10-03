@@ -75,27 +75,29 @@ h1, h2, h3, h4 {
   border-radius: 4px;
 }
 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  border-radius: 9999px;
-  padding: 0.75rem 1.5rem;
-  font-weight: 600;
-  transition: background-color 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
-  cursor: pointer;
+@layer components {
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    transition: background-color 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary { background: var(--green-700); color: #fff; }
+  .btn-primary:hover { background: var(--green-800); }
+  .btn-caps { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.8rem; font-weight: 700; border-radius: 0.85rem; }
+  .btn-gold { background: linear-gradient(135deg, #2a9444, #1e7b35); color: #fff; box-shadow: 0 6px 20px rgba(30, 123, 53, 0.35); }
+  .btn-gold:hover { background: linear-gradient(135deg, #31a34d, #23893c); box-shadow: 0 8px 26px rgba(30, 123, 53, 0.45); }
+  .btn-white { background: #fff; color: var(--green-800); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18); }
+  .btn-white:hover { background: var(--green-50); }
+  .btn-outline { border: 2px solid currentColor; }
+  .btn:disabled { opacity: 0.6; cursor: not-allowed; }
 }
-.btn:active { transform: translateY(1px); }
-.btn-primary { background: var(--green-700); color: #fff; }
-.btn-primary:hover { background: var(--green-800); }
-.btn-caps { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.8rem; font-weight: 700; border-radius: 0.85rem; }
-.btn-gold { background: linear-gradient(135deg, #2a9444, #1e7b35); color: #fff; box-shadow: 0 6px 20px rgba(30, 123, 53, 0.35); }
-.btn-gold:hover { background: linear-gradient(135deg, #31a34d, #23893c); box-shadow: 0 8px 26px rgba(30, 123, 53, 0.45); }
-.btn-white { background: #fff; color: var(--green-800); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18); }
-.btn-white:hover { background: var(--green-50); }
-.btn-outline { border: 2px solid currentColor; }
-.btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
 .field {
   width: 100%;

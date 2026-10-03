@@ -410,7 +410,9 @@
     "rights": "Tous droits réservés.",
     "legal": "Mentions légales",
     "admin": "Espace administrateur",
-    "help": "Demander de l'aide"
+    "help": "Demander de l'aide",
+    "privacy": "Confidentialité",
+    "terms": "Conditions d'utilisation"
   },
   "legal": {
     "title": "Mentions légales",
@@ -469,5 +471,148 @@
     "submit": "Envoyer ma demande",
     "success": "Votre demande a bien été reçue. Notre équipe vous contactera dès que possible.",
     "notice": "L'ONG AICHA étudie chaque demande selon ses moyens. Une demande envoyée ne garantit pas une aide. En cas de danger immédiat, appelez les secours."
+  },
+  "privacy": {
+    "title": "Politique de confidentialité",
+    "updated": "Dernière mise à jour : 3 octobre 2026",
+    "intro": "L'ONG AICHA respecte votre vie privée. Cette page explique quelles informations nous recueillons sur ce site, pourquoi, et comment vous gardez le contrôle.",
+    "sections": [
+      {
+        "title": "Qui est responsable de vos données ?",
+        "body": [
+          "Le responsable du traitement est l'ONG AICHA – Association Islamique Caritative Humanitaire Active, dont le siège est à Port-Bouët Abattoir, Abidjan, Côte d'Ivoire.",
+          "Contact : ongaicha2022@gmail.com – (+225) 07 08 99 96 26."
+        ]
+      },
+      {
+        "title": "Quelles données recueillons-nous ?",
+        "body": [
+          "Seulement ce que vous saisissez dans les formulaires : pour un don (nom, e-mail, téléphone, pays et ville, montant, cause soutenue, message), un parrainage (nom, e-mail, téléphone, pays, nombre d'enfants, fréquence), une adhésion (nom, prénom, téléphone, e-mail, ville, message), un message de contact (nom, e-mail, message) ou une demande d'aide (nom, téléphone, e-mail, nature du besoin, précisions).",
+          "Une demande d'aide peut contenir des informations sensibles : elle n'est lue que par les personnes habilitées de l'ONG.",
+          "Le site n'utilise ni cookies publicitaires ni outil de suivi des visiteurs. Un cookie technique de session n'existe que pour l'espace administrateur. Le journal des erreurs techniques ne contient aucune donnée personnelle."
+        ]
+      },
+      {
+        "title": "Pourquoi utilisons-nous ces données ?",
+        "body": [
+          "Pour traiter votre don, votre parrainage, votre adhésion ou votre demande, vous répondre, vous envoyer un reçu ou un rappel de paiement, et tenir la comptabilité de l'association.",
+          "Nous ne vendons ni ne louons vos données à des tiers."
+        ]
+      },
+      {
+        "title": "Votre consentement",
+        "body": [
+          "Chaque formulaire comporte une case à cocher : vous acceptez que vos informations soient utilisées pour traiter votre demande. Vous pouvez retirer ce consentement à tout moment en nous écrivant."
+        ]
+      },
+      {
+        "title": "Qui peut accéder à vos données ?",
+        "body": [
+          "Les personnes habilitées de l'ONG, et nos prestataires techniques qui n'agissent que pour notre compte : Vercel (hébergement du site), Neon (base de données), Resend (envoi d'e-mails) et PayDunya (paiement en ligne). PayDunya traite les données de paiement : l'ONG AICHA ne conserve aucune donnée bancaire.",
+          "Les vidéos YouTube sont intégrées en mode sans cookies et la carte de la page Contact provient de Google Maps : ces services peuvent recevoir votre adresse IP lorsque vous les affichez.",
+          "Certains prestataires hébergent des données hors de Côte d'Ivoire (Europe ou États-Unis)."
+        ]
+      },
+      {
+        "title": "Combien de temps conservons-nous vos données ?",
+        "body": [
+          "Les données d'un don sont conservées pendant la durée requise par les obligations comptables et légales. Les messages, demandes et adhésions sont conservés le temps nécessaire à leur traitement, puis supprimés ou anonymisés. Les journaux d'erreurs techniques sont effacés au bout de 90 jours."
+        ]
+      },
+      {
+        "title": "Vos droits",
+        "body": [
+          "Vous pouvez demander l'accès à vos données, leur correction, leur suppression ou vous opposer à leur traitement, en écrivant à ongaicha2022@gmail.com. Nous répondons dans les meilleurs délais.",
+          "Ces droits sont reconnus par la loi ivoirienne n° 2013-450 du 19 juin 2013 relative à la protection des données à caractère personnel. Vous pouvez aussi saisir l'autorité ivoirienne de protection des données (ARTCI)."
+        ]
+      },
+      {
+        "title": "Sécurité",
+        "body": [
+          "Le site est servi en HTTPS, l'accès à l'espace d'administration est protégé par mot de passe et limité aux personnes autorisées, les mots de passe sont stockés sous forme chiffrée et les données sont sauvegardées."
+        ]
+      },
+      {
+        "title": "Enfants et photographies",
+        "body": [
+          "Les photographies d'enfants et de bénéficiaires ne sont publiées qu'avec l'autorisation de leurs représentants. Pour demander le retrait d'une image ou d'une information, écrivez-nous : nous la retirons rapidement."
+        ]
+      },
+      {
+        "title": "Modifications",
+        "body": [
+          "Nous pouvons mettre à jour cette politique. La date de dernière mise à jour figure en haut de cette page."
+        ]
+      }
+    ]
+  },
+  "terms": {
+    "title": "Conditions générales d'utilisation",
+    "updated": "Dernière mise à jour : 3 octobre 2026",
+    "intro": "En utilisant ce site, vous acceptez les conditions ci-dessous. Elles complètent les mentions légales et la politique de confidentialité.",
+    "sections": [
+      {
+        "title": "Objet du site",
+        "body": [
+          "Ce site présente l'ONG AICHA et ses actions, et permet de faire un don, de parrainer un enfant, d'adhérer à l'association, de la contacter ou de lui adresser une demande d'aide."
+        ]
+      },
+      {
+        "title": "Accès au site",
+        "body": [
+          "L'accès au site est gratuit. Nous nous efforçons de le garder disponible, sans garantir l'absence d'interruption, d'erreur ou de maintenance."
+        ]
+      },
+      {
+        "title": "Dons",
+        "body": [
+          "Un don est un geste volontaire, sans contrepartie. Il peut être fait en ligne (Orange Money, MTN, Moov, Wave, carte bancaire) lorsque le paiement en ligne est disponible, ou par Mobile Money en suivant les instructions affichées après validation du formulaire. Dans ce dernier cas, le don n'est compté qu'après confirmation de sa réception par l'ONG.",
+          "Vous pouvez indiquer le programme que vous souhaitez soutenir. L'ONG s'efforce de respecter cette indication ; si le besoin est déjà couvert, elle peut affecter le don à une action similaire.",
+          "En cas d'erreur de paiement, contactez-nous sans attendre en indiquant la référence du don."
+        ]
+      },
+      {
+        "title": "Parrainage",
+        "body": [
+          "Une demande de parrainage est examinée et validée par l'ONG. Une fois validée, des rappels de paiement avec un lien sécurisé vous sont envoyés à chaque échéance choisie (mensuelle, trimestrielle ou annuelle)."
+        ]
+      },
+      {
+        "title": "Demandes d'aide",
+        "body": [
+          "Les demandes d'aide sont étudiées avec discrétion selon les moyens de l'ONG. Envoyer une demande ne garantit pas qu'une aide sera accordée. En cas de danger immédiat, contactez les services de secours."
+        ]
+      },
+      {
+        "title": "Propriété intellectuelle",
+        "body": [
+          "Les textes, photographies, logos et vidéos du site appartiennent à l'ONG AICHA ou à ses partenaires. Toute reproduction ou réutilisation sans autorisation écrite est interdite, sauf pour un partage non commercial avec mention de la source."
+        ]
+      },
+      {
+        "title": "Responsabilité",
+        "body": [
+          "Nous veillons à l'exactitude des informations publiées sans pouvoir en garantir l'absence totale d'erreur. L'ONG n'est pas responsable du contenu des sites externes vers lesquels le site pointe, ni des interruptions du réseau ou des opérateurs de paiement."
+        ]
+      },
+      {
+        "title": "Données personnelles",
+        "body": [
+          "Le traitement de vos données est décrit dans la politique de confidentialité."
+        ]
+      },
+      {
+        "title": "Droit applicable",
+        "body": [
+          "Les présentes conditions sont soumises au droit ivoirien. En cas de litige, une solution amiable sera recherchée en priorité ; à défaut, les juridictions d'Abidjan sont compétentes."
+        ]
+      },
+      {
+        "title": "Nous contacter",
+        "body": [
+          "ONG AICHA – Port-Bouët Abattoir, Abidjan, Côte d'Ivoire – ongaicha2022@gmail.com – (+225) 07 08 99 96 26."
+        ]
+      }
+    ]
   }
 }

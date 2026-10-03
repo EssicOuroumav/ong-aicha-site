@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { isLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
+import { alternatesFor } from "@/lib/seo";
 import { PageHero, Section } from "@/components/ui";
 import { HelpForm } from "@/components/Forms";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/help">): Promise<Metadata> {
   const { lang } = await params;
   if (!isLocale(lang)) return {};
-  return { title: (await getDictionary(lang)).help.title };
+  return { title: (await getDictionary(lang)).help.title, alternates: alternatesFor(lang, "/help") };
 }
 
 export default async function HelpPage({ params }: PageProps<"/[lang]/help">) {

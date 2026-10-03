@@ -54,6 +54,8 @@ export function Footer({ lang, t, settings }: { lang: Locale; t: Dictionary; set
       <div className="border-t border-white/10 py-5 text-center text-sm text-green-100/70">
         © {new Date().getFullYear()} ONG AICHA · {t.footer.rights} ·{" "}
         <Link href={`/${lang}/legal`} className="underline hover:text-gold">{t.footer.legal}</Link> ·{" "}
+        <Link href={`/${lang}/privacy`} className="underline hover:text-gold">{t.footer.privacy}</Link> ·{" "}
+        <Link href={`/${lang}/terms`} className="underline hover:text-gold">{t.footer.terms}</Link> ·{" "}
         <Link href="/admin" className="underline hover:text-gold">{t.footer.admin}</Link>
       </div>
     </footer>

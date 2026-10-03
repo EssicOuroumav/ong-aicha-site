@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { isLocale, pick } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
+import { alternatesFor } from "@/lib/seo";
 import { getActivities, getActivity, getMedia } from "@/lib/content";
 import { PageHero, RichText, Section } from "@/components/ui";
 import { ActivityCard } from "@/components/Cards";
@@ -21,7 +22,7 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/activities
   if (!isLocale(lang)) return {};
   const a = await getActivity(slug);
   if (!a) return {};
-  return { title: pick(a.title, lang), description: pick(a.summary, lang), openGraph: a.coverImage ? { images: [a.coverImage] } : undefined };
+  return { title: pick(a.title, lang), description: pick(a.summary, lang), alternates: alternatesFor(lang, `/activities/${slug}`), openGraph: a.coverImage ? { images: [a.coverImage] } : undefined };
 }
 
 export default async function ActivityPage({ params }: PageProps<"/[lang]/activities/[slug]">) {

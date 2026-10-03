@@ -410,7 +410,9 @@
     "rights": "All rights reserved.",
     "legal": "Legal notice",
     "admin": "Admin area",
-    "help": "Request assistance"
+    "help": "Request assistance",
+    "privacy": "Privacy",
+    "terms": "Terms of use"
   },
   "legal": {
     "title": "Legal notice",
@@ -469,5 +471,148 @@
     "submit": "Send my request",
     "success": "Your request has been received. Our team will contact you as soon as possible.",
     "notice": "ONG AICHA reviews each request within its means. Submitting a request does not guarantee assistance. In case of immediate danger, call the emergency services."
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "updated": "Last updated: 3 October 2026",
+    "intro": "ONG AICHA respects your privacy. This page explains what information we collect on this website, why we collect it, and how you stay in control.",
+    "sections": [
+      {
+        "title": "Who is responsible for your data?",
+        "body": [
+          "The data controller is ONG AICHA – Association Islamique Caritative Humanitaire Active, whose head office is in Port-Bouët Abattoir, Abidjan, Côte d'Ivoire.",
+          "Contact: ongaicha2022@gmail.com – (+225) 07 08 99 96 26."
+        ]
+      },
+      {
+        "title": "What data do we collect?",
+        "body": [
+          "Only what you enter in our forms: for a donation (name, email, phone number, country and city, amount, cause supported, message), a sponsorship (name, email, phone number, country, number of children, frequency), a membership application (last name, first name, phone number, email, city, message), a contact message (name, email, message) or a request for assistance (name, phone number, email, nature of the need, details).",
+          "A request for assistance may contain sensitive information: it is read only by authorised members of the organisation.",
+          "This website uses neither advertising cookies nor visitor-tracking tools. A technical session cookie exists only for the administrator area. The technical error log contains no personal data."
+        ]
+      },
+      {
+        "title": "Why do we use this data?",
+        "body": [
+          "To process your donation, sponsorship, membership application or request, to reply to you, to send you a receipt or a payment reminder, and to keep the association's accounts.",
+          "We do not sell or rent your data to third parties."
+        ]
+      },
+      {
+        "title": "Your consent",
+        "body": [
+          "Each form includes a checkbox: you agree that your information may be used to process your request. You may withdraw this consent at any time by writing to us."
+        ]
+      },
+      {
+        "title": "Who can access your data?",
+        "body": [
+          "Authorised members of the organisation, and our technical service providers, who act only on our behalf: Vercel (website hosting), Neon (database), Resend (email delivery) and PayDunya (online payment). PayDunya processes payment data: ONG AICHA does not store any banking information.",
+          "YouTube videos are embedded in cookie-free mode and the map on the Contact page comes from Google Maps: these services may receive your IP address when you view them.",
+          "Some providers host data outside Côte d'Ivoire (in Europe or the United States)."
+        ]
+      },
+      {
+        "title": "How long do we keep your data?",
+        "body": [
+          "Donation data is kept for the period required by accounting and legal obligations. Messages, requests and membership applications are kept for as long as necessary to process them, then deleted or anonymised. Technical error logs are erased after 90 days."
+        ]
+      },
+      {
+        "title": "Your rights",
+        "body": [
+          "You may request access to your data, its correction or deletion, or object to its processing, by writing to ongaicha2022@gmail.com. We reply as promptly as possible.",
+          "These rights are recognised by Ivorian Law No. 2013-450 of 19 June 2013 on the protection of personal data. You may also lodge a complaint with the Ivorian data protection authority (ARTCI)."
+        ]
+      },
+      {
+        "title": "Security",
+        "body": [
+          "The website is served over HTTPS, access to the administration area is password-protected and restricted to authorised persons, passwords are stored in encrypted form, and data is backed up."
+        ]
+      },
+      {
+        "title": "Children and photographs",
+        "body": [
+          "Photographs of children and beneficiaries are published only with the authorisation of their representatives. To request the removal of an image or of information, write to us: we will remove it promptly."
+        ]
+      },
+      {
+        "title": "Changes",
+        "body": [
+          "We may update this policy. The date of the last update appears at the top of this page."
+        ]
+      }
+    ]
+  },
+  "terms": {
+    "title": "General Terms of Use",
+    "updated": "Last updated: 3 October 2026",
+    "intro": "By using this website, you accept the terms below. They supplement the legal notice and the privacy policy.",
+    "sections": [
+      {
+        "title": "Purpose of the website",
+        "body": [
+          "This website presents ONG AICHA and its work, and allows you to make a donation, sponsor a child, join the association, contact it or send it a request for assistance."
+        ]
+      },
+      {
+        "title": "Access to the website",
+        "body": [
+          "Access to the website is free of charge. We endeavour to keep it available, but we do not guarantee that it will be free from interruptions, errors or maintenance."
+        ]
+      },
+      {
+        "title": "Donations",
+        "body": [
+          "A donation is a voluntary gesture, made without anything in return. It may be made online (Orange Money, MTN, Moov, Wave, bank card) when online payment is available, or by Mobile Money by following the instructions displayed after the form is submitted. In the latter case, the donation is counted only once ONG AICHA has confirmed its receipt.",
+          "You may indicate the programme you wish to support. ONG AICHA endeavours to respect this preference; if the need is already covered, it may allocate the donation to a similar action.",
+          "In the event of a payment error, please contact us without delay, quoting the donation reference."
+        ]
+      },
+      {
+        "title": "Sponsorship",
+        "body": [
+          "A sponsorship request is reviewed and approved by ONG AICHA. Once approved, payment reminders with a secure link are sent to you at each instalment date you have chosen (monthly, quarterly or annual)."
+        ]
+      },
+      {
+        "title": "Requests for assistance",
+        "body": [
+          "Requests for assistance are considered discreetly, according to the organisation's means. Submitting a request does not guarantee that assistance will be granted. In case of immediate danger, contact the emergency services."
+        ]
+      },
+      {
+        "title": "Intellectual property",
+        "body": [
+          "The texts, photographs, logos and videos on the website belong to ONG AICHA or its partners. Any reproduction or reuse without written authorisation is prohibited, except for non-commercial sharing with attribution of the source."
+        ]
+      },
+      {
+        "title": "Liability",
+        "body": [
+          "We take care to ensure that the information published is accurate, but we cannot guarantee that it is entirely free of errors. ONG AICHA is not responsible for the content of external websites to which this website links, nor for network or payment operator outages."
+        ]
+      },
+      {
+        "title": "Personal data",
+        "body": [
+          "The processing of your data is described in the privacy policy."
+        ]
+      },
+      {
+        "title": "Governing law",
+        "body": [
+          "These terms are governed by Ivorian law. In the event of a dispute, an amicable solution will be sought first; failing that, the courts of Abidjan have jurisdiction."
+        ]
+      },
+      {
+        "title": "Contact us",
+        "body": [
+          "ONG AICHA – Port-Bouët Abattoir, Abidjan, Côte d'Ivoire – ongaicha2022@gmail.com – (+225) 07 08 99 96 26."
+        ]
+      }
+    ]
   }
 }

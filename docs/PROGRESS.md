@@ -40,6 +40,11 @@
 
 - Admin : confirmation visible après chaque enregistrement (Listes, Textes, Réglages) ; enregistrement d'une section de textes ramené de ~30 s à ~2 s (requêtes groupées).
 
+## Lot du 3 octobre
+- Menu mobile : le bouton « Faire un don » (classe .btn) ignorait « hidden » et poussait le menu hors écran en français ; styles de boutons déplacés dans @layer components.
+- Sentry intégré (code prêt, inactif sans NEXT_PUBLIC_SENTRY_DSN ; test depuis Admin → Journal d'erreurs). Journal interne conservé.
+- Favicon/icônes ONG AICHA, pages Confidentialité et Conditions d'utilisation (projet à faire valider par un juriste), 404 personnalisée (fr/en/ar, vrai code 404), global-error, hreflang/canonical par page, vérification Google/Bing via GOOGLE_SITE_VERIFICATION / BING_SITE_VERIFICATION, icônes lucide à la place des emoji, états de chargement.
+
 ## Reste à faire
 1. Test d'un don PayDunya en mode test, puis passage en live (clés live + `PAYDUNYA_MODE=live` + URL IPN).
 2. Nouveau domaine au nom de l'ONG → Vercel → Resend → `NEXT_PUBLIC_SITE_URL`.

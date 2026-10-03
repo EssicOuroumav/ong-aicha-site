@@ -1,7 +1,13 @@
+import * as Sentry from "@sentry/nextjs";
 import type { Instrumentation } from "next";
 
-// Appelée par Next.js pour chaque erreur serveur (rendu, action, route). Les erreurs sont aussi dans les logs Vercel.
-export const onRequestError: Instrumentation.onRequestError = async (err, request) => {
+export async function register() {
+  if (process.env.NEXT_RUNTIME === "nodejs") await import("../sentry.server.config");
+}
+
+// Appelée par Next.js pour chaque erreur serveur : Sentry (si activé) + notre journal d'erreurs sans données personnelles.
+export const onRequestError: Instrumentation.onRequestError = async (err, request, context) => {
+  Sentry.captureRequestError(err, request, context);
   if (process.env.NEXT_RUNTIME !== "nodejs") return;
   const message = err instanceof Error ? err.message : String(err);
   if (/NEXT_(NOT_FOUND|REDIRECT)/.test(message)) return;

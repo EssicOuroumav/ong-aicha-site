@@ -3,6 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { isLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
+import { alternatesFor } from "@/lib/seo";
 import { PageHero, Section, SectionTitle } from "@/components/ui";
 import { Partners } from "@/components/Partners";
 import { PhotoCard } from "@/components/Cards";
@@ -11,7 +12,7 @@ import { BookOpen, HandHeart, HeartHandshake, Stethoscope } from "lucide-react";
 export async function generateMetadata({ params }: PageProps<"/[lang]/about">): Promise<Metadata> {
   const { lang } = await params;
   if (!isLocale(lang)) return {};
-  return { title: (await getDictionary(lang)).about.title };
+  return { title: (await getDictionary(lang)).about.title, alternates: alternatesFor(lang, "/about") };
 }
 
 export default async function AboutPage({ params }: PageProps<"/[lang]/about">) {
