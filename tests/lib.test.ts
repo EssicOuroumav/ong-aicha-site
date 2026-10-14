@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { rateLimit } from "@/lib/ratelimit";
+import { memoryLimit } from "@/lib/ratelimit";
 import { pick, isLocale, dirOf } from "@/i18n/config";
 import { addPeriod } from "@/lib/sponsorship";
 import { escapeHtml } from "@/lib/email";
@@ -7,12 +7,12 @@ import fr from "@/messages/fr.json";
 import en from "@/messages/en.json";
 import ar from "@/messages/ar.json";
 
-describe("rateLimit", () => {
+describe("limiteur local (repli)", () => {
   it("bloque au-delà du maximum puis laisse passer les autres clés", () => {
     const k = "t-" + Math.random();
-    expect([1, 2, 3].map(() => rateLimit(k, 3, 1000))).toEqual([true, true, true]);
-    expect(rateLimit(k, 3, 1000)).toBe(false);
-    expect(rateLimit(k + "x", 3, 1000)).toBe(true);
+    expect([1, 2, 3].map(() => memoryLimit(k, 3, 1000))).toEqual([true, true, true]);
+    expect(memoryLimit(k, 3, 1000)).toBe(false);
+    expect(memoryLimit(k + "x", 3, 1000)).toBe(true);
   });
 });
 

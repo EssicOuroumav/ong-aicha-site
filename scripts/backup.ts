@@ -6,9 +6,21 @@ import { join } from "node:path";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "../src/generated/prisma/client";
 import { databaseUrl } from "../src/lib/dburl";
-import { buildBackup } from "../src/lib/backup";
+import { readFileSync } from "node:fs";
+import { buildBackup, verifyBackup } from "../src/lib/backup";
 
 config({ path: ".env.local" });
+
+// Vérification d'une sauvegarde : `npm run db:backup -- --check <fichier>`
+if (process.argv[2] === "--check") {
+  const file = process.argv[3];
+  if (!file) { console.error("Usage : npm run db:backup -- --check <fichier de sauvegarde>"); process.exit(2); }
+  let problems: string[];
+  try { problems = verifyBackup(JSON.parse(readFileSync(file, "utf8"))); } catch { problems = ["fichier illisible"]; }
+  console.log(problems.length ? `Sauvegarde NON fiable :\n- ${problems.join("\n- ")}` : "Sauvegarde intacte (format, totaux et absence de mots de passe vérifiés).");
+  process.exit(problems.length ? 1 : 0);
+}
+
 const target = process.env.PRISMA_TARGET === "production" ? "production" : "test";
 const db = new PrismaClient({ adapter: new PrismaPg({ connectionString: databaseUrl() }) });
 

@@ -12,7 +12,8 @@ for (const l of ["fr", "en", "ar"]) {
 }
 for (const p of ["/robots.txt", "/sitemap.xml", "/logo.png", "/images/og.jpg", "/favicon.ico"]) ok((await get(p)).status === 200, `${p} accessible`);
 ok((await get("/api/dev-pay?ref=x")).status === 404, "simulateur de paiement fermé");
-ok((await get("/api/cron/reminders")).status === 401, "cron protégé");
+ok((await get("/api/cron/reminders")).status === 401, "cron des rappels protégé");
+ok([401, 503].includes((await get("/api/cron/donations")).status), "cron de rattrapage des dons protégé");
 ok((await get("/api/admin/upload", { method: "POST" })).status === 403, "upload protégé");
 ok((await get("/admin/donations/export")).status === 403, "export CSV protégé");
 ok([307, 308].includes((await get("/admin/donations")).status), "admin redirige sans session");

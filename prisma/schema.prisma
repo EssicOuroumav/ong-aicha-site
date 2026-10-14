@@ -222,3 +222,12 @@ model ErrorLog {
 
   @@index([resolved, lastSeen])
 }
+
+/// Limiteur de débit partagé entre toutes les instances (fenêtre fixe) : l'ancien limiteur en mémoire était propre à chaque instance Vercel.
+model RateLimit {
+  key     String   @id
+  count   Int
+  resetAt DateTime
+
+  @@index([resetAt])
+}

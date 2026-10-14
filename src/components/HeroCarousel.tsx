@@ -2,23 +2,28 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
 import { ArrowUpRight, ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 
 export type Slide = { id: string; image: string; eyebrow: string; title: string; text: string; primary: { href: string; label: string }; secondary?: { href: string; label: string } };
 type Labels = { previous: string; next: string; slide: string; pause: string; play: string };
 
 const DELAY = 7000;
+const MOTION_QUERY = "(prefers-reduced-motion: reduce)";
+const subscribeMotion = (cb: () => void) => {
+  const m = window.matchMedia(MOTION_QUERY);
+  m.addEventListener("change", cb);
+  return () => m.removeEventListener("change", cb);
+};
+const subscribeNothing = () => () => {};
 
 export function HeroCarousel({ slides, labels }: { slides: Slide[]; labels: Labels }) {
   const [i, setI] = useState(0);
   const [playing, setPlaying] = useState(true);
   const [hover, setHover] = useState(false);
-  const [reduced, setReduced] = useState(false);
+  const reduced = useSyncExternalStore(subscribeMotion, () => window.matchMedia(MOTION_QUERY).matches, () => false);
+  const mounted = useSyncExternalStore(subscribeNothing, () => true, () => false);
   const n = slides.length;
-
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => { setReduced(window.matchMedia("(prefers-reduced-motion: reduce)").matches); setMounted(true); }, []);
   const go = useCallback((d: number) => setI((v) => (v + d + n) % n), [n]);
   // Le défilement reste actif (bouton pause disponible) ; « réduire les animations » supprime seulement les fondus.
   const running = playing && !hover && n > 1;

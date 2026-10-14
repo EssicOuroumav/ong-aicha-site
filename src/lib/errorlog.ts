@@ -19,7 +19,7 @@ export async function logError(e: Entry) {
       create: { fingerprint: fp, source: e.source, path, message, stack, digest: e.digest ?? null },
     });
     // Alerte e-mail : seulement pour une erreur nouvelle ou rouverte (pas à chaque répétition), 10 e-mails par heure au maximum
-    if ((!before || before.resolved) && rateLimit("errormail", 10, 60 * 60 * 1000)) {
+    if ((!before || before.resolved) && (await rateLimit("errormail", 10, 60 * 60 * 1000))) {
       await sendEmail({
         to: notifyAddress(),
         subject: `Erreur sur le site ONG AICHA (${e.source === "server" ? "serveur" : "navigateur"})`,

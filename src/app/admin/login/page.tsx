@@ -9,7 +9,7 @@ async function login(formData: FormData) {
   "use server";
   const ip = await clientIp();
   const email = String(formData.get("email") ?? "").toLowerCase();
-  if (!rateLimit(`login:${ip}`, 10, 10 * 60 * 1000) || !rateLimit(`login-user:${email}`, 6, 10 * 60 * 1000)) {
+  if (!(await rateLimit(`login:${ip}`, 10, 10 * 60 * 1000)) || !(await rateLimit(`login-user:${email}`, 6, 10 * 60 * 1000))) {
     redirect("/admin/login?error=rate");
   }
   try {

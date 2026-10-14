@@ -24,3 +24,19 @@ export async function buildBackup(db: PrismaClient) {
     data,
   };
 }
+
+/** Contrôle d'une sauvegarde déjà écrite : format reconnu, totaux cohérents avec le contenu, aucun mot de passe. Renvoie la liste des anomalies. */
+export function verifyBackup(raw: unknown): string[] {
+  const problems: string[] = [];
+  const b = raw as { meta?: { format?: string }; counts?: Record<string, number>; data?: Record<string, unknown[]> } | null;
+  if (!b || typeof b !== "object") return ["fichier illisible"];
+  if (b.meta?.format !== "aicha-backup-v1") problems.push("format inconnu");
+  if (!b.data || !b.counts) return [...problems, "contenu absent"];
+  for (const [k, n] of Object.entries(b.counts)) {
+    const rows = b.data[k];
+    if (!Array.isArray(rows)) problems.push(`${k} : section absente`);
+    else if (rows.length !== n) problems.push(`${k} : ${rows.length} ligne(s) pour ${n} annoncée(s)`);
+  }
+  if (JSON.stringify(b.data).includes('"passwordHash"')) problems.push("contient des mots de passe hachés");
+  return problems;
+}

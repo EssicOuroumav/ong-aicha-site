@@ -22,7 +22,7 @@ async function guard(form: FormData, bucket: string, max = 10): Promise<FormStat
   // Champ piège : un humain ne remplit jamais "website"
   if (String(form.get("website") ?? "").length > 0) return { ok: true };
   const ip = await clientIp();
-  if (!rateLimit(`${bucket}:${ip}`, max, 10 * 60 * 1000)) return { ok: false, error: "rate" };
+  if (!(await rateLimit(`${bucket}:${ip}`, max, 10 * 60 * 1000))) return { ok: false, error: "rate" };
   return null;
 }
 

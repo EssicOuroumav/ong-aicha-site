@@ -6,7 +6,7 @@ import { clientIp } from "@/lib/request";
 // Reçoit les erreurs affichées dans le navigateur (page d'erreur). Limité, de même origine, sans données personnelles.
 export async function POST(request: Request) {
   if (request.headers.get("sec-fetch-site") === "cross-site") return NextResponse.json({ ok: false }, { status: 403 });
-  if (!rateLimit(`logerr:${await clientIp()}`, 10, 10 * 60 * 1000)) return NextResponse.json({ ok: false }, { status: 429 });
+  if (!(await rateLimit(`logerr:${await clientIp()}`, 10, 10 * 60 * 1000))) return NextResponse.json({ ok: false }, { status: 429 });
   const text = await request.text();
   if (text.length > 4000) return NextResponse.json({ ok: false }, { status: 413 });
   try {

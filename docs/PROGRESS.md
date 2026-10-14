@@ -45,6 +45,10 @@
 - Sentry intégré (code prêt, inactif sans NEXT_PUBLIC_SENTRY_DSN ; test depuis Admin → Journal d'erreurs). Journal interne conservé.
 - Favicon/icônes ONG AICHA, pages Confidentialité et Conditions d'utilisation (projet à faire valider par un juriste), 404 personnalisée (fr/en/ar, vrai code 404), global-error, hreflang/canonical par page, vérification Google/Bing via GOOGLE_SITE_VERIFICATION / BING_SITE_VERIFICATION, icônes lucide à la place des emoji, états de chargement.
 
+## Lot du 14 octobre (exploitation et sécurité)
+- Rattrapage quotidien des dons en attente (`/api/cron/donations`), limiteur anti-spam partagé dans la base (migration `rate_limit`, **à appliquer en production avant le déploiement : `npm run db:deploy:prod`**), contrôle d'intégrité des sauvegardes (`--check`), GitHub Actions + Dependabot, lint remis à zéro erreur (règle des apostrophes françaises désactivée, carrousel sans effet de mise à jour d'état, lien de téléchargement), 30 tests.
+- Séparation des bases : déjà en place (`DEV_DATABASE_URL`, aucun repli vers la production, testé).
+
 ## Reste à faire
 1. Test d'un don PayDunya en mode test, puis passage en live (clés live + `PAYDUNYA_MODE=live` + URL IPN).
 2. Nouveau domaine au nom de l'ONG → Vercel → Resend → `NEXT_PUBLIC_SITE_URL`.
