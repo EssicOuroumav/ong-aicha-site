@@ -18,6 +18,12 @@ jobs:
   verifier:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    # Fausses valeurs pour tout le travail : l'installation elle-même (prisma generate) lit la configuration de la base.
+    env:
+      DEV_DATABASE_URL: postgresql://factice:factice@localhost:5432/factice
+      DATABASE_URL: postgresql://factice:factice@localhost:5432/factice
+      AUTH_SECRET: secret-factice-pour-la-construction
+      NEXT_PUBLIC_SITE_URL: https://exemple.test
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -31,8 +37,3 @@ jobs:
       # Les 4 alertes « high » connues viennent de l'outillage Prisma (mysql2), absent à l'exécution : seules les alertes critiques bloquent.
       - run: npm audit --omit=dev --audit-level=critical
       - run: npm run build
-        env:
-          DEV_DATABASE_URL: postgresql://factice:factice@localhost:5432/factice
-          DATABASE_URL: postgresql://factice:factice@localhost:5432/factice
-          AUTH_SECRET: secret-factice-pour-la-construction
-          NEXT_PUBLIC_SITE_URL: https://exemple.test
