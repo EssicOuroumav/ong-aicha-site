@@ -9,7 +9,7 @@
     "lint": "eslint",
     "postinstall": "prisma generate",
     "test": "vitest run",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "next typegen && tsc --noEmit",
     "check:launch": "node scripts/check-launch.mjs",
     "db:migrate:dev": "prisma migrate dev",
     "db:deploy:test": "prisma migrate deploy",
