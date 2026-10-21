@@ -19,21 +19,21 @@
     "db:backup:prod": "PRISMA_TARGET=production tsx scripts/backup.ts"
   },
   "dependencies": {
-    "@prisma/adapter-pg": "^7.10.0",
+    "@prisma/adapter-pg": "^7.10.1",
     "@prisma/client": "7.10",
-    "@sentry/nextjs": "^11.4.0",
-    "@vercel/blob": "^2.8.0",
+    "@sentry/nextjs": "^11.8.0",
+    "@vercel/blob": "^2.8.2",
     "bcryptjs": "^3.0.3",
-    "dotenv": "^18.0.5",
-    "lucide-react": "^1.49.0",
-    "next": "16.3.8",
+    "dotenv": "^18.0.8",
+    "lucide-react": "^1.59.0",
+    "next": "16.4.2",
     "next-auth": "^5.0.0-beta.32",
     "pg": "^8.23.1",
-    "react": "19.2.8",
-    "react-dom": "19.2.8",
-    "resend": "^6.31.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "resend": "^6.34.1",
     "server-only": "^0.0.1",
-    "zod": "^4.6.5"
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -43,11 +43,11 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.3.8",
+    "eslint-config-next": "16.4.2",
     "prisma": "7.10",
     "tailwindcss": "^4",
     "tsx": "^4.23.15",
     "typescript": "^5",
-    "vitest": "^5.0.3"
+    "vitest": "^5.0.5"
   }
 }
